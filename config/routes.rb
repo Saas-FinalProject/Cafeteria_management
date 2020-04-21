@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_items
   resources :users
+  get "/" => "home#index"
+  get "/signin/new" => "sessions#new", as: :new_session
+  post "/signin" => "sessions#create", as: :sessions
+  delete "/signout" => "sessions#destroy"
 end

@@ -10,6 +10,25 @@
   </head>
 
   <body>
+
+    <%# --------------------------------Start of sidepane--------------------------- %>
+
+    <% if session[:current_user_id] %>
+      <p class = "UserHeader">
+        Welcome <%= User.find(session[:current_user_id]).name %>!
+        You are <%= User.find(session[:current_user_id]).role %>
+      <%= link_to "Sign-out", "/signout",method: "delete" %>
+      </p>
+    <% end %>
+
+    <%# --------------------------------End of side pane-------------------------------- %>
+
+    <% if flash[:error] %>
+      <p class = "Flash-error">
+        <%= flash[:error] %>
+      </p>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

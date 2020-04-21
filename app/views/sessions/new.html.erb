@@ -1,0 +1,17 @@
+<p class = "NewUsers-title"> Sign In </p>
+
+<section class = "UsersNew">
+  <%= form_with(url: sessions_path, method: "post") do %>
+    <div class = "Form-section">
+      <p class = "FormInput-label">email: </p>
+      <%= email_field(nil, nil, name: "email", class: "Form-input", placeholder: "Enter your E-mail") %>
+    </div>
+    <div class = "Form-section">
+      <p class = "FormInput-label">Password: </p>
+      <%= password_field(nil, nil, name: "password", class: "Form-input")%>
+    </div>
+    <div class = "Form-section">
+      <%= submit_tag("Sign-in!", class: "Form-submit") %>
+    </div>
+  <% end %>
+</section>
