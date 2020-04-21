@@ -23,7 +23,8 @@ class UsersController < ApplicationController
     if user.valid?
       user.save
       session[:current_user_id] = user.id
-      render plain: "#{user.role} created successfully"
+      redirect_to menus_path
+      #render plain: "#{user.role} created successfully"
     else
       flash[:error] = user.errors.full_messages.join(", ")
       redirect_to new_user_path
