@@ -11,20 +11,22 @@ class MenusController < ApplicationController
     redirect_to menus_path
   end
 
-  def new
-    render "new"
-  end
-
   def create
     name = params[:name]
     menu = Menu.new(name: name, active: false)
     if menu.valid?
       menu.save
-      redirect_to menus_path
     else
       flash[:error] = menu.errors.full_messages.join(", ")
-      redirect_to new_menu_path
     end
+    redirect_to menus_path
+  end
+
+  def show
+    id = params[:id]
+    session[:current_selected_menu_id] = id
+    menu = Menu.find(id)
+    render "display_menu", locals: { menu: menu }
   end
 
   def destroy

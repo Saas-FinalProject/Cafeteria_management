@@ -16,4 +16,8 @@ class Menu < ActiveRecord::Base
     menu.save
     Menu.all.map { |menu| puts "#{menu.name} #{menu.active}" }
   end
+
+  def self.getActiveMenu
+    menu = Menu.find_by(active: true)
+  end
 end

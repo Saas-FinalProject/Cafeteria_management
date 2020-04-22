@@ -1,0 +1,23 @@
+<section class = "UsersNew">
+  <p> Add New Item </p>
+  <%= form_with(url: menu_items_path, method: "post") do %>
+    <div class = "Form-section">
+     <p class = "FormInput-label">Item Name: </p>
+      <%= text_field_tag(:name, nil, class: "Form-input", placeholder: "Enter the new item name", autofocus: "autofocus") %>
+    </div>
+    <div class = "Form-section">
+     <p class = "FormInput-label">Item Description: </p>
+      <%= text_field_tag(:description, nil, class: "Form-input", placeholder: "Enter the new menu name") %>
+    </div>
+    <div class = "Form-section">
+     <p class = "FormInput-label">Price: </p>
+      <%= number_field(nil, nil, class: "Form-input", placeholder: "Enter Price", name: "price") %>
+    </div>
+    <div class = "Form-section">
+      <%= submit_tag("Add Item!", class: "Form-submit") %>
+    </div>
+  <% end %>
+</section>
+
+<h1> <%= menu.name %> Items are <%= menu.menu_items.count %> </h1>
+<%= render partial: "display_menu_items", locals: { menu: menu } %>

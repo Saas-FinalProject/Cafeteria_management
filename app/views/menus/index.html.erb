@@ -1,20 +1,8 @@
-<% if User.find(session[:current_user_id]).role == "owner" %>
-  <ul>
-    <% Menu.order(:id).all.each do |menu| %>
-        <li class = "Menu">
-          <div class = "Menu-Container">
-            <% checked = menu.isActive? %>
-            <%= form_with(url: "/menus/UpdateActiveMenu", method: "post") do %>
-              <%= radio_button(nil, nil, menu.id,name: "ActiveMenu", checked: checked,onclick: "this.form.submit()") %>
-            <% end %>
-            <% class_name = (checked)? "MenuDetail-Active" : "MenuDetail" %>
-            <p class = <%= class_name %> > <%= menu.name %></p>
-            <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
-              <%= image_submit_tag("TrashIcon.png", class: "Menu-delete") %>
-            <% end %>
-          </div>
-        </li>
-    <% end %>
-  </ul>
-  <%= link_to "Create a New Menu", new_menu_path %>
+<% case User.find(session[:current_user_id]).role %>
+  <% when "owner" %>
+    <%= render partial: "owner" %>
+  <% when "clerk" %>
+    <%= render partial: "ActiveMenuContent" %>
+  <% when "customer" %>
+    <%= render partial: "ActiveMenuContent" %>
 <% end %>

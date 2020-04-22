@@ -1,0 +1,29 @@
+<section class = "UsersNew">
+  <%= form_with(url: menus_path, method: "post") do %>
+    <div class = "Form-section">
+     <p class = "FormInput-label">Name: </p>
+      <%= text_field_tag(:name, nil, class: "Form-input", placeholder: "Enter the new menu name", autofocus: "autofocus") %>
+    </div>
+    <div class = "Form-section">
+      <%= submit_tag("Create!", class: "Form-submit") %>
+    </div>
+  <% end %>
+</section>
+
+<ul>
+  <% Menu.order(:id).all.each do |menu| %>
+      <li class = "Menu">
+        <div class = "Menu-Container">
+          <% checked = menu.isActive? %>
+          <%= form_with(url: "/menus/UpdateActiveMenu", method: "post") do %>
+            <%= radio_button(nil, nil, menu.id,name: "ActiveMenu", checked: checked,onclick: "this.form.submit()") %>
+          <% end %>
+          <% class_name = (checked)? "MenuDetail-Active" : "MenuDetail" %>
+          <p class = <%= class_name %> > <%= link_to "#{menu.name}", "/menus/#{menu.id}" %> </p>
+          <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
+            <%= image_submit_tag("TrashIcon.png", class: "Menu-delete") %>
+          <% end %>
+        </div>
+      </li>
+  <% end %>
+</ul>

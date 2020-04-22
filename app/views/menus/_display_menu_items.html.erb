@@ -1,0 +1,16 @@
+<ul>
+  <% menu.menu_items.order(:id).all.each do |menu_item| %>
+    <li class="Menu-item">
+      <div class="Menu-item-Container">
+        <p class="Menu-item-name" > <%= menu_item.name %> </p>
+        <p class="Menu-item-description" > <%= menu_item.description %> </p>
+        <p class="Menu-item-price" > <%= menu_item.price %> </p>
+        <% if User.find(session[:current_user_id]).role == "owner" %>
+          <%= form_with(url: "/menu_item/#{menu_item.id}", method: "delete") do %>
+            <%= image_submit_tag("TrashIcon.png", class: "Menu-item-delete") %>
+          <% end %>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
