@@ -1,0 +1,21 @@
+    <ul>
+      <% User.category(role).each do |user| %>
+        <li class="User">
+          <div class="User-Container">
+            <p class="User-name" > <%= user.name %> </p>
+            <p class="User-phone" > <%= user.phone %> </p>
+            <p class="User-oredercnt" > <%= user.orders.count %> </p>
+            <p class="User-role" > <%= user.role %> </p>
+            <% if user.role == "clerk" %>
+              <%= form_with(url: "/users/#{user.id}/removeAsClerk", method: "post") do %>
+                <%= image_submit_tag("TrashIcon.png", class: "TrashIcon") %>
+              <% end %>
+            <% else %>
+              <%= form_with(url: "/users/#{user.id}/makeAsClerk", method: "post") do %>
+                <%= image_submit_tag("TrashIcon.png", class: "TrashIcon") %>
+              <% end %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>

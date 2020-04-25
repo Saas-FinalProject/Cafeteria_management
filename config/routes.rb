@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   delete "/signout" => "sessions#destroy"
 
   post "/menus/UpdateActiveMenu" => "menus#updateActiveMenu"
+
+  post "/users/:id/removeAsClerk" => "users#removeAsClerk"
+  post "/users/:id/makeAsClerk" => "users#makeAsClerk"
 end

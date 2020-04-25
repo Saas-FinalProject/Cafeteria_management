@@ -18,4 +18,11 @@ class MenuItemsController < ApplicationController
     end
     redirect_to "/menus/#{menu_id}"
   end
+
+  def destroy
+    id = params[:id]
+    menu_item = MenuItem.find(id)
+    menu_item.destroy
+    redirect_to "/menus/#{session[:current_selected_menu_id]}"
+  end
 end
