@@ -5,11 +5,36 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# Google fonts %>
+    <%# Nav bar %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Cedarville+Cursive|Sacramento&display=swap' %>
+    <%# Welcome block %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap' %>
+
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
+    <header id="main-header">
+		  <div class="container navbar">
+          <div class="left-part">
+            <h1 class="navbar-title"> <%= image_tag("utensils-solid.svg", class: "brand-icon") %> Dine</h1>
+          </div>
+          <div class="right-part">
+            <p class="quote">Experience the flavour</p>
+			        <ul class="tags">
+			        	<li class="tag"> <%= link_to "Home", "/",class: "tag" %> </li>
+			        	<li class="tag"> <%= link_to "About", "#welcome-block",class: "tag" %> </li>
+			        	<li class="tag"> <%= link_to "Contact", "#footer",class: "tag" %> </li>
+			        	<li class="tag"> <%= link_to "SignUp", "/",class: "tag" %> </li>
+			        </ul>
+
+          </div>
+		  </div>
+	  </header>
 
     <%# --------------------------------Start of sidepane--------------------------- %>
 
@@ -39,5 +64,26 @@
     <% end %>
 
     <%= yield %>
+
+  <section id="footer">
+    <div class="container footer-grid">
+      <div class="footer-left">
+        <h1 class="footer-title">Dine</h1>
+        <ul class="social">
+          <li> <%= image_tag("instagram-new.svg", class: "social-icon") %> </li>
+          <li> <%= image_tag("twitter.svg", class: "social-icon") %> </li>
+          <li> <%= image_tag("facebook.svg", class: "social-icon") %> </li>
+        </ul>
+      </div>
+      <div class="footer-right">
+        <ul class="info">
+          <li>one</li>
+          <li>two</li>
+          <li>three</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   </body>
 </html>
