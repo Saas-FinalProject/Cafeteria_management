@@ -1,3 +1,128 @@
+.signin-block{
+  /* width: 45%;
+  margin: auto; */
+  /* border: 1px solid blue; */
+  padding: 120px 0;
+  background-image: url("bg-image.jpg");
+  /* height: 1280px; */
+  /* background-size: 300px 100px; */
+  background-position: center;
+}
+
+.form-content{
+  width: 45%;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+}
+
+.tab-titles{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  padding: 30px 0;
+  font-size: 24px;
+  color: #f0d293;
+  /* #f1e3cb; */
+  /* #fff3cd */
+  font-weight: 600;
+  align-items: center;
+}
+
+.sign-in{
+  justify-self: end;
+}
+
+.sign-out{
+  justify-self: start;
+}
+
+.active{
+  font-size: 28px;
+  color: #d8b15c;
+  text-shadow: -1.4px 0px 1px whitesmoke;// #7d5a5a;
+}
+
+.underlineHover{
+  position: relative;
+}
+
+.underlineHover:before{
+  content: '';
+  width: 0;
+  height: 2.5px;
+  background-color: #442727;
+  /* #8ec6c5  */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transition: .4s;
+}
+
+.underlineHover:hover:before{
+  width: 50%;
+  transform: translateX(100%);
+}
+
+.form-inputs{
+  padding: 12px 0 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  grid-row-gap: 20px;
+  color: grey;
+}
+
+.form-input{
+  width: 300px;
+  height: 40px;
+  padding: 2px 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border-style: none;
+  opacity: 0.55;
+}
+
+.form-input:focus{
+  opacity: 0.8;
+}
+
+.log-in:hover {
+  background-color: black;
+  color: white;
+  font-weight: 600;
+}
+
+.welcome-block-row{
+  color: #382020;
+  font-weight: 600;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-items: center;
+  padding: 100px 0 100px;
+  /* border: 1px solid red; */
+}
+
+.left-image, .right-image{
+  width: 75%;
+}
+
+.text-center{
+  display: grid;
+  justify-items: center;
+}
+
+.text-center-title{
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  color: #382020;// #442727;
+  padding-top: 16px;
+}
+
+.desciption{
+  text-align: center;
+  line-height: 1.4;
+}
+
 .Home-title{
   font-size: 20px;
   margin-bottom: 30px;

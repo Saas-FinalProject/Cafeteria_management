@@ -1,3 +1,36 @@
+<div class="signin-block">
+  <div class="form-content">
+    <!-- Tabs Titles -->
+    <div class="tab-titles">
+    <h2 class="sign-in active"> Sign In </h2>
+    <h2 class="sign-out underlineHover"> Sign Up </h2>
+    </div>
+
+    <!-- Login Form -->
+    <form class="form-inputs">
+      <input type="text" class="form-input" name="login" placeholder="login">
+      <input type="text" class="form-input" name="login" placeholder="password">
+      <input type="submit" class="form-input log-in" value="Log In">
+    </form>
+  </div>
+</div>
+
+<section  id="welcome-block">
+  <div class="container">
+    <div class="welcome-block-row">
+      <%= image_tag("left-image.jpg", class: "left-image",alt: "left-image") %>
+      <div class="text-center">
+        <h1 class="text-center-title">ART OF FOOD</h1>
+        <span class="welcome">Welcome to Dine</span>
+        <p class="desciption">Dine is  a team work of  Dine Restaurant Cafe, we aim at promoting the foodstuff industry through the branches , we establish and through the new dishes and integrate between different cultures.</p>
+      </div>
+      <%= image_tag("right-image.jpg", class: "right-image",alt: "left-image") %>
+    </div>
+  </div>
+</section>
+
+
+
 <h1 class="Home-title">Welcome to Todo home page</h1>
 <h3 class="Home-authenticate">If you are a new user, <%= link_to "Sign Up here", new_user_path %> </h3>
 <h3 class="Home-authenticate">If you are an existing user, <%= link_to "Sign In here", new_session_path %> </h3>

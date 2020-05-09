@@ -1,0 +1,110 @@
+::selection{
+  /* Do nothing. When something selected, there's no change in its style */
+}
+
+.container{
+	width:90%;
+	margin:auto;
+	overflow:hidden;
+}
+
+#main-header{
+  background-color: #435248;// #4a5a51;// #5a6d62;// #545f3b;// #fab7b7;// #565d47;// #442727;
+  color: #fff;
+}
+
+.navbar{
+display: grid;
+grid-template-columns: 1fr 1fr;
+padding: 20px 0 2px;
+}
+
+.left-part{
+  align-self: center;
+}
+
+.right-part{
+  justify-self: end;
+  display: grid;
+  grid-auto-rows: 36px;
+}
+
+.tags{
+  display: grid;
+  grid-auto-flow: column;
+  /* grid-template-rows: repeat(4, 1fr); */
+  justify-items: center;
+  align-self: end;
+  padding-bottom: 5px;
+}
+
+.brand-icon{
+  width: 8%;
+}
+
+.navbar-title{
+  font-size: 72px;
+  font-family: 'Sacramento', cursive;
+  font-weight: 900;
+}
+
+.quote{
+  font-size: 34px;
+  font-family: 'Cedarville Cursive', cursive;
+}
+
+.tag{
+  color: #ffe0ac;
+  text-decoration: none;
+}
+
+.tags:hover{
+  align-items: center;
+}
+
+.tag:hover{
+  color: #f8f3eb;
+  font-size: 16.1px;
+}
+
+#footer{
+  background-color: black;
+  color: white;
+  padding: 40px 0;
+}
+
+.footer-grid{
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+}
+
+.footer-left{
+  display: grid;
+}
+
+.social{
+  align-self: end;
+}
+
+.social-icon{
+  width: 5%;
+  background-color: white;
+  display: inline-block;
+}
+
+.social-icon:hover{
+  background-color: blue;
+}
+
+.info{
+  padding: 20px 0;
+  display: grid;
+  grid-gap: 10px;
+}
+
+.footer-title{
+  margin-top: 5px;
+  font-size: 38px;
+  font-family: 'Sacramento', cursive;
+  font-weight: 900;
+}

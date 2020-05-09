@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    render plain: "Users controller"
+    render "index"
   end
 
   def new
@@ -19,15 +19,29 @@ class UsersController < ApplicationController
 
     user = User.new(name: name, email: email, password: password, phone: phone, address: address, role: role)
 
-    #validations
     if user.valid?
       user.save
       session[:current_user_id] = user.id
       redirect_to menus_path
-      #render plain: "#{user.role} created successfully"
     else
       flash[:error] = user.errors.full_messages.join(", ")
       redirect_to new_user_path
     end
+  end
+
+  def removeAsClerk
+    id = params[:id]
+    user = User.find(id)
+    user.role = "customer"
+    user.save
+    redirect_to users_path
+  end
+
+  def makeAsClerk
+    id = params[:id]
+    user = User.find(id)
+    user.role = "clerk"
+    user.save
+    redirect_to users_path
   end
 end
