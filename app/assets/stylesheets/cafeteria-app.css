@@ -2,6 +2,10 @@
   /* Do nothing. When something selected, there's no change in its style */
 }
 
+/* body{
+  position: relative;
+} */
+
 .container{
 	width:90%;
 	margin:auto;
@@ -9,7 +13,7 @@
 }
 
 #main-header{
-  background-color: #435248;// #4a5a51;// #5a6d62;// #545f3b;// #fab7b7;// #565d47;// #442727;
+  background-color: #435248;
   color: #fff;
 }
 

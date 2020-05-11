@@ -26,10 +26,10 @@
           <div class="right-part">
             <p class="quote">Experience the flavour</p>
 			        <ul class="tags">
-			        	<li class="tag"> <%= link_to "Home", "/",class: "tag" %> </li>
-			        	<li class="tag"> <%= link_to "About", "#welcome-block",class: "tag" %> </li>
-			        	<li class="tag"> <%= link_to "Contact", "#footer",class: "tag" %> </li>
-			        	<li class="tag"> <%= link_to "SignUp", "/",class: "tag" %> </li>
+			        	<li> <%= link_to "Home", "/",class: "tag" %> </li>
+			        	<li> <%= link_to "About", "#welcome-block",class: "tag" %> </li>
+			        	<li> <%= link_to "Contact", "#footer",class: "tag" %> </li>
+			        	<li> <%= link_to "SignUp", "/",class: "tag" %> </li>
 			        </ul>
 
           </div>
@@ -60,6 +60,11 @@
     <% if flash[:error] %>
       <p class = "Flash-error">
         <%= flash[:error] %>
+      </p>
+    <% end %>
+    <% if flash[:notice] %>
+      <p class = "Flash-notice">
+        <%= flash[:notice] %>
       </p>
     <% end %>
 

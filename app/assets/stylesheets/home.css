@@ -2,6 +2,7 @@
   /* width: 45%;
   margin: auto; */
   /* border: 1px solid blue; */
+  /* margin-top: 97.42px; */
   padding: 120px 0;
   background-image: url("bg-image.jpg");
   /* height: 1280px; */
@@ -144,6 +145,12 @@
 
 .Flash-error{
   color: darkred;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.Flash-notice{
+  color: green;
   margin-bottom: 20px;
   font-size: 16px;
 }
