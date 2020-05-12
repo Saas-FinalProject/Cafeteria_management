@@ -23,8 +23,14 @@ class MenusController < ApplicationController
     menu = Menu.find(activeMenuId)
     menu.makeActive
     orders = Order.where(status: "notprocessed")
-    orders.order_items.destroy_all
-    orders.destroy
+    if orders
+      orders.each do |order|
+        if order.order_items
+          order.order_items.destroy_all
+        end
+        order.destroy
+      end
+    end
     session[:current_order_id] = nil
     #render plain: "This is the currently active menu - #{menu.name}"
     redirect_to menus_path

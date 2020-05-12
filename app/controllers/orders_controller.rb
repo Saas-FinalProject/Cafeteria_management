@@ -2,10 +2,8 @@ class OrdersController < ApplicationController
   def index
     if User.find(session[:current_user_id]).role == "customer"
       orders = Order.where(user_id: session[:current_user_id])
-      orders = orders.select { |orders| orders[:status] != "notprocessed" }
     else
       orders = Order.all
-      orders = orders.select { |orders| orders[:status] != "notprocessed" }
     end
 
     render "index", locals: { orders: orders }

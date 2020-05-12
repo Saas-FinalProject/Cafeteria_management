@@ -10,4 +10,12 @@ class Order < ApplicationRecord
       valid = false
     end
   end
+
+  def self.pendingOrders
+    all.where(status: "notdelivered").order(date: :asc)
+  end
+
+  def self.deliveredOrders
+    all.where(status: "delivered").order(date: :asc)
+  end
 end
