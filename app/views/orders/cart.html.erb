@@ -1,0 +1,17 @@
+<% order.order_items.all.each do |order_item|%>
+  <% if order_item.quantity > 0 %>
+    <p>
+      <%= order_item.menu_item_name%>
+      <%= order_item.quantity%>
+      <%= order_item.menu_item_price%>
+    </p>
+  <% end %>
+<% end %>
+<%=order.date%>
+<p>Total Price = <%= order.price%> </p>
+<%= form_with(url: "/menus#index") do%>
+  <%= button_tag("AddMoreItems",type: "submit")%>
+<% end %>
+<%= form_with(url: "/orders/confirm", method: "post") do%>
+  <%= button_tag("Confirm",type: "submit")%>
+<% end %>

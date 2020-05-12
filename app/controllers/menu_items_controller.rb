@@ -23,6 +23,11 @@ class MenuItemsController < ApplicationController
     id = params[:id]
     menu_item = MenuItem.find(id)
     menu_item.destroy
+    orders = Order.where(status: "notprocessed")
+    orders.each do |orders|
+      order_item = orders.order_items.find_by(menu_item_id: menu_item.id)
+      order_item.destroy
+    end
     redirect_to "/menus/#{session[:current_selected_menu_id]}"
   end
 end

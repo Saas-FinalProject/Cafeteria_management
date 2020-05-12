@@ -1,0 +1,27 @@
+<% orders.each do |order|%>
+  <p>
+    <% if User.find(session[:current_user_id]).role != "customer"%>
+      <% if order.status == "notdelivered" %>
+        <%= form_with(url: "/orderdeliver/#{order.id}", method: "POST") do %>
+          <%= submit_tag("Deliver")%>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= order.id%>
+    <% total_price = 0 %>
+    <% order.order_items.all.each do |order_item|%>
+      <p>
+        <%= order_item.menu_item_name%>
+        <%= order_item.quantity%>
+        <%= order_item.menu_item_price%>
+        <% total_price = total_price + order_item.menu_item_price*order_item.quantity%>
+      </p>
+    <% end %>
+    <%=order.date%>
+    <p>Total Price = <%= total_price%> </p>
+    <p>Order status : <%= order.status%>  </p>
+    <% if order.delivered_at %>
+      <p> Order Deliverd At <%= order.delivered_at %></p>
+    <% end %>
+  </p>
+<% end %>

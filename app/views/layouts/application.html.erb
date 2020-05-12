@@ -46,9 +46,13 @@
       </div>
 
       <p> <%= link_to "Menus", menus_path %> </p>
-
-      <% if User.find(session[:current_user_id]).role == "owner" %>
+      <p> <%= link_to "Cart", carts_path %> </p>
+      <p> <%= link_to "Orders", orders_path%> </p>
+      <% if User.find(session[:current_user_id]).role == "owner"%>
         <p> <%= link_to "Users", users_path %> </p>
+      <% end %>
+      <% if User.find(session[:current_user_id]).role == "owner" %>
+        <p> <%= link_to "ChangeMenu", change_menus_path%> </p>
       <% end %>
 
 

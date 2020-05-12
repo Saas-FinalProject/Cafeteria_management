@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get "/menus/changemenu" => "menus#changeMenu", as: :change_menus
   resources :menus
   resources :menu_items
-  resources :orders
   resources :order_items
   resources :users
 
@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   delete "/signout" => "sessions#destroy"
 
   post "/menus/UpdateActiveMenu" => "menus#updateActiveMenu"
-
+  post "/orderdeliver/:id" => "orders#deliverOrder"
+  post "/orders" => "orders#create", as: :new_orders
+  get "/orders" => "orders#index", as: :orders
+  post "/orders/confirm" => "orders#confirm"
+  get "/orders/cart" => "orders#cart", as: :carts
+  post "/order_items/change/:id" => "order_items#change"
   post "/users/:id/removeAsClerk" => "users#removeAsClerk"
   post "/users/:id/makeAsClerk" => "users#makeAsClerk"
 end

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: email)
     if user && user.authenticate(params[:password])
       session[:current_user_id] = user.id
-      redirect_to menus_path
+      redirect_to "/menus#index"
       #render plain: "#{user.role} successful sign in"
     else
       flash[:error] = "Login attempt invalid.Please retry!"
@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[:current_order_id] = nil
     resetUser
     redirect_to "/"
   end
