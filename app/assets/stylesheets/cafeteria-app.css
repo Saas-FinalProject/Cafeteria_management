@@ -2,10 +2,6 @@
   /* Do nothing. When something selected, there's no change in its style */
 }
 
-/* body{
-  position: relative;
-} */
-
 .container{
 	width:90%;
 	margin:auto;
@@ -43,13 +39,26 @@ padding: 20px 0 2px;
 }
 
 .brand-icon{
-  width: 8%;
+  font-size: 52px;
+  margin-right: 16px;
+  color: #63b7af;
+  position: relative;
+  bottom: 6px;
 }
 
 .navbar-title{
   font-size: 72px;
   font-family: 'Sacramento', cursive;
   font-weight: 900;
+  display: inline;
+}
+
+.navbar-title:hover{
+  color: #63b7af;
+}
+
+.navbar-title:hover .brand-icon{
+  color: #fff;
 }
 
 .quote{
@@ -59,7 +68,6 @@ padding: 20px 0 2px;
 
 .tag{
   color: #ffe0ac;
-  text-decoration: none;
 }
 
 .tags:hover{
@@ -79,7 +87,7 @@ padding: 20px 0 2px;
 
 .footer-grid{
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 0.8fr 1fr;
 }
 
 .footer-left{
@@ -91,24 +99,60 @@ padding: 20px 0 2px;
 }
 
 .social-icon{
-  width: 5%;
-  background-color: white;
   display: inline-block;
+  margin-right: 22px;
 }
 
 .social-icon:hover{
-  background-color: blue;
+  color: #63b7af;
+}
+
+.footer-right{
+  padding-bottom: 20px;
+}
+
+.footer-right-grid{
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .info{
-  padding: 20px 0;
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
+}
+
+.info-tag:hover{
+  color: #63b7af;
+}
+
+.address{
+  justify-self: center;
+  line-height: 1.5em;
 }
 
 .footer-title{
   margin-top: 5px;
-  font-size: 38px;
+  font-size: 42px;
   font-family: 'Sacramento', cursive;
   font-weight: 900;
+}
+
+.mailus{
+  border: 2px solid #885a52;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #63b7af;
+  display: inline-block;
+  padding: 12px 28px;
+  position: relative;
+  left: 35%;
+  top: 16px;
+}
+
+.mailus:hover{
+  background-color: #4c6b68;
+  color: white;
+  font-weight: 600;
 }

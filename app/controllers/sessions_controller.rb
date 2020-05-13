@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def new
-    render "new"
+    @signUpFlag = false
+    render "home/index"
   end
 
   def create

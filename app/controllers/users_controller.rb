@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   end
 
   def new
-    render "new"
+    @signUpFlag = true
+    render "home/index"
   end
 
   def create
