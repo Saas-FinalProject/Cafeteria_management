@@ -1,12 +1,13 @@
-.signin-block{
+.signin-signup-block{
   /* width: 45%;
   margin: auto; */
   /* border: 1px solid blue; */
+  /* margin-top: 97.42px; */
   padding: 120px 0;
   background-image: url("bg-image.jpg");
   /* height: 1280px; */
   /* background-size: 300px 100px; */
-  background-position: center;
+  background-position: top;
 }
 
 .form-content{
@@ -32,7 +33,7 @@
   justify-self: end;
 }
 
-.sign-out{
+.sign-up{
   justify-self: start;
 }
 
@@ -77,6 +78,7 @@
   height: 40px;
   padding: 2px 8px;
   font-size: 16px;
+  font-weight: 500;
   border-radius: 6px;
   border-style: none;
   opacity: 0.55;
@@ -133,20 +135,12 @@
   margin-bottom: 16px;
 }
 
-.UserHeader{
-  padding: 10px;
-  background-color: lightgrey;
-  font-size: 14px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
 .Flash-error{
   color: darkred;
   margin-bottom: 20px;
   font-size: 16px;
 }
+
 .ButtonIncrementer{
   width: 10px;
   margin: auto;
@@ -155,4 +149,10 @@
 .ButtonIncrementer-content{
   display: inline-block;
   padding: 5px;
+}
+
+.Flash-notice{
+  color: green;
+  margin-bottom: 20px;
+  font-size: 16px;
 }

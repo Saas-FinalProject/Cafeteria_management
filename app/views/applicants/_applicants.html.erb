@@ -1,0 +1,15 @@
+<ul>
+    <% Applicant.category(option).each do |applicant| %>
+      <li class="User">
+        <div class="User-Container">
+          <p class="User-name" > <%= applicant.name %> </p>
+          <p class="User-phone" > <%= applicant.email %> </p>
+          <p class="User-phone" > <%= applicant.phone %> </p>
+          <p class="User-phone" > <%= applicant.address %> </p>
+          <%= form_with(url: "/applicants/#{applicant.id}", method: "delete") do %>
+            <%= image_submit_tag("TrashIcon.png", class: "applicant-delete") %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+</ul>

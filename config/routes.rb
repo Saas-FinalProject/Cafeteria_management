@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :menu_items
   resources :order_items
   resources :users
+  resources :applicants
 
   get "/" => "home#index"
 

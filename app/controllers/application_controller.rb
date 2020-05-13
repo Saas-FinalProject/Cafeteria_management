@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+  before_action :setUser
+
+  def setUser
+    @current_user = current_user
+  end
+
   def current_user
     @current_user if @current_user
     if session[:current_user_id]

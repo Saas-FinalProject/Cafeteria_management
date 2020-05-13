@@ -1,17 +1,6 @@
-<div class="signin-block">
+<div class="signin-signup-block">
   <div class="form-content">
-    <!-- Tabs Titles -->
-    <div class="tab-titles">
-    <h2 class="sign-in active"> Sign In </h2>
-    <h2 class="sign-out underlineHover"> Sign Up </h2>
-    </div>
-
-    <!-- Login Form -->
-    <form class="form-inputs">
-      <input type="text" class="form-input" name="login" placeholder="login">
-      <input type="text" class="form-input" name="login" placeholder="password">
-      <input type="submit" class="form-input log-in" value="Log In">
-    </form>
+    <%= render partial: "home/signin-signup", locals: { signUpFlag: @signUpFlag } %>
   </div>
 </div>
 
@@ -28,9 +17,3 @@
     </div>
   </div>
 </section>
-
-
-
-<h1 class="Home-title">Welcome to Todo home page</h1>
-<h3 class="Home-authenticate">If you are a new user, <%= link_to "Sign Up here", new_user_path %> </h3>
-<h3 class="Home-authenticate">If you are an existing user, <%= link_to "Sign In here", new_session_path %> </h3>
