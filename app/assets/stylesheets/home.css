@@ -141,6 +141,16 @@
   font-size: 16px;
 }
 
+.ButtonIncrementer{
+  width: 10px;
+  margin: auto;
+  display: inline-flex;
+}
+.ButtonIncrementer-content{
+  display: inline-block;
+  padding: 5px;
+}
+
 .Flash-notice{
   color: green;
   margin-bottom: 20px;

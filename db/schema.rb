@@ -10,6 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+ActiveRecord::Schema.define(version: 2020_05_11_064528) do
 ActiveRecord::Schema.define(version: 2020_05_10_073347) do
 
   # These are extensions that must be enabled in order to support this database
@@ -28,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_073347) do
     t.string "description"
     t.decimal "price"
     t.bigint "menu_id"
+    t.integer "quantity"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -47,6 +50,8 @@ ActiveRecord::Schema.define(version: 2020_05_10_073347) do
     t.date "date"
     t.datetime "delivered_at"
     t.bigint "user_id"
+    t.string "status"
+    t.integer "price"
   end
 
   create_table "users", force: :cascade do |t|

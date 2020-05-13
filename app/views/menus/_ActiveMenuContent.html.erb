@@ -1,3 +1,25 @@
 <% menu = Menu.getActiveMenu %>
 <h1> Contents of <%= menu.name %> are </h1>
-<%= render partial: "display_menu_items", locals: { menu: menu } %>
+<% menu.menu_items.order(:id).all.each do |menu_item| %>
+  <li class="Menu-item">
+    <div class="Menu-item-Container">
+      <p class="Menu-item-name" > <%= menu_item.name %> </p>
+      <p class="Menu-item-description" > <%= menu_item.description %> </p>
+      <p class="Menu-item-price" > <%= menu_item.price %> </p>
+      <div class="ButtonIncrementer">
+        <%= form_with(url: "/order_items/change/#{menu_item.id}") do %>
+          <% quantity = Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id)?
+            Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id).quantity :
+            0
+          %>
+          <%= number_field_tag("quantity",
+            quantity,
+            {min: 0, onchange: "this.form.submit()",class: "QuantityField"})
+          %>
+        <% end %>
+      </div>
+  </li>
+<% end %>
+<%= form_with(url: "/orders/cart", method: "get", local: true) do %>
+  <%= submit_tag("AddToCart", class: "AddToCart-button")%>
+<% end %>
