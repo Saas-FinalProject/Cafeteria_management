@@ -11,6 +11,8 @@
 #main-header{
   background-color: #435248;
   color: #fff;
+  position: sticky;
+  top: 0;
 }
 
 .navbar{
