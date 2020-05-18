@@ -74,12 +74,35 @@ padding: 20px 0 2px;
 }
 
 .tags:hover{
-  align-items: center;
+  /* align-items: center; */
 }
 
 .tag:hover{
   color: #f8f3eb;
-  font-size: 16.1px;
+  /* font-size: 16.1px; */
+}
+
+.drop-down-tags{
+  background-color: #435248;
+  width: 150px;
+  display: none;
+}
+
+.drop-down-tags-menu:hover .drop-down-tags{
+  display: grid;
+  position: absolute;
+  top: 88px;
+  right: 34px;
+  margin: 0;
+  grid-gap: 10px;
+}
+
+.drop-down-tag{
+  padding: 10px;
+}
+
+.drop-down-tag:hover{
+  background-color:  #99524b;
 }
 
 #footer{
