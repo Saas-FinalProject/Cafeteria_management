@@ -1,0 +1,46 @@
+<hr>
+<p class= "invoice-title"> INVOICE </p>
+  <p> Order ID <%= order.id%> </p>
+  <div class = "invoice-order__date">
+    <p> Ordered date <%= order.date%>  </p>
+    <p> Delivered date <%= order.delivered_at %>  </p>
+  </div>
+  <div class = "invoice-user__heading">
+    <p>Bill To </p>
+    <p>Ship To </p>
+  </div>
+  <div class = "invoice-user__data">
+    <p class = "invoice-user__name">
+      <%= User.find(order.user_id).name%>
+    </p>
+    <p class = "invoice-user__address">
+      <%= User.find(order.user_id).address%>
+    </p>
+  </div>
+  <table class = "invoice-table">
+    <p>
+      <tr class = "invoice-table__tr">
+        <th> Menu Item Id </th>
+        <th> Menu Item    </th>
+        <th> Description    </th>
+        <th> Quantity     </th>
+        <th> Price        </th>
+        <th> Price x quantity </th>
+      </tr>
+    </p>
+    <p>
+      <% order.order_items.each do |order_item|%>
+        <tr class = "invoice-table__tr">
+          <td>  <%= order_item.menu_item_id %> </td>
+          <td> <%= order_item.menu_item_name %> </td>
+          <td> <%= MenuItem.find(order_item.menu_item_id).description %> </td>
+          <td> <%= order_item.quantity %> </td>
+          <td> <%= order_item.menu_item_price %> </td>
+          <td> <%= order_item.menu_item_price*order_item.quantity %> </td>
+        </tr>
+      <% end %>
+    </p>
+  <table>
+  <p class = "invoice-order__total"> Total Amount = <%= order.price%> </p>
+  <p class = "invoice-order__print"> Print </p>
+<hr>

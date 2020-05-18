@@ -14,7 +14,7 @@
           %>
           <%= number_field_tag("quantity",
             quantity,
-            {min: 0, onchange: "this.form.submit()",class: "QuantityField"})
+            {min: 0, max: 20, onchange: "this.form.submit()",class: "QuantityField"})
           %>
         <% end %>
       </div>

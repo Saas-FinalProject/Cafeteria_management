@@ -1,0 +1,36 @@
+<p class = "reports-title">REPORTS</p>
+<div class = "reports-search">
+  <%= form_with(url: "/reports",method: "get", local: "true") do %>
+    Start Date: <%= date_field_tag("start_date")%>
+    End Date: <%= date_field_tag("end_date")%>
+    Customer Id: <%= number_field_tag("customer_id", nil, {min: 1, max: 1000,class: "reports-customer_id"})%></p>
+    <%= submit_tag("Search")%>
+  <% end %>
+</div>
+<% if orders %>
+  <div class = "reports-info">
+    <p> Start Date: <%=start_date%> </p>
+    <p> End Date: <%=end_date%> </p>
+    <p> Customer Id: <%=customer_id%> </p>
+  </div>
+  <table class = "reports-table">
+    <tr class = "reports-table__tr">
+      <th> User ID:</th>
+      <th> Customer Name </th>
+      <th> Total </th>
+      <th> Click For Invoice </th>
+    </tr>
+    <% orders.each do |order|%>
+      <tr class = "reports-table__tr" >
+        <td> <%= order.user_id%> </td>
+        <td><%= User.find(order.user_id).name%> </td>
+        <td><%= order.price%> </td>
+        <td>
+          <%= form_with(url: "/reports/#{order.id}", method: "get", local: "true") do %>
+            <%= submit_tag("Invoice")%>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

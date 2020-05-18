@@ -15,11 +15,14 @@ Rails.application.routes.draw do
 
   post "/menus/UpdateActiveMenu" => "menus#updateActiveMenu"
   post "/orderdeliver/:id" => "orders#deliverOrder"
+  get "/reports" => "reports#index", as: :reports
+  get "/reports/:id" => "reports#invoice", as: :invoice
   post "/orders" => "orders#create", as: :new_orders
   get "/orders" => "orders#index", as: :orders
   post "/orders/confirm" => "orders#confirm"
   get "/orders/cart" => "orders#cart", as: :carts
   post "/order_items/change/:id" => "order_items#change"
+  post "/order_items/update/:id" => "order_items#update"
   post "/users/:id/removeAsClerk" => "users#removeAsClerk"
   post "/users/:id/makeAsClerk" => "users#makeAsClerk"
 end

@@ -1,22 +1,24 @@
-<p class="CompletedOrders">LIST OF COMPLETED ORDERS</p>
-<% orders.deliveredOrders.each do |order|%>
-  <p>
-    <%= order.id%>
-    <% total_price = 0 %>
-    <% order.order_items.all.each do |order_item|%>
-      <p>
-        <%= order_item.menu_item_name%>
-        <%= order_item.menu_item_price%>
-          x<%= order_item.quantity%>
-         = <%= order_item.quantity*order_item.menu_item_price%>
-        <% total_price = total_price + order_item.menu_item_price*order_item.quantity%>
-      </p>
-    <% end %>
-    <%=order.date%>
-    <p>Total Price = <%= total_price%> </p>
-    <p>Order status : <%= order.status%>  </p>
-    <% if order.delivered_at %>
-      <p> Order Deliverd At <%= order.delivered_at %></p>
-    <% end %>
-  </p>
-<% end %>
+<p class = "pendingorders-title">LIST OF COMPLETED ORDERS
+  <% orders.deliveredOrders.each do |order|%>
+    <ul class = "pendingorders-order">
+      <li class = "pendingorders-order__id">OrderID: <%= order.id%></li>
+      <li class = "pendingorders-order__price"><% total_price = 0 %></li>
+      <% order.order_items.all.each do |order_item|%>
+        <ul class = "pendingorders-order__items">
+          <li class = "pendingorders-order__items-content">
+            <%= order_item.menu_item_name%>  </li>
+          <li class = "pendingorders-order__items-content"><%= order_item.menu_item_price%></li>
+          <li class = "pendingorders-order__items-content">x<%= order_item.quantity%>
+            = <%= order_item.quantity*order_item.menu_item_price%>
+            <% total_price = total_price + order_item.menu_item_price*order_item.quantity%>
+          </li>
+        </ul>
+      <% end %>
+      <ul class = "pendingorders-order__date">
+        <li>Ordered Date: <%=order.date%> </li>
+        <li>Order status : <%= order.status%>  </li>
+      </ul>
+      <li class = "pendingorders-order__total">Total Price = <%= total_price%> </li>
+    </ul>
+  <% end %>
+</p>
