@@ -33,3 +33,19 @@
   border: 0;
   border-radius: 8px;
 }
+.User-title{
+  margin-top: 10px;
+  width: 100%;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.User-table{
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+}

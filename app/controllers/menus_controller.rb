@@ -7,12 +7,12 @@ class MenusController < ApplicationController
         session[:current_order_id] = previous_order.id
       else
         user_id = session[:current_user_id]
-        Order.create!(user_id: user_id, date: Date.today, delivered_at: nil, status: "notprocessed", price: 0)
+        Order.create!(user_id: user_id, date: DateTime.now, delivered_at: nil, status: "notprocessed", price: 0)
         session[:current_order_id] = Order.last.id
       end
     else
       user_id = session[:current_user_id]
-      Order.create!(user_id: user_id, date: Date.today, delivered_at: nil, status: "notprocessed", price: 0)
+      Order.create!(user_id: user_id, date: DateTime.now, delivered_at: nil, status: "notprocessed", price: 0)
       session[:current_order_id] = Order.last.id
     end
     render "index"

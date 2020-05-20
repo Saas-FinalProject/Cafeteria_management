@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     id = params[:id]
     order = Order.find(id)
     order.status = "delivered"
-    order.delivered_at = Date.today.to_s
+    order.delivered_at = DateTime.now
     order.save
     redirect_to "/orders#index"
   end
@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
       redirect_to "/orders#index"
     else
       order.status = "delivered"
-      order.delivered_at = Date.today.to_s
+      order.delivered_at = DateTime.now
       order.save
       session[:current_order_id] = nil
       redirect_to menus_path

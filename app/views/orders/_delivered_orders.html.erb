@@ -15,8 +15,8 @@
         </ul>
       <% end %>
       <ul class = "pendingorders-order__date">
-        <li>Ordered Date: <%=order.date%> </li>
-        <li>Order status : <%= order.status%>  </li>
+        <li>Ordered Date: <%=order.date.strftime("%d/%m/%Y")%></li>
+        <li>Delivered Date: <%= order.delivered_at.strftime("%d/%m/%Y at %I:%M %p")%></li>
       </ul>
       <li class = "pendingorders-order__total">Total Price = <%= total_price%> </li>
     </ul>

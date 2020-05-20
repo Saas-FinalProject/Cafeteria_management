@@ -24,6 +24,9 @@
 .invoice-user__address{
 
 }
+.invoice-user__phone{
+  margin-top: 10px;
+}
 .invoice-table{
   margin-top: 100px;
   width: 100%;

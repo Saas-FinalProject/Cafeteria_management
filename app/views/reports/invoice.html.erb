@@ -1,13 +1,13 @@
 <hr>
 <p class= "invoice-title"> INVOICE </p>
-  <p> Order ID <%= order.id%> </p>
+  <p> Order ID: <%= order.id%> </p>
   <div class = "invoice-order__date">
-    <p> Ordered date <%= order.date%>  </p>
-    <p> Delivered date <%= order.delivered_at %>  </p>
+    <p> Ordered date: <%= order.date.strftime("%d/%m/%Y") %>  </p>
+    <p> Delivered date: <%= order.delivered_at.strftime("%d/%m/%Y at %I:%M %p") %>  </p>
   </div>
   <div class = "invoice-user__heading">
-    <p>Bill To </p>
-    <p>Ship To </p>
+    <p>Bill To: </p>
+    <p>Ship To: </p>
   </div>
   <div class = "invoice-user__data">
     <p class = "invoice-user__name">
@@ -17,6 +17,7 @@
       <%= User.find(order.user_id).address%>
     </p>
   </div>
+  <p class = "invoice-user__phone">Phone: <%= User.find(order.user_id).phone%></p>
   <table class = "invoice-table">
     <p>
       <tr class = "invoice-table__tr">
