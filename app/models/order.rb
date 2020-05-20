@@ -12,10 +12,10 @@ class Order < ApplicationRecord
   end
 
   def self.pendingOrders
-    all.where(status: "notdelivered").order(date: :asc)
+    all.where(status: "notdelivered").order(id: :asc)
   end
 
   def self.deliveredOrders
-    all.where(status: "delivered").order(date: :asc)
+    all.where(status: "delivered").order(id: :asc)
   end
 end

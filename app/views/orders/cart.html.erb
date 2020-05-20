@@ -3,8 +3,17 @@
     <p>
       <%= order_item.menu_item_name%>
       <%= order_item.quantity%>
-      <%= order_item.menu_item_price%>
     </p>
+    <div class="ButtonIncrementer">
+      <%= form_with(url: "/order_items/update/#{order_item.id}") do %>
+        <%= number_field_tag("quantity",
+          order_item.quantity,
+          {min: 0, onchange: "this.form.submit()",class: "QuantityField"})
+        %>
+      <% end %>
+    </div>
+     <p> <%= order_item.menu_item_price%> </p>
+
   <% end %>
 <% end %>
 <%=order.date%>
@@ -13,5 +22,5 @@
   <%= button_tag("AddMoreItems",type: "submit")%>
 <% end %>
 <%= form_with(url: "/orders/confirm", method: "post") do%>
-  <%= button_tag("Confirm",type: "submit")%>
+    <%= button_tag("Confirm",type: "submit")%>
 <% end %>
