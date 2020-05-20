@@ -1,0 +1,32 @@
+.reports-title{
+  margin-top: 10px;
+  width: 100%;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+.reports-search{
+  margin-top: 10px;
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+}
+.reports-customer_id{
+  width: 60px;
+}
+.reports-info{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.reports-table{
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+.reports-table__tr{
+  border: 1px solid black;
+}

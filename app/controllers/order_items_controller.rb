@@ -20,4 +20,15 @@ class OrderItemsController < ApplicationController
     end
     redirect_to menus_path
   end
+
+  def update
+    order_item = OrderItem.find(params[:id])
+    if params[:quantity].to_i > 0
+      order_item.quantity = params[:quantity]
+      order_item.save
+    else
+      order_item.destroy
+    end
+    redirect_to carts_path
+  end
 end

@@ -1,21 +1,31 @@
-    <ul>
-      <% User.category(role).each do |user| %>
-        <li class="User">
-          <div class="User-Container">
-            <p class="User-name" > <%= user.name %> </p>
-            <p class="User-phone" > <%= user.phone %> </p>
-            <p class="User-oredercnt" > <%= user.orders.count %> </p>
-            <p class="User-role" > <%= user.role %> </p>
-            <% if user.role == "clerk" %>
-              <%= form_with(url: "/users/#{user.id}/removeAsClerk", method: "post") do %>
-                <%= image_submit_tag("TrashIcon.png", class: "TrashIcon") %>
-              <% end %>
-            <% else %>
-              <%= form_with(url: "/users/#{user.id}/makeAsClerk", method: "post") do %>
-                <%= image_submit_tag("TrashIcon.png", class: "TrashIcon") %>
-              <% end %>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+<p class = "User-title"><%= role%>s </p>
+<table class="User-table">
+  <tr>
+    <th >Name</th>
+    <th >Phone</th>
+    <th >Address</th>
+    <th >Total Orders</th>
+    <th >Change Role</th>
+  </tr>
+  <% User.category(role).each do |user| %>
+    <tr>
+      <td> <%= user.name %> </td>
+      <td> <%= user.phone %> </td>
+      <td> <%= user.address %> </td>
+      <td> <%= user.orders.count %> </td>
+    <% if user.role == "clerk" %>
+      <td>
+        <%= form_with(url: "/users/#{user.id}/removeAsClerk", method: "post") do %>
+          <%= submit_tag("Remove As Clerk") %>
+        <% end %>
+      </td>
+    <% else %>
+      <td>
+        <%= form_with(url: "/users/#{user.id}/makeAsClerk", method: "post") do %>
+          <%= submit_tag("Make As Clerk") %>
+        <% end %>
+      </td>
+    <% end %>
+    </tr>
+  <% end %>
+</table>

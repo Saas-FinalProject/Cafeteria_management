@@ -66,5 +66,4 @@ ActiveRecord::Schema.define(version: 2020_05_19_143155) do
     t.text "address"
     t.bigint "phone"
   end
-
 end

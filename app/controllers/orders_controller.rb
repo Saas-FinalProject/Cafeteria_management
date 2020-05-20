@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     id = params[:id]
     order = Order.find(id)
     order.status = "delivered"
-    order.delivered_at = Date.today.to_s
+    order.delivered_at = DateTime.now
     order.save
     redirect_to "/orders#index"
   end
@@ -46,14 +46,27 @@ class OrdersController < ApplicationController
 
   def confirm
     order = Order.find(session[:current_order_id])
-    order.status = "notdelivered"
-    order.save
     order.order_items.each do |order_item|
       if order_item.quantity <= 0
         OrderItem.destroy(order_item.id)
       end
     end
-    session[:current_order_id] = nil
-    redirect_to "/orders#index"
+    if @current_user.role == "customer"
+      order.status = "notdelivered"
+      order.save
+      session[:current_order_id] = nil
+      redirect_to "/orders#index"
+    else
+      order.status = "delivered"
+      order.delivered_at = DateTime.now
+      order.save
+      session[:current_order_id] = nil
+      redirect_to menus_path
+    end
+  end
+
+  def getInvoice
+    order = Order.find(params[:id])
+    render "invoice", locals: { order: order }
   end
 end
