@@ -1,16 +1,22 @@
+<%= link_to "Back to All Menus", change_menus_path %>
+
 <section class = "UsersNew">
   <p> Add New Item </p>
   <%= form_with(url: menu_items_path, method: "post") do %>
     <div class = "Form-section">
-     <p class = "FormInput-label">Item Name: </p>
+      <p class = "FormInput-label">Item Name: </p>
       <%= text_field_tag(:name, nil, class: "Form-input", placeholder: "Enter the new item name", autofocus: "autofocus") %>
     </div>
     <div class = "Form-section">
-     <p class = "FormInput-label">Item Description: </p>
-      <%= text_field_tag(:description, nil, class: "Form-input", placeholder: "Enter the new menu name") %>
+      <p class = "FormInput-label">Item Description: </p>
+      <%= text_field_tag(:description, nil, class: "Form-input", placeholder: "Enter the new menu item description") %>
     </div>
     <div class = "Form-section">
-     <p class = "FormInput-label">Price: </p>
+      <p class = "FormInput-label">Category: </p>
+      <%= select_tag nil, options_for_select(categories), class: "", name: "category_id" %>
+    </div>
+    <div class = "Form-section">
+      <p class = "FormInput-label">Price: </p>
       <%= number_field(nil, nil, class: "Form-input", placeholder: "Enter Price", name: "price") %>
     </div>
     <div class = "Form-section">

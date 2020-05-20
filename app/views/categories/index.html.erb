@@ -1,0 +1,18 @@
+<section class = "UsersNew">
+  <p> Add New Category </p>
+  <%= form_with(url: categories_path, method: "post") do %>
+    <%= text_field_tag(:name, nil, class: "Form-input", placeholder: "new category name", autofocus: "autofocus") %>
+    <%= submit_tag("Add Item!", class: "Form-submit") %>
+  <% end %>
+</section>
+
+<% categories.order(:id).all.each do |category| %>
+  <li class="Menu-item">
+    <div class="Menu-item-Container">
+      <p class="Menu-item-name" > <%= category.name %> </p>
+    </div>
+    <%= form_with(url: "/categories/#{category.id}", method: "delete") do %>
+      <%= image_submit_tag("TrashIcon.png", class: "Menu-item-delete") %>
+    <% end %>
+  </li>
+<% end %>

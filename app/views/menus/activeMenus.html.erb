@@ -14,12 +14,11 @@
   <% Menu.order(:id).all.each do |menu| %>
       <li class = "Menu">
         <div class = "Menu-Container">
-          <% checked = menu.isActive? %>
-          <%= form_with(url: "/menus/UpdateActiveMenu", method: "post") do %>
-            <%= radio_button(nil, nil, menu.id,name: "ActiveMenu", checked: checked,onclick: "this.form.submit()") %>
+          <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
+            <% checked = menu.active %>
+            <%= check_box_tag(:active, nil, checked, class: "TodoItem-checkbox", onclick: "this.form.submit()") %>
           <% end %>
-          <% class_name = (checked)? "MenuDetail-Active" : "MenuDetail" %>
-          <p class = <%= class_name %> > <%= link_to "#{menu.name}", "/menus/#{menu.id}" %> </p>
+          <%= link_to "#{menu.name}", "/menus/#{menu.id}" %>
           <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
             <%= image_submit_tag("TrashIcon.png", class: "Menu-delete") %>
           <% end %>

@@ -94,6 +94,10 @@
   font-weight: 600;
 }
 
+#welcome-block{
+  background-color: white;
+}
+
 .welcome-block-row{
   color: #382020;
   font-weight: 600;

@@ -1,8 +1,32 @@
-<% case User.find(session[:current_user_id]).role %>
-  <% when "owner" %>
-    <%= render partial: "ActiveMenuContent" %>
-  <% when "clerk" %>
-    <%= render partial: "ActiveMenuContent" %>
-  <% when "customer" %>
-    <%= render partial: "ActiveMenuContent" %>
+<ul>
+  <% displayableCategoryItems.each do |category| %>
+    <li>
+      <h1> <%=category.name%> </h1>
+      <ul>
+        <% menu_items = category.menu_items %>
+        <% menu_items.each do |menu_item| %>
+          <li>
+            <p> <%=menu_item.name%> </p>
+            <p> <%=menu_item.description%> </p>
+            <p> <%=menu_item.price%> </p>
+            <div class="ButtonIncrementer">
+              <%= form_with(url: "/order_items/change/#{menu_item.id}") do %>
+                <% quantity = Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id)?
+                  Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id).quantity :
+                  0
+                %>
+                <%= number_field_tag("quantity",
+                  quantity,
+                  {min: 0, onchange: "this.form.submit()",class: "QuantityField"})
+                %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
+<%= form_with(url: "/orders/cart", method: "get", local: true) do %>
+  <%= submit_tag("AddToCart", class: "AddToCart-button")%>
 <% end %>

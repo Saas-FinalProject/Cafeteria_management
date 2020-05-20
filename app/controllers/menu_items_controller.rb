@@ -8,8 +8,8 @@ class MenuItemsController < ApplicationController
     description = params[:description]
     price = params[:price]
     menu_id = session[:current_selected_menu_id]
-
-    new_menu_item = MenuItem.new(name: name, description: description, price: price, menu_id: menu_id)
+    category_id = params[:category_id]
+    new_menu_item = MenuItem.new(name: name, description: description, price: price, menu_id: menu_id, category_id: category_id, active: false)
 
     if new_menu_item.valid?
       new_menu_item.save
@@ -17,6 +17,15 @@ class MenuItemsController < ApplicationController
       flash[:error] = new_menu_item.errors.full_messages.join(", ")
     end
     redirect_to "/menus/#{menu_id}"
+  end
+
+  def update
+    id = params[:id]
+    active = params[:active]
+    menu_item = MenuItem.find(id)
+    menu_item.active = active
+    menu_item.save
+    redirect_to "/menus/#{menu_item.menu_id}"
   end
 
   def destroy

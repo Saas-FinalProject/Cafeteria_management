@@ -29,11 +29,26 @@
             <p class="quote">Experience the flavour</p>
 			      <div class="tags">
 			      	<%= link_to "Home", "/",class: "tag" %>
-			      	<%= link_to "About", "#welcome-block",class: "tag" %>
-			      	<%= link_to "Contact", "#footer",class: "tag" %>
               <% if @current_user %>
-                <%= link_to "SignOut", "/signout",method: "delete", class: "tag" %>
+                <%= link_to "Cart", carts_path, class: "tag" %>
+                <%= link_to "Orders", orders_path, class: "tag" %>
+                <div class="drop-down-tags-menu">
+                  <i class="fa fa-chevron-down drop-down-arrow tag" aria-hidden="true"></i>
+                    <div class="drop-down-tags">
+                      <%= link_to "Profile", "#", class: "drop-down-tag" %>
+                      <% if @current_user.role == "owner" %>
+                        <%= link_to "Users", users_path, class: "drop-down-tag" %>
+                        <%= link_to "ChangeMenu", change_menus_path, class: "drop-down-tag" %>
+                        <%= link_to "Categories", categories_path, class: "drop-down-tag" %>
+                        <%= link_to "Reports", "#", class: "drop-down-tag" %>
+                      <% end %>
+                      <%= link_to "SignOut", "/signout",method: "delete", class: "drop-down-tag" %>
+                    </div>
+
+                </div>
               <% else %>
+                <%= link_to "About", "#welcome-block",class: "tag" %>
+			      	  <%= link_to "Contact", "#footer-end",class: "tag" %>
                 <% if @signUpFlag %>
                 <%= link_to "SignIn", new_session_path,class: "tag" %>
                 <% else %>
@@ -44,35 +59,6 @@
           </div>
 		  </div>
 	  </header>
-
-    <%# --------------------------------Start of sidepane--------------------------- %>
-
-    <% if @current_user %>
-      <div class = "UserHeader">
-        <p> Welcome <%= @current_user.name %>! </p>
-        <p> You are <%= @current_user.role %> </p>
-        <p> <%= link_to "Sign-out", "/signout",method: "delete" %> </p>
-      </div>
-
-      <p> <%= link_to "Menus", menus_path %> </p>
-
-      <p> <%= link_to "Cart", carts_path %> </p>
-      <p> <%= link_to "Orders", orders_path%> </p>
-      <% if User.find(session[:current_user_id]).role == "owner"%>
-
-
-      <% if @current_user.role == "owner" %>
-        <p> <%= link_to "Users", users_path %> </p>
-      <% end %>
-      <% if User.find(session[:current_user_id]).role == "owner" %>
-        <p> <%= link_to "ChangeMenu", change_menus_path%> </p>
-      <% end %>
-
-
-    <% end %>
-
-
-    <%# --------------------------------End of side pane-------------------------------- %>
 
     <% if flash[:error] %>
       <p class = "Flash-error">
@@ -123,6 +109,7 @@
       </div>
     </div>
   </section>
+  <div id="footer-end"></div>
 
   </body>
 </html>

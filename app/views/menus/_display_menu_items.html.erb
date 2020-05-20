@@ -2,8 +2,13 @@
   <% menu.menu_items.order(:id).all.each do |menu_item| %>
     <li class="Menu-item">
       <div class="Menu-item-Container">
+        <%= form_with(url: "/menu_items/#{menu_item.id}", method: "put") do %>
+          <% checked = menu_item.active %>
+          <%= check_box_tag(:active, nil, checked, class: "TodoItem-checkbox", onclick: "this.form.submit()") %>
+        <% end %>
         <p class="Menu-item-name" > <%= menu_item.name %> </p>
         <p class="Menu-item-description" > <%= menu_item.description %> </p>
+        <%= menu_item.category %>
         <p class="Menu-item-price" > <%= menu_item.price %> </p>
         <% if User.find(session[:current_user_id]).role == "owner" %>
           <%= form_with(url: "/menu_items/#{menu_item.id}", method: "delete") do %>

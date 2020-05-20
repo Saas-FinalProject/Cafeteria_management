@@ -15,7 +15,8 @@ class MenusController < ApplicationController
       Order.create!(user_id: user_id, date: Date.today, delivered_at: nil, status: "notprocessed", price: 0)
       session[:current_order_id] = Order.last.id
     end
-    render "index"
+    displayableCategoryItems = Category.displayableCategoryItems
+    render "index", locals: { displayableCategoryItems: displayableCategoryItems }
   end
 
   def updateActiveMenu
@@ -44,29 +45,41 @@ class MenusController < ApplicationController
     else
       flash[:error] = menu.errors.full_messages.join(", ")
     end
-    redirect_to menus_path
+    redirect_to change_menus_path
   end
 
   def show
     id = params[:id]
     session[:current_selected_menu_id] = id
     menu = Menu.find(id)
-    render "display_menu", locals: { menu: menu }
+    categories = Category.displayable
+    render "display_menu", locals: { menu: menu, categories: categories }
+  end
+
+  def update
+    id = params[:id]
+    active = params[:active]
+    menu = Menu.find(id)
+    menu.active = active
+    menu.save
+    redirect_to change_menus_path
   end
 
   def destroy
     id = params[:id]
     menu = Menu.find(id)
-    unless menu.isActive?
-      menu.destroy
-      session[:current_order_id] = nil
-    else
-      flash[:error] = "Cannot delete Active Menu"
-    end
-    redirect_to menus_path
+    # unless menu.isActive?
+    #   menu.destroy
+    #   session[:current_order_id] = nil
+    # else
+    #   flash[:error] = "Cannot delete Active Menu"
+    # end
+    menu.destroy
+    redirect_to change_menus_path
   end
 
   def changeMenu
-    render "menus/_owner"
+    displayableCategoryItems = Category.displayableCategoryItems
+    render "activeMenus", locals: { displayableCategoryItems: displayableCategoryItems }
   end
 end
