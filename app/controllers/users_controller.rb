@@ -30,6 +30,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    user = current_user
+    render "show", locals: { user: user }
+  end
+
+  def update
+    id = params[:id]
+    user = User.find(id)
+    user.password = params[:new_password]
+    user.save
+    flash[:notice] = "Password updated successfully"
+    redirect_to "users/#{id}"
+  end
+
   def removeAsClerk
     id = params[:id]
     user = User.find(id)

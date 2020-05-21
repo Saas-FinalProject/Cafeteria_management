@@ -12,6 +12,11 @@ class MenuItem < ApplicationRecord
 
   def validate?
     menu = Menu.find(menu_id)
-    return (active && menu.active)
+    puts "name is #{name} active is#{active} menu.active is #{menu.active}"
+    if active && menu.active
+      return true
+    else
+      return false
+    end
   end
 end

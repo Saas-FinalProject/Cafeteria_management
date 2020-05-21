@@ -35,7 +35,7 @@
                 <div class="drop-down-tags-menu">
                   <i class="fa fa-chevron-down drop-down-arrow tag" aria-hidden="true"></i>
                     <div class="drop-down-tags">
-                      <%= link_to "Profile", "#", class: "drop-down-tag" %>
+                      <%= link_to "Profile", "users/#{@current_user.id}", class: "drop-down-tag" %>
                       <% if @current_user.role == "owner" %>
                         <%= link_to "Users", users_path, class: "drop-down-tag" %>
                         <%= link_to "ChangeMenu", change_menus_path, class: "drop-down-tag" %>

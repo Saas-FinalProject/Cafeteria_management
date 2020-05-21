@@ -21,7 +21,11 @@ class MenuItemsController < ApplicationController
 
   def update
     id = params[:id]
-    active = params[:active]
+    if params[:active]
+      active = true
+    else
+      active = false
+    end
     menu_item = MenuItem.find(id)
     menu_item.active = active
     menu_item.save

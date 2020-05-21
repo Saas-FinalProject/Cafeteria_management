@@ -8,21 +8,19 @@ class Category < ApplicationRecord
     return categories
   end
 
-  def validate?
-    if menu_items.count != 0
-      return true
-    else
-      return false
-    end
-  end
-
   def self.displayableCategoryItems
+    #    menu_items = MenuItem.all
+    #    menu_items = menu_items.select { |menu_item| menu_item.validate? }
+    #    return menu_items
+    displayableCategoryItems = {}
     categories = Category.all
-    categories = categories.select do |category|
+    categories.each do |category|
       menu_items = category.menu_items
       menu_items = menu_items.select { |menu_item| menu_item.validate? }
-      menu_items.count > 0
+      if menu_items.count > 0
+        displayableCategoryItems[category.name] = menu_items
+      end
     end
-    return categories
+    return displayableCategoryItems
   end
 end

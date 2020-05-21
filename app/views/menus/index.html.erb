@@ -1,9 +1,8 @@
 <ul>
-  <% displayableCategoryItems.each do |category| %>
+  <% displayableCategoryItems.each do |category_name,menu_items| %>
     <li>
-      <h1> <%=category.name%> </h1>
+      <h1> <%=category_name%> </h1>
       <ul>
-        <% menu_items = category.menu_items %>
         <% menu_items.each do |menu_item| %>
           <li>
             <p> <%=menu_item.name%> </p>
