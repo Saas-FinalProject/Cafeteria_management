@@ -1,0 +1,14 @@
+<p> <%= user.name %> </p>
+<p> <%= user.role %> </p>
+<p> <%= user.email %> </p>
+<p> <%= user.address %> </p>
+<p> <%= user.phone %> </p>
+
+<%= form_with(url: "/users/#{user.id}", method: "put") do %>
+    <div class = "Form-section">
+      <%= password_field(nil, nil, name: "new_password", class: "Form-input", placeholder: "Enter the new password", autofocus: "autofocus")%>
+    </div>
+    <div class = "Form-section">
+      <%= submit_tag("Update!", class: "Form-submit") %>
+    </div>
+<% end %>
