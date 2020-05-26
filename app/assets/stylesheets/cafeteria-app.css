@@ -72,6 +72,7 @@ padding: 20px 0 2px;
 }
 
 .tag{
+  min-width: 100px;
   color: #ffe0ac;
 }
 

@@ -45,12 +45,12 @@
                 </div>
               </div>
             <% else %>
-              <%= link_to "About", "#welcome-block",class: "tag" %>
-			        <%= link_to "Contact", "#footer-end",class: "tag" %>
+              <p class="tag"> <i class="fa fa-info tag-fa" aria-hidden="true"></i> <%= link_to "About", "#welcome-block" %> </p>
+              <p class="tag"> <i class="fa fa-phone tag-fa" aria-hidden="true"></i> <%= link_to "Contact", "#footer-end" %> </p>
               <% if @signUpFlag %>
-                <%= link_to "SignIn", new_session_path,class: "tag" %>
+                <p class="tag"> <i class="fa fa-sign-in tag-fa" aria-hidden="true"></i> <%= link_to "SignIn", new_session_path %> </p>
               <% else %>
-                <%= link_to "SignUp", new_user_path,class: "tag" %>
+                <p class="tag"> <i class="fa fa-user-plus tag-fa" aria-hidden="true"></i> <%= link_to "SignUp", new_user_path %> </p>
               <% end %>
             <% end %>
 			    </div>
