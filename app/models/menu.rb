@@ -6,18 +6,23 @@ class Menu < ApplicationRecord
     active
   end
 
-  def makeActive
-    Menu.all.map { |menu|
-      menu.active = false
-      menu.save
-    }
-    menu = Menu.find(id)
-    menu.active = true
-    menu.save
-    Menu.all.map { |menu| puts "#{menu.name} #{menu.active}" }
+  def itemsByCategory
+    itemsByCategory = {}
+    categories = Category.all
+    categories.map do |category|
+      current_category_menu_items = menu_items.where(category_id: category.id)
+      if current_category_menu_items.count > 0
+        itemsByCategory[category.id] = current_category_menu_items
+      end
+    end
+    return itemsByCategory
   end
 
-  def self.getActiveMenu
-    menu = Menu.find_by(active: true)
+  def menuItemsCheckedCount
+    menu_items.where(active: true).count
+  end
+
+  def self.activeMenusCount
+    Menu.where(active: true).count
   end
 end

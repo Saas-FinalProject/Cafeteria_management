@@ -1,31 +1,29 @@
-<ul>
+<%= form_with(url: "/orders/cart", method: "get", local: true, class: "go-to-cart-form") do %>
+  <p class="go-to-cart"> <i class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i> <%= submit_tag("Go to Cart", class: "go-to-cart-submit")%> </p>
+<% end %>
+<div class="container">
   <% displayableCategoryItems.each do |category_name,menu_items| %>
-    <li>
-      <h1> <%=category_name%> </h1>
-      <ul>
+    <div class="categories">
+      <h1 class="category-name"> <%=category_name%> </h1>
+      <ul class="category-items">
         <% menu_items.each do |menu_item| %>
-          <li>
-            <p> <%=menu_item.name%> </p>
-            <p> <%=menu_item.description%> </p>
-            <p> <%=menu_item.price%> </p>
-            <div class="ButtonIncrementer">
-              <%= form_with(url: "/order_items/change/#{menu_item.id}") do %>
-                <% quantity = Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id)?
-                  Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id).quantity :
-                  0
-                %>
-                <%= number_field_tag("quantity",
-                  quantity,
-                  {min: 0, onchange: "this.form.submit()",class: "QuantityField"})
-                %>
-              <% end %>
-            </div>
+          <li class="category-item">
+            <p class="menu-item-name"> <%=menu_item.name%> </p>
+            <p class="menu-item-description"> <%=menu_item.description%> </p>
+            <p class="menu-item-price"> <i class="fa fa-inr" aria-hidden="true"></i> <%=menu_item.price%> </p>
+            <%= form_with(url: "/order_items/change/#{menu_item.id}") do %>
+              <% quantity = Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id)?
+                Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id).quantity :
+                0
+              %>
+              <%= number_field_tag("quantity",
+                quantity,
+                {min: 0, onchange: "this.form.submit()",class: "quantity-field"})
+              %>
+            <% end %>
           </li>
         <% end %>
       </ul>
-    </li>
+    </div>
   <% end %>
-</ul>
-<%= form_with(url: "/orders/cart", method: "get", local: true) do %>
-  <%= submit_tag("AddToCart", class: "AddToCart-button")%>
-<% end %>
+</div>

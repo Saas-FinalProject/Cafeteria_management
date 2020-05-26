@@ -12,19 +12,18 @@
 </div>
 
 <% if signUpFlag %>
-  <!-- Login Form -->
-  <%= form_with(url: users_path, method: "post", class: "form-inputs") do %>
-    <%= text_field_tag(:name, nil, class: "form-input", placeholder: "name") %>
-    <%= email_field(nil, nil, name: "email", class: "form-input", placeholder: "E-mail") %>
-    <%= password_field(nil, nil, name: "password", class: "form-input", placeholder: "password")%>
-    <%= telephone_field(nil, nil, name: "phone", class: "form-input", placeholder: "contact number") %>
-    <%= text_area_tag(:address, nil, size: "35x6", placeholder: "address", class: "form-input") %>
-    <%= submit_tag("Sign Up!", class: "form-input log-in") %>
+  <%= form_with(url: users_path, method: "post", class: "home-form-inputs") do %>
+    <%= text_field_tag(:name, nil, class: "home-form-input", placeholder: "name") %>
+    <%= email_field(nil, nil, name: "email", class: "home-form-input", placeholder: "E-mail") %>
+    <%= password_field(nil, nil, name: "password", class: "home-form-input", placeholder: "password")%>
+    <%= telephone_field(nil, nil, name: "phone", class: "home-form-input", placeholder: "contact number") %>
+    <%= text_area_tag(:address, nil, size: "35x6", placeholder: "address", class: "home-form-input") %>
+    <%= submit_tag("Sign Up!", class: "home-form-input log-in") %>
   <% end %>
 <% else %>
-  <%= form_with(url: sessions_path, method: "post", class: "form-inputs") do %>
-    <%= text_field_tag(:email, nil, class: "form-input", placeholder: "email") %>
-    <%= password_field(nil, nil, name: "password", class: "form-input", placeholder: "password")%>
-    <%= submit_tag("Sign In!", class: "form-input log-in") %>
+  <%= form_with(url: sessions_path, method: "post", class: "home-form-inputs") do %>
+    <%= text_field_tag(:email, nil, class: "home-form-input", placeholder: "email") %>
+    <%= password_field(nil, nil, name: "password", class: "home-form-input", placeholder: "password")%>
+    <%= submit_tag("Sign In!", class: "home-form-input log-in") %>
   <% end %>
 <% end %>

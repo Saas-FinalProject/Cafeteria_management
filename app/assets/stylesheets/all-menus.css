@@ -1,0 +1,85 @@
+.active-count{
+  display: flex;
+  justify-content: space-between;
+}
+
+.active-menus-count{
+  font-size: 17px;
+  font-weight: 500;
+  color: #361e1e;
+  margin-left: 46px;
+}
+
+.active-items-count{
+  font-size: 17px;
+  font-weight: 500;
+  color: #361e1e;
+  margin-right: 46px;
+}
+
+.menus{
+  margin: 40px auto 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 20px;
+  justify-items: center;
+}
+
+.menu{
+  width: 190px;
+  padding: 30px 0 10px;
+  text-align: center;
+  display: grid;
+  grid-row-gap: 12px;
+  background-color: #f6b037;//#f1e577;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.menu:hover{
+  background-color: #f69e06;//#f5e556;
+}
+
+.activeMenus-trash-icon{
+  visibility: hidden;
+}
+
+.menu:hover .activeMenus-trash-icon{
+  visibility: visible;
+}
+
+.menu-checkbox{
+  height: 18px;
+  width: 18px;
+}
+
+.menu-name{
+  font-size: 20px;
+  color: brown;
+}
+
+.menu:hover .menu-name{
+  font-size: 20.5px;
+  font-weight: 500;
+  text-shadow: 2px 0 whitesmoke;
+}
+
+.menu-underlineHover{
+  position: relative;
+}
+
+.menu-underlineHover:before{
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #442727;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transition: .4s;
+}
+
+.menu:hover .menu-underlineHover:before{
+  width: 35%;
+  transform: translateX(95%);
+}

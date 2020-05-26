@@ -35,7 +35,7 @@
                 <div class="drop-down-tags-menu">
                   <i class="fa fa-chevron-down drop-down-arrow tag" aria-hidden="true"></i>
                     <div class="drop-down-tags">
-                      <%= link_to "Profile", "users/#{@current_user.id}", class: "drop-down-tag" %>
+                      <%= link_to "Profile", "/users/#{@current_user.id}", class: "drop-down-tag" %>
                       <% if @current_user.role == "owner" %>
                         <%= link_to "Users", users_path, class: "drop-down-tag" %>
                         <%= link_to "ChangeMenu", change_menus_path, class: "drop-down-tag" %>
@@ -44,7 +44,6 @@
                       <% end %>
                       <%= link_to "SignOut", "/signout",method: "delete", class: "drop-down-tag" %>
                     </div>
-
                 </div>
               <% else %>
                 <%= link_to "About", "#welcome-block",class: "tag" %>
@@ -92,8 +91,13 @@
       <div class="footer-right">
         <div class="footer-right-grid">
           <div class="info">
-            <%= link_to "Careers & Franchise", new_applicant_path,class: "info-tag" %>
-            <%= link_to "FAQ", "/",class: "info-tag" %>
+            <% if @current_user && @current_user.role == "owner" %>
+              <%= link_to "Careers & Franchise", applicants_path,class: "info-tag" %>
+              <%= link_to "FAQ", "/",class: "info-tag" %>
+            <% else %>
+              <%= link_to "Careers & Franchise", new_applicant_path,class: "info-tag" %>
+              <%= link_to "FAQ", "/",class: "info-tag" %>
+            <% end %>
             <%= link_to "Terms & Conditions", "/",class: "info-tag" %>
           </div>
           <div class="address">

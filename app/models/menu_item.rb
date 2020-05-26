@@ -19,4 +19,8 @@ class MenuItem < ApplicationRecord
       return false
     end
   end
+
+  def self.activeMenusCount
+    where(active: true).count
+  end
 end

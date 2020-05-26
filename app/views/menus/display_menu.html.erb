@@ -1,29 +1,17 @@
-<%= link_to "Back to All Menus", change_menus_path %>
-
-<section class = "UsersNew">
-  <p> Add New Item </p>
-  <%= form_with(url: menu_items_path, method: "post") do %>
-    <div class = "Form-section">
-      <p class = "FormInput-label">Item Name: </p>
-      <%= text_field_tag(:name, nil, class: "Form-input", placeholder: "Enter the new item name", autofocus: "autofocus") %>
-    </div>
-    <div class = "Form-section">
-      <p class = "FormInput-label">Item Description: </p>
-      <%= text_field_tag(:description, nil, class: "Form-input", placeholder: "Enter the new menu item description") %>
-    </div>
-    <div class = "Form-section">
-      <p class = "FormInput-label">Category: </p>
-      <%= select_tag nil, options_for_select(categories), class: "", name: "category_id" %>
-    </div>
-    <div class = "Form-section">
-      <p class = "FormInput-label">Price: </p>
-      <%= number_field(nil, nil, class: "Form-input", placeholder: "Enter Price", name: "price") %>
-    </div>
-    <div class = "Form-section">
-      <%= submit_tag("Add Item!", class: "Form-submit") %>
-    </div>
+<%= link_to change_menus_path do %>
+  <p class="back-button"> <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to All Menus </h1>
+<% end %>
+<section class="add-menu-item">
+  <%= form_with(url: menu_items_path, method: "post", class: "add-menu-item-left") do %>
+    <%= text_field_tag(:name, nil, class: "block margin-bottom-40 form-input", placeholder: "Enter the new item name", autofocus: "autofocus") %>
+    <%= text_area_tag(:description, nil, size: "25x4", class: "block margin-bottom-40 add-menu-item-text-area", placeholder: "Item description") %>
+    <%= select_tag nil, options_for_select(categories), class: "block margin-bottom-40 category-dropdown", name: "category_id" %>
+    <%= number_field(nil, nil, class: "block margin-bottom-40 form-input", placeholder: "Enter Price", name: "price") %>
+    <%= submit_tag("Add Item!", class: "block margin-bottom-40 form-submit") %>
   <% end %>
+  <section class="add-menu-item-right">
+    <h1 class = "menu-content-menu-name"> <%= menu.name %> </h1>
+    <p class = "menu-content-item-count"> <%= menu.menuItemsCheckedCount %> / <%= menu.menu_items.count %> </p>
+    <%= render partial: "display_menu_items", locals: { menu: menu } %>
+  </section>
 </section>
-
-<h1> <%= menu.name %> Items are <%= menu.menu_items.count %> </h1>
-<%= render partial: "display_menu_items", locals: { menu: menu } %>

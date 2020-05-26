@@ -8,3 +8,24 @@ a{
   text-decoration: none;
   color: inherit;
 }
+
+hr{
+  border-color: #EAF6F6;
+  border-color: grey;
+  border-top-style: dotted;
+  border-width: 5px 0 0 0;
+  width: 10%;
+  margin: 60px auto;
+}
+
+.block{
+  display: block;
+}
+
+.margin-left-20{
+  margin-left: 20px;
+}
+
+.margin-bottom-40{
+  margin-bottom: 20px;
+}

@@ -9,9 +9,6 @@ class Category < ApplicationRecord
   end
 
   def self.displayableCategoryItems
-    #    menu_items = MenuItem.all
-    #    menu_items = menu_items.select { |menu_item| menu_item.validate? }
-    #    return menu_items
     displayableCategoryItems = {}
     categories = Category.all
     categories.each do |category|
@@ -22,5 +19,13 @@ class Category < ApplicationRecord
       end
     end
     return displayableCategoryItems
+  end
+
+  def menuItemsCheckedCount(menu_id)
+    menu_items.where(menu_id: menu_id).where(active: true).count
+  end
+
+  def allMenuItemsCount(menu_id)
+    menu_items.where(menu_id: menu_id).count
   end
 end

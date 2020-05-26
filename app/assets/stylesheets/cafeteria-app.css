@@ -1,5 +1,7 @@
 ::selection{
   /* Do nothing. When something selected, there's no change in its style */
+  color: #361919;
+  background-color: rgb(180, 160, 160);
 }
 
 .container{

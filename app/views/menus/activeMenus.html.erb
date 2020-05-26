@@ -1,28 +1,25 @@
-<section class = "UsersNew">
-  <%= form_with(url: menus_path, method: "post") do %>
-    <div class = "Form-section">
-     <p class = "FormInput-label">Name: </p>
-      <%= text_field_tag(:name, nil, class: "Form-input", placeholder: "Enter the new menu name", autofocus: "autofocus") %>
-    </div>
-    <div class = "Form-section">
-      <%= submit_tag("Create!", class: "Form-submit") %>
-    </div>
+<section class="container">
+  <%= form_with(url: menus_path, method: "post", class: "new") do %>
+    <%= text_field_tag(:name, nil, class: "margin-left-20 form-input", placeholder: "Enter the new menu name", autofocus: "autofocus") %>
+    <%= submit_tag("Create!", class: "margin-left-20 form-submit") %>
   <% end %>
-</section>
-
-<ul>
-  <% Menu.order(:id).all.each do |menu| %>
-      <li class = "Menu">
-        <div class = "Menu-Container">
-          <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
-            <% checked = menu.active %>
-            <%= check_box_tag(:active, nil, checked, class: "TodoItem-checkbox", onclick: "this.form.submit()") %>
-          <% end %>
-          <%= link_to "#{menu.name}", "/menus/#{menu.id}" %>
-          <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
-            <%= image_submit_tag("TrashIcon.png", class: "Menu-delete") %>
-          <% end %>
-        </div>
+  <div class="active-count">
+    <h1 class="active-menus-count"> <%= Menu.activeMenusCount %> / <%= Menu.all.count %> Active menus </h1>
+    <h1 class="active-items-count"> <%= MenuItem.activeMenusCount %> / <%= MenuItem.all.count %> Active menu items </h1>
+  </div>
+  <ul class="menus">
+    <% Menu.order(:id).all.each do |menu| %>
+      <li class = "menu">
+        <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
+          <% checked = menu.active %>
+          <%= check_box_tag(:active, nil, checked, class: "menu-checkbox", onclick: "this.form.submit()") %>
+        <% end %>
+        <%= link_to "#{menu.name}", "/menus/#{menu.id}", class: "menu-name menu-underlineHover" %>
+        <p class="menu-items-count"> <%= menu.menuItemsCheckedCount %>/<%= menu.menu_items.count %> items </p>
+        <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
+          <%= image_submit_tag("TrashIcon.png", class: "activeMenus-trash-icon") %>
+        <% end %>
       </li>
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
+</section>

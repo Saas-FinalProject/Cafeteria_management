@@ -1,21 +1,24 @@
-<ul>
-  <% menu.menu_items.order(:id).all.each do |menu_item| %>
-    <li class="Menu-item">
-      <div class="Menu-item-Container">
-        <%= form_with(url: "/menu_items/#{menu_item.id}", method: "put") do %>
-          <% checked = menu_item.active %>
-          <%= check_box_tag(:active, nil, checked, class: "TodoItem-checkbox", onclick: "this.form.submit()") %>
-        <% end %>
-        <p class="Menu-item-name" > <%= menu_item.name %> </p>
-        <p class="Menu-item-description" > <%= menu_item.description %> </p>
-        <%= menu_item.category %>
-        <p class="Menu-item-price" > <%= menu_item.price %> </p>
-        <% if User.find(session[:current_user_id]).role == "owner" %>
-          <%= form_with(url: "/menu_items/#{menu_item.id}", method: "delete") do %>
-            <%= image_submit_tag("TrashIcon.png", class: "Menu-item-delete") %>
+<% menu.itemsByCategory.each do |category_id,menu_items| %>
+  <% category = Category.find(category_id) %>
+  <div class="menu-categories">
+    <h1 class="menu-category-name"> <%=category.name%> </h1>
+    <p class = "menu-category-item-count"> <%= category.menuItemsCheckedCount(menu.id) %> / <%= category.allMenuItemsCount(menu.id) %> </p>
+    <ul class="menu-category-menu-items">
+      <% menu_items.each do |menu_item| %>
+        <li class="menu-category-menu-item">
+          <%= form_with(url: "/menu_items/#{menu_item.id}", method: "put") do %>
+            <% checked = menu_item.active %>
+            <%= check_box_tag(:active, nil, checked, class: "menu-category-menu-item-checkbox", onclick: "this.form.submit()") %>
           <% end %>
-        <% end %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+          <p class="menu-category-menu-item-name" > <%=menu_item.name%> </p>
+          <p class="menu-category-menu-item-description" > <%=menu_item.description%> </p>
+          <p class="menu-category-menu-item-price" > <i class="fa fa-inr" aria-hidden="true"></i> <%=menu_item.price%> </p>
+          <%= form_with(url: "/menu_items/#{menu_item.id}", method: "delete") do %>
+            <%= image_submit_tag("TrashIcon.png", class: "menu-category-menu-item-delete") %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <hr>
+  </div>
+<% end %>

@@ -33,7 +33,6 @@ class MenusController < ApplicationController
       end
     end
     session[:current_order_id] = nil
-    #render plain: "This is the currently active menu - #{menu.name}"
     redirect_to menus_path
   end
 
@@ -72,18 +71,12 @@ class MenusController < ApplicationController
   def destroy
     id = params[:id]
     menu = Menu.find(id)
-    # unless menu.isActive?
-    #   menu.destroy
-    #   session[:current_order_id] = nil
-    # else
-    #   flash[:error] = "Cannot delete Active Menu"
-    # end
     menu.destroy
     redirect_to change_menus_path
   end
 
   def changeMenu
-    displayableCategoryItems = Category.displayableCategoryItems
-    render "activeMenus", locals: { displayableCategoryItems: displayableCategoryItems }
+    #displayableCategoryItems = Category.displayableCategoryItems
+    render "activeMenus" #, locals: { displayableCategoryItems: displayableCategoryItems }
   end
 end
