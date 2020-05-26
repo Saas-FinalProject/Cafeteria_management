@@ -27,21 +27,21 @@
         <div class="right-part">
           <p class="quote">Experience the flavour</p>
 			    <div class="tags">
-			      <%= link_to "Home", "/",class: "tag" %>
+			      <p class="tag"> <i class="fa fa-home tag-fa" aria-hidden="true"></i> <%= link_to "Home", "/" %> </p>
             <% if @current_user %>
-              <%= link_to "Cart", carts_path, class: "tag" %>
-              <%= link_to "Orders", orders_path, class: "tag" %>
+              <p class="tag"> <i class="fa fa-shopping-cart tag-fa" aria-hidden="true"></i> <%= link_to "Cart", carts_path %> </p>
+              <p class="tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> <%= link_to "Orders", orders_path %> </p>
               <div class="drop-down-tags-menu">
                 <i class="fa fa-chevron-down drop-down-arrow tag" aria-hidden="true"></i>
                 <div class="drop-down-tags">
-                  <%= link_to "Profile", "/users/#{@current_user.id}", class: "drop-down-tag" %>
+                  <p class="drop-down-tag"> <i class="fa fa-id-card tag-fa" aria-hidden="true"></i> <%= link_to "Profile", "/users/#{@current_user.id}" %> </p>
                   <% if @current_user.role == "owner" %>
-                    <%= link_to "Users", users_path, class: "drop-down-tag" %>
-                    <%= link_to "Change Menu", change_menus_path, class: "drop-down-tag" %>
-                    <%= link_to "Categories", categories_path, class: "drop-down-tag" %>
-                    <%= link_to "Reports", "#", class: "drop-down-tag" %>
+                    <p class="drop-down-tag"> <i class="fa fa-users tag-fa" aria-hidden="true"></i> <%= link_to "Users", users_path %> </p>
+                    <p class="drop-down-tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> <%= link_to "Change Menu", change_menus_path %> </p>
+                    <p class="drop-down-tag"> <i class="fa fa-list tag-fa" aria-hidden="true"></i> <%= link_to "Categories", categories_path %> </p>
+                    <p class="drop-down-tag"> <i class="fa fa-clone tag-fa" aria-hidden="true"></i> <%= link_to "Reports", "#" %> </p>
                   <% end %>
-                  <%= link_to "SignOut", "/signout",method: "delete", class: "drop-down-tag" %>
+                  <p class="drop-down-tag"> <i class="fa fa-sign-out tag-fa" aria-hidden="true"></i> <%= link_to "SignOut", "/signout",method: "delete" %> </p>
                 </div>
               </div>
             <% else %>

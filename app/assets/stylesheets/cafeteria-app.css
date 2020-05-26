@@ -107,6 +107,10 @@ padding: 20px 0 2px;
   background-color:  #99524b;
 }
 
+.tag-fa{
+  margin-right: 4px;
+}
+
 .flash{
   padding: 15px 0;
   font-size: 16px;
