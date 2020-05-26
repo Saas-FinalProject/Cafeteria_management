@@ -17,45 +17,44 @@
   </head>
 
   <body>
-
     <header id="main-header">
 		  <div class="container navbar">
-          <div class="left-part">
-            <%= link_to "/" do %>
-              <h1 class="navbar-title"> <i class="fa fa-cutlery brand-icon" aria-hidden="true"></i>Dine</h1>
-            <% end %>
-          </div>
-          <div class="right-part">
-            <p class="quote">Experience the flavour</p>
-			      <div class="tags">
-			      	<%= link_to "Home", "/",class: "tag" %>
-              <% if @current_user %>
-                <%= link_to "Cart", carts_path, class: "tag" %>
-                <%= link_to "Orders", orders_path, class: "tag" %>
-                <div class="drop-down-tags-menu">
-                  <i class="fa fa-chevron-down drop-down-arrow tag" aria-hidden="true"></i>
-                    <div class="drop-down-tags">
-                      <%= link_to "Profile", "/users/#{@current_user.id}", class: "drop-down-tag" %>
-                      <% if @current_user.role == "owner" %>
-                        <%= link_to "Users", users_path, class: "drop-down-tag" %>
-                        <%= link_to "ChangeMenu", change_menus_path, class: "drop-down-tag" %>
-                        <%= link_to "Categories", categories_path, class: "drop-down-tag" %>
-                        <%= link_to "Reports", "#", class: "drop-down-tag" %>
-                      <% end %>
-                      <%= link_to "SignOut", "/signout",method: "delete", class: "drop-down-tag" %>
-                    </div>
+        <div class="left-part">
+          <%= link_to "/" do %>
+            <h1 class="navbar-title"> <i class="fa fa-cutlery brand-icon" aria-hidden="true"></i>Dine</h1>
+          <% end %>
+        </div>
+        <div class="right-part">
+          <p class="quote">Experience the flavour</p>
+			    <div class="tags">
+			      <%= link_to "Home", "/",class: "tag" %>
+            <% if @current_user %>
+              <%= link_to "Cart", carts_path, class: "tag" %>
+              <%= link_to "Orders", orders_path, class: "tag" %>
+              <div class="drop-down-tags-menu">
+                <i class="fa fa-chevron-down drop-down-arrow tag" aria-hidden="true"></i>
+                <div class="drop-down-tags">
+                  <%= link_to "Profile", "/users/#{@current_user.id}", class: "drop-down-tag" %>
+                  <% if @current_user.role == "owner" %>
+                    <%= link_to "Users", users_path, class: "drop-down-tag" %>
+                    <%= link_to "ChangeMenu", change_menus_path, class: "drop-down-tag" %>
+                    <%= link_to "Categories", categories_path, class: "drop-down-tag" %>
+                    <%= link_to "Reports", "#", class: "drop-down-tag" %>
+                  <% end %>
+                  <%= link_to "SignOut", "/signout",method: "delete", class: "drop-down-tag" %>
                 </div>
-              <% else %>
-                <%= link_to "About", "#welcome-block",class: "tag" %>
-			      	  <%= link_to "Contact", "#footer-end",class: "tag" %>
-                <% if @signUpFlag %>
+              </div>
+            <% else %>
+              <%= link_to "About", "#welcome-block",class: "tag" %>
+			        <%= link_to "Contact", "#footer-end",class: "tag" %>
+              <% if @signUpFlag %>
                 <%= link_to "SignIn", new_session_path,class: "tag" %>
-                <% else %>
+              <% else %>
                 <%= link_to "SignUp", new_user_path,class: "tag" %>
-                <% end %>
               <% end %>
-			      </div>
-          </div>
+            <% end %>
+			    </div>
+        </div>
 		  </div>
 	  </header>
 
@@ -72,48 +71,46 @@
 
     <%= yield %>
 
-  <section id="footer">
-    <div class="container footer-grid">
-      <div class="footer-left">
-        <h1 class="footer-title">Dine</h1>
-        <div class="social">
-          <%= link_to "https://www.google.com" do %>
-            <i class="fa fa-twitter fa-2x social-icon" aria-hidden="true"></i>
-          <% end %>
-          <%= link_to "https://www.youtube.com" do %>
-            <i class="fa fa-instagram fa-2x social-icon" aria-hidden="true"></i>
-          <% end %>
-          <%= link_to "https://www.bing.com" do %>
-            <i class="fa fa-facebook fa-2x social-icon" aria-hidden="true"></i>
-          <% end %>
-        </div>
-      </div>
-      <div class="footer-right">
-        <div class="footer-right-grid">
-          <div class="info">
-            <% if @current_user && @current_user.role == "owner" %>
-              <%= link_to "Careers & Franchise", applicants_path,class: "info-tag" %>
-              <%= link_to "FAQ", "/",class: "info-tag" %>
-            <% else %>
-              <%= link_to "Careers & Franchise", new_applicant_path,class: "info-tag" %>
-              <%= link_to "FAQ", "/",class: "info-tag" %>
+    <section id="footer">
+      <div class="container footer-grid">
+        <div class="footer-left">
+          <h1 class="footer-title">Dine</h1>
+          <div class="social">
+            <%= link_to "https://www.google.com" do %>
+              <i class="fa fa-twitter fa-2x social-icon" aria-hidden="true"></i>
             <% end %>
-            <%= link_to "Terms & Conditions", "/",class: "info-tag" %>
-          </div>
-          <div class="address">
-            <p> Door No. 1-3-130/2 </p>
-            <p> Adam Avenue </p>
-            <p> Banjara Hills </p>
-            <p> Hyderabad </p>
+            <%= link_to "https://www.youtube.com" do %>
+              <i class="fa fa-instagram fa-2x social-icon" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to "https://www.bing.com" do %>
+              <i class="fa fa-facebook fa-2x social-icon" aria-hidden="true"></i>
+            <% end %>
           </div>
         </div>
-        <div class="mailus">
-          <%= mail_to "help@dine.com", "Mail Us!", cc: "clerk1@dine.com" %>
-        <div>
+        <div class="footer-right">
+          <div class="footer-right-grid">
+            <div class="info">
+              <% if @current_user && @current_user.role == "owner" %>
+                <%= link_to "Careers & Franchise", applicants_path,class: "info-tag" %>
+                <%= link_to "FAQ", "/",class: "info-tag" %>
+              <% else %>
+                <%= link_to "Careers & Franchise", new_applicant_path,class: "info-tag" %>
+                <%= link_to "FAQ", "/",class: "info-tag" %>
+              <% end %>
+              <%= link_to "Terms & Conditions", "/",class: "info-tag" %>
+            </div>
+            <div class="address">
+              <p> Door No. 1-3-130/2 </p>
+              <p> Adam Avenue </p>
+              <p> Banjara Hills </p>
+              <p> Hyderabad </p>
+            </div>
+          </div>
+          <div class="mailus">
+            <%= mail_to "help@dine.com", "Mail Us!", cc: "clerk1@dine.com" %>
+          <div>
+        </div>
       </div>
-    </div>
-  </section>
-  <div id="footer-end"></div>
-
+    </section>
   </body>
 </html>
