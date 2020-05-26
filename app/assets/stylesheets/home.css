@@ -139,12 +139,6 @@
   margin-bottom: 16px;
 } */
 
-.Flash-error{
-  color: darkred;
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-
 /* .ButtonIncrementer{
   width: 5px;
   margin: auto;
@@ -155,9 +149,3 @@
   display: inline-block;
   padding: 5px;
 } */
-
-.Flash-notice{
-  color: green;
-  margin-bottom: 20px;
-  font-size: 16px;
-}

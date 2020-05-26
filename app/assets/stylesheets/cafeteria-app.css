@@ -107,6 +107,23 @@ padding: 20px 0 2px;
   background-color:  #99524b;
 }
 
+.flash{
+  padding: 15px 0;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color:white;
+}
+
+.flash-error{
+  background-color: red;
+}
+
+.flash-notice{
+  background-color: green;
+}
+
 #footer{
   background-color: black;
   color: white;
