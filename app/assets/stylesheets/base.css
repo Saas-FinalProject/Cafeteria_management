@@ -18,6 +18,10 @@ hr{
   margin: 60px auto;
 }
 
+.main-content {
+  min-height: calc(100vh - 322px);
+}
+
 .block{
   display: block;
 }
