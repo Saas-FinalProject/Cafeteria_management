@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     user.password = params[:new_password]
     user.save
     flash[:notice] = "Password updated successfully"
-    redirect_to "users/#{id}"
+    redirect_to user_path
   end
 
   def removeAsClerk
