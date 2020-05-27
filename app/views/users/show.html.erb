@@ -1,14 +1,13 @@
-<p> <%= user.name %> </p>
-<p> <%= user.role %> </p>
-<p> <%= user.email %> </p>
-<p> <%= user.address %> </p>
-<p> <%= user.phone %> </p>
-
-<%= form_with(url: "/users/#{user.id}", method: "put") do %>
-    <div class = "Form-section">
-      <%= password_field(nil, nil, name: "new_password", class: "Form-input", placeholder: "Enter the new password", autofocus: "autofocus")%>
-    </div>
-    <div class = "Form-section">
-      <%= submit_tag("Update!", class: "Form-submit") %>
-    </div>
-<% end %>
+<div class="profile-content">
+  <div class="profile-flex">
+    <p> <%= user.name %> </p>
+    <p class="profile-role"> <%= user.role %> </p>
+  </div>
+  <p> <%= user.email %> </p>
+  <p class="profile-address"> <%= user.address %> </p>
+  <p> <%= user.phone %> </p>
+  <%= form_with(url: "/users/#{user.id}", method: "put", class: "profile-form") do %>
+    <%= password_field(nil, nil, name: "new_password", class: "form-input", placeholder: "Enter the new password", autofocus: "autofocus")%>
+    <%= submit_tag("Update!", class: "margin-left-20 form-submit") %>
+  <% end %>
+</div>
