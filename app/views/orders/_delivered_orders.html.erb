@@ -1,24 +1,24 @@
-<p class = "pendingorders-title">LIST OF COMPLETED ORDERS
-  <% orders.deliveredOrders.each do |order|%>
-    <ul class = "pendingorders-order">
-      <li class = "pendingorders-order__id">OrderID: <%= order.id%></li>
-      <li class = "pendingorders-order__price"><% total_price = 0 %></li>
-      <% order.order_items.all.each do |order_item|%>
-        <ul class = "pendingorders-order__items">
-          <li class = "pendingorders-order__items-content">
-            <%= order_item.menu_item_name%>  </li>
-          <li class = "pendingorders-order__items-content"><%= order_item.menu_item_price%></li>
-          <li class = "pendingorders-order__items-content">x<%= order_item.quantity%>
-            = <%= order_item.quantity*order_item.menu_item_price%>
-            <% total_price = total_price + order_item.menu_item_price*order_item.quantity%>
-          </li>
-        </ul>
-      <% end %>
-      <ul class = "pendingorders-order__date">
-        <li>Ordered Date: <%=order.date.strftime("%d/%m/%Y")%></li>
-        <li>Delivered Date: <%= order.delivered_at.strftime("%d/%m/%Y at %I:%M %p")%></li>
-      </ul>
-      <li class = "pendingorders-order__total">Total Price = <%= total_price%> </li>
-    </ul>
+<h1 class="pending-orders-title"> COMPLETED ORDERS </h1>
+<div class="pending-orders">
+  <% delivered_orders.each do |order| %>
+    <div class="pending-order">
+      <p class="pending-order-id"> <span> OrderID: </span> <%= order.id %> </p>
+      <div class="pending-order-items">
+        <% order.order_items.each do |order_item| %>
+          <div class="pending-order-item">
+            <p class="pending-order-item-name"> <%= order_item.menu_item_name %> </p>
+            <p class="pending-order-item-price"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.menu_item_price %> </p>
+            <p class="pending-order-item-quantity"> <span> x </span> <%= order_item.quantity %> </p>
+            <p class="equal-sign"> = </p>
+            <p class="pending-order-item-total"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.total %> </p>
+          </div>
+        <% end %>
+      </div>
+      <div class="pending-order-date">
+        <p class="pending-order-ordered-date"> <span> Ordered Date: </span> <%= order.date.strftime("%d/%m/%Y") %> </p>
+        <p class="pending-order-delivered-date"> <span> Delivered Date: </span> <%= order.delivered_at.strftime("%d/%m/%Y at %I:%M %p") %> </p>
+      </div>
+      <p class="pending-order-total"> <span> Total Price </span> <i class="fa fa-inr" aria-hidden="true"></i> <%= order.totalPrice %> </p>
+    </div>
   <% end %>
-</p>
+</div>

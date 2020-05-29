@@ -18,4 +18,12 @@ class Order < ApplicationRecord
   def self.deliveredOrders
     all.where(status: "delivered").order(id: :asc)
   end
+
+  def totalPrice
+    total_price = 0
+    order_items.each do |order_item|
+      total_price += order_item.total
+    end
+    total_price
+  end
 end

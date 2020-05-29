@@ -12,4 +12,8 @@ class OrderItem < ApplicationRecord
     end
     present
   end
+
+  def total
+    quantity * menu_item_price
+  end
 end

@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
   def index
-    if User.find(session[:current_user_id]).role == "customer"
-      orders = Order.where(user_id: session[:current_user_id])
+    if @current_user.role == "customer"
+      orders = @current_user.orders
     else
       orders = Order.all
     end
-
-    render "index", locals: { orders: orders }
+    pending_orders = orders.pendingOrders
+    delivered_orders = orders.deliveredOrders
+    render "index", locals: { pending_orders: pending_orders, delivered_orders: delivered_orders }
   end
 
   def new
