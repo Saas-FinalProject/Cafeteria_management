@@ -1,31 +1,27 @@
-<p class = "User-title"><%= role%>s </p>
-<table class="User-table">
-  <tr>
-    <th >Name</th>
-    <th >Phone</th>
-    <th >Address</th>
-    <th >Total Orders</th>
-    <th >Change Role</th>
-  </tr>
+<h1 class = "user-title"><%= role %>s </h1>
+<div class="users">
+  <div class="user-headings">
+    <p class="user-name heading" >Name</p>
+    <p class="user-phone heading" >Phone</p>
+    <p class="user-address heading" >Address</p>
+    <p class="user-orders-count heading" >Total Orders</p>
+    <p class="user-role heading" >Change Role</p>
+  </div>
   <% User.category(role).each do |user| %>
-    <tr>
-      <td> <%= user.name %> </td>
-      <td> <%= user.phone %> </td>
-      <td> <%= user.address %> </td>
-      <td> <%= user.orders.count %> </td>
-    <% if user.role == "clerk" %>
-      <td>
-        <%= form_with(url: "/users/#{user.id}/removeAsClerk", method: "post") do %>
-          <%= submit_tag("Remove As Clerk") %>
+    <div class="user">
+      <p class="user-name"> <%= user.name %> </p>
+      <p class="user-phone"> <%= user.phone %> </p>
+      <p class="user-address"> <%= user.address %> </p>
+      <p class="user-orders-count"> <%= user.orders.count %> </p>
+      <% if role == "clerk" %>
+        <%= form_with(url: "/users/#{user.id}/removeAsClerk", method: "post", class: "user-change-rol") do %>
+          <%= submit_tag("Remove As Clerk", class: "user-change-role") %>
         <% end %>
-      </td>
-    <% else %>
-      <td>
-        <%= form_with(url: "/users/#{user.id}/makeAsClerk", method: "post") do %>
-          <%= submit_tag("Make As Clerk") %>
+      <% else %>
+        <%= form_with(url: "/users/#{user.id}/makeAsClerk", method: "post", class: "user-change-rol") do %>
+          <%= submit_tag("Appoint As Clerk", class: "user-change-role") %>
         <% end %>
-      </td>
-    <% end %>
-    </tr>
+      <% end %>
+    </div>
   <% end %>
-</table>
+</div>
