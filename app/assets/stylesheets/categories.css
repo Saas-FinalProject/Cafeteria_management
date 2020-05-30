@@ -1,0 +1,53 @@
+.add-category-button{
+  width: 130px;
+  height: 30px;
+  padding: 2px 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  border-style: none;
+  transition: background-color 0.4s;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.add-category-button:hover{
+  background-color: black;
+  color: white;
+}
+
+.categories-display{
+  margin: 40px auto 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 20px;
+  justify-items: center;
+}
+
+.category-display{
+  min-width: 190px;
+  padding: 30px 0 10px;
+  text-align: center;
+  display: grid;
+  grid-row-gap: 12px;
+  background-color: #f7f7f7;//#d1eaa3;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.category-display:hover{
+  background-color: #82d8cf;//#bbf696;
+}
+
+.category-delete{
+  visibility: hidden;
+}
+
+.category-display:hover .category-delete{
+  visibility: visible;
+}
+
+.category-name-display{
+  font-size: 20px;
+  color: brown;
+}
