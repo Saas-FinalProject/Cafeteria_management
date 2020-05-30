@@ -1,0 +1,74 @@
+.custom-style{
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.confirm-button{
+  margin: 30px 43%;
+  text-align: center;
+  padding: 10px 5px;
+  /* width: 160px; */
+  border-radius: 6px;
+  border-style: none;
+  background-color: black;
+  color: white;
+}
+
+.confirm-button:hover .custom-style{
+  font-weight: 600;
+}
+
+.add-more-items-button{
+  text-align: center;
+  margin: 30px 42% 50px;
+  padding: 12px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  border-style: none;
+  background-color: black;
+  color: white;
+}
+
+.add-more-items-button:hover {
+  font-weight: 600;
+}
+
+.order-items{
+  margin: 30px 0 50px;
+  background-color: #cceabb;
+  border-radius: 6px;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-row-gap: 8px;
+}
+
+.order-item{
+  display: grid;
+  grid-template-columns:  0.5fr 1fr 1fr 0.5fr;
+  align-items: center;
+
+}
+
+.order-quantity-form{
+  justify-self: center;
+}
+
+.order-quantity-field{
+  text-align: end;
+  font-size: 17px;
+  padding: 3px 3px 3px 10px;
+  width: 40px;
+  height: 20px;
+  border: none;
+}
+
+.order-item-price, .order-item-total{
+  justify-self: end;
+}

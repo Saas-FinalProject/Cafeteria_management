@@ -1,26 +1,21 @@
-<% order.order_items.all.each do |order_item|%>
-  <% if order_item.quantity > 0 %>
-    <p>
-      <%= order_item.menu_item_name%>
-      <%= order_item.quantity%>
-    </p>
-    <div class="ButtonIncrementer">
-      <%= form_with(url: "/order_items/update/#{order_item.id}") do %>
-        <%= number_field_tag("quantity",
-          order_item.quantity,
-          {min: 0, onchange: "this.form.submit()",class: "QuantityField"})
-        %>
-      <% end %>
-    </div>
-     <p> <%= order_item.menu_item_price%> </p>
-
+<%= link_to menus_path do %>
+  <p class="add-more-items-button"> <i class="fa fa-cart-plus" aria-hidden="true"></i> Add More Items </h1>
+<% end %>
+<div class="order-items">
+  <% order.order_items.order(:id).each do |order_item|%>
+    <% if order_item.quantity > 0 %>
+      <div class="order-item">
+        <p class="order-item-menu-item-name"> <%= order_item.menu_item_name %> </p>
+        <p class="order-item-price"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.menu_item_price %> </p>
+        <%= form_with(url: "/order_items/update/#{order_item.id}", class: "order-quantity-form") do %>
+          <%= number_field_tag("quantity", order_item.quantity, {min: 0, onchange: "this.form.submit()", class: "order-quantity-field"}) %>
+        <% end %>
+        <p class="order-item-total"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.total %> </p>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-<%=order.date%>
-<p>Total Price = <%= order.price%> </p>
-<%= form_with(url: "/menus#index") do%>
-  <%= button_tag("AddMoreItems",type: "submit")%>
-<% end %>
-<%= form_with(url: "/orders/confirm", method: "post") do%>
-    <%= button_tag("Confirm",type: "submit")%>
+</div>
+<p class="pending-order-total"> <span> Total Price </span> <i class="fa fa-inr" aria-hidden="true"></i> <%= order.price %> </p>
+<%= form_with(url: "/orders/confirm", method: "post") do %>
+  <p class="confirm-button"> <i class="fa fa-check" aria-hidden="true"></i> <%= button_tag("Confirm Order", type: "submit", class: "custom-style") %> </p>
 <% end %>
