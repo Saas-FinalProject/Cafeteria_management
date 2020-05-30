@@ -31,13 +31,13 @@
   text-align: center;
   display: grid;
   grid-row-gap: 12px;
-  background-color: #f6b037;//#f1e577;
+  background-color: #f7f7f7;//#f6b037;//#f1e577;
   border-radius: 6px;
   transition: background-color 0.3s;
 }
 
 .menu:hover{
-  background-color: #f69e06;//#f5e556;
+  background-color: #82d8cf;//#f69e06;//#f5e556;
 }
 
 .activeMenus-trash-icon{

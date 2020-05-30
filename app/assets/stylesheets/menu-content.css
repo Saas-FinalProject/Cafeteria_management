@@ -57,7 +57,7 @@
 .add-menu-item-left{
   margin: 0 auto;
   padding: 40px 40px 20px;
-  background-color: cadetblue;
+  background-color: #d1eaa3;//cadetblue;
   height: 300px;
   border-radius: 6px;
   position: sticky;
@@ -109,13 +109,13 @@
   text-align: center;
   display: grid;
   grid-row-gap: 15px;
-  background-color: #f6b037;
+  background-color: #f7f7f7;//#f6b037;
   border-radius: 6px;
   transition: background-color 0.3s;
 }
 
 .menu-category-menu-item:hover{
-  background-color: #f69e06;
+  background-color: #82d8cf;
 }
 
 .menu-category-menu-item-delete{
