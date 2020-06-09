@@ -16,9 +16,12 @@
         <% end %>
         <%= link_to "#{menu.name}", "/menus/#{menu.id}", class: "menu-name menu-underlineHover" %>
         <p class="menu-items-count"> <%= menu.menuItemsCheckedCount %>/<%= menu.menu_items.count %> items </p>
-        <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
-          <%= image_submit_tag("TrashIcon.png", class: "activeMenus-trash-icon") %>
-        <% end %>
+        <div class="edit-delete-block">
+          <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
+            <%= image_submit_tag("TrashIcon.png", class: "activeMenus-trash-icon") %>
+          <% end %>
+          <p class="activeMenus-edit-icon"> <%= link_to ('<i class="fa fa-pencil"></i>').html_safe, "/menus/#{menu.id}/edit", class: "activeMenus-edit-ico"  %> </p>
+        </div>
       </li>
     <% end %>
   </ul>

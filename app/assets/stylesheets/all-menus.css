@@ -40,11 +40,24 @@
   background-color: #82d8cf;//#f69e06;//#f5e556;
 }
 
+.edit-delete-block{
+  display: flex;
+  width: 60%;
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.activeMenus-edit-icon{
+  visibility: hidden;
+  font-size: 22px;
+}
+
 .activeMenus-trash-icon{
   visibility: hidden;
 }
 
-.menu:hover .activeMenus-trash-icon{
+.menu:hover .activeMenus-trash-icon, .menu:hover .activeMenus-edit-icon{
   visibility: visible;
 }
 

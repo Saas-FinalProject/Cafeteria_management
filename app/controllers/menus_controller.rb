@@ -55,6 +55,10 @@ class MenusController < ApplicationController
     render "display_menu", locals: { menu: menu, categories: categories }
   end
 
+  def edit
+    render "menu_edit"
+  end
+
   def update
     id = params[:id]
     if params[:active]
