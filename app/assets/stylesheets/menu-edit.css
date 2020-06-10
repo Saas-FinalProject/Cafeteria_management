@@ -1,0 +1,8 @@
+.update-menu-form{
+  width: 40%;
+  margin: 40px auto;
+  padding: 20px 0;
+  display: grid;
+  justify-items: center;
+  grid-row-gap: 30px;
+}
