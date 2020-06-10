@@ -56,7 +56,9 @@ class MenusController < ApplicationController
   end
 
   def edit
-    render "menu_edit"
+    id = params[:id]
+    menu = Menu.find(id)
+    render "menu_edit", locals: { menu: menu }
   end
 
   def update
@@ -70,6 +72,19 @@ class MenusController < ApplicationController
     menu.active = active
     menu.save
     redirect_to change_menus_path
+  end
+
+  def updateMenuName
+    id = params[:id]
+    menu = Menu.find(id)
+    menu.name = params[:name]
+    if menu.valid?
+      menu.save
+      redirect_to change_menus_path
+    else
+      flash[:error] = menu.errors.full_messages.join(", ")
+      redirect_to edit_menu_path
+    end
   end
 
   def destroy
