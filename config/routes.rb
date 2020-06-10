@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "/menus/changemenu" => "menus#changeMenu", as: :change_menus
+  put "/menus/:id/updateMenuName" => "menus#updateMenuName"
   resources :menus
   resources :menu_items
   resources :order_items
