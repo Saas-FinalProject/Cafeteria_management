@@ -7,9 +7,9 @@
     <h1 class="active-menus-count"> <%= Menu.activeMenusCount %> / <%= Menu.all.count %> Active menus </h1>
     <h1 class="active-items-count"> <%= MenuItem.activeMenusCount %> / <%= MenuItem.all.count %> Active menu items </h1>
   </div>
-  <ul class="menus">
+  <div class="menus">
     <% Menu.order(:id).all.each do |menu| %>
-      <li class = "menu">
+      <div class = "menu">
         <%= form_with(url: "/menus/#{menu.id}", method: "put") do %>
           <% checked = menu.active %>
           <%= check_box_tag(:active, nil, checked, class: "menu-checkbox", onclick: "this.form.submit()") %>
@@ -22,7 +22,7 @@
           <% end %>
           <p class="activeMenus-edit-icon"> <%= link_to ('<i class="fa fa-pencil"></i>').html_safe, "/menus/#{menu.id}/edit", class: "activeMenus-edit-ico"  %> </p>
         </div>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </section>
