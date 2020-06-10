@@ -20,7 +20,12 @@ class MenuItem < ApplicationRecord
     end
   end
 
-  def self.activeMenusCount
-    where(active: true).count
+  def self.activeMenuItemsCount
+    list = where(active: true).select do |menu_item|
+      menu_id = menu_item.menu_id
+      menu = Menu.find(menu_id)
+      menu.active
+    end
+    list.count
   end
 end
