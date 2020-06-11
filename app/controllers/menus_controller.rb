@@ -80,6 +80,7 @@ class MenusController < ApplicationController
     menu.name = params[:name]
     if menu.valid?
       menu.save
+      flash[:notice] = "Update Successful"
       redirect_to change_menus_path
     else
       flash[:error] = menu.errors.full_messages.join(", ")
