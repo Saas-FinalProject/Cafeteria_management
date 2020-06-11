@@ -3,11 +3,11 @@
 <% end %>
 <section class="add-menu-item">
   <%= form_with(url: menu_items_path, method: "post", class: "add-menu-item-left") do %>
-    <%= text_field_tag(:name, nil, class: "block margin-bottom-40 form-input", placeholder: "Enter the new item name", autofocus: "autofocus") %>
-    <%= text_area_tag(:description, nil, size: "25x4", class: "block margin-bottom-40 add-menu-item-text-area", placeholder: "Item description") %>
-    <%= select_tag nil, options_for_select(categories), class: "block margin-bottom-40 category-dropdown", name: "category_id" %>
-    <%= number_field(nil, nil, class: "block margin-bottom-40 form-input", placeholder: "Enter Price", name: "price") %>
-    <%= submit_tag("Add Item!", class: "block margin-bottom-40 form-submit") %>
+    <%= text_field_tag(:name, nil, class: "form-input", placeholder: "Enter the new item name", autofocus: "autofocus") %>
+    <%= text_area_tag(:description, nil, size: "25x4", class: "add-menu-item-text-area", placeholder: "Item description") %>
+    <%= select_tag nil, options_for_select(categories), class: "category-dropdown", name: "category_id" %>
+    <%= number_field(nil, nil, class: "form-input", placeholder: "Enter Price", name: "price") %>
+    <%= submit_tag("Add Item!", class: "form-submit") %>
   <% end %>
   <section class="add-menu-item-right">
     <h1 class = "menu-content-menu-name"> <%= menu.name %> </h1>

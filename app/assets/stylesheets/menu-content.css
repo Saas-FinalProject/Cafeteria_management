@@ -58,10 +58,13 @@
   margin: 0 auto;
   padding: 40px 40px 20px;
   background-color: #d1eaa3;
+  width: 283px;
   height: 390px;
   border-radius: 6px;
   position: sticky;
   top: 121px;
+  display: grid;
+  grid-row-gap: 40px;
   /* display: grid;
   justify-items: center;
   align-items: center;
@@ -118,11 +121,16 @@
   background-color: #82d8cf;
 }
 
+.menu-category-menu-item-edit-icon{
+  visibility: hidden;
+  font-size: 21px;
+}
+
 .menu-category-menu-item-delete{
   visibility: hidden;
 }
 
-.menu-category-menu-item:hover .menu-category-menu-item-delete{
+.menu-category-menu-item:hover .menu-category-menu-item-delete, .menu-category-menu-item:hover .menu-category-menu-item-edit-icon{
   visibility: visible;
 }
 
