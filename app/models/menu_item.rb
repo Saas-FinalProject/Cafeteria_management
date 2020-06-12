@@ -10,6 +10,12 @@ class MenuItem < ApplicationRecord
     category.name
   end
 
+  def menu_name
+    id = menu_id
+    menu = Menu.find(id)
+    menu.name
+  end
+
   def validate?
     menu = Menu.find(menu_id)
     puts "name is #{name} active is#{active} menu.active is #{menu.active}"
@@ -24,7 +30,7 @@ class MenuItem < ApplicationRecord
     list = where(active: true).select do |menu_item|
       menu_id = menu_item.menu_id
       menu = Menu.find(menu_id)
-      menu.active
+      menu.isActive?
     end
     list.count
   end

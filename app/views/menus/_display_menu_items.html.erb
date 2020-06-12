@@ -13,9 +13,12 @@
           <p class="menu-category-menu-item-name" > <%=menu_item.name%> </p>
           <p class="menu-category-menu-item-description" > <%=menu_item.description%> </p>
           <p class="menu-category-menu-item-price" > <i class="fa fa-inr" aria-hidden="true"></i> <%=menu_item.price%> </p>
-          <%= form_with(url: "/menu_items/#{menu_item.id}", method: "delete") do %>
-            <%= image_submit_tag("TrashIcon.png", class: "menu-category-menu-item-delete") %>
-          <% end %>
+          <div class="edit-delete-block">
+            <%= form_with(url: "/menu_items/#{menu_item.id}", method: "delete") do %>
+              <%= image_submit_tag("TrashIcon.png", class: "menu-category-menu-item-delete") %>
+            <% end %>
+            <p class="menu-category-menu-item-edit-icon"> <%= link_to ('<i class="fa fa-pencil"></i>').html_safe, "/menu_items/#{menu_item.id}/edit" %> </p>
+          </div>
         </li>
       <% end %>
     </ul>

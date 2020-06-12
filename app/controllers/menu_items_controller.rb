@@ -19,6 +19,14 @@ class MenuItemsController < ApplicationController
     redirect_to "/menus/#{menu_id}"
   end
 
+  def edit
+    id = params[:id]
+    menu_item = MenuItem.find(id)
+    categories = Category.displayable
+    menus = Menu.displayable
+    render "menu_item_edit", locals: { menu_item: menu_item, categories: categories, menus: menus }
+  end
+
   def update
     id = params[:id]
     if params[:active]
@@ -30,6 +38,24 @@ class MenuItemsController < ApplicationController
     menu_item.active = active
     menu_item.save
     redirect_to "/menus/#{menu_item.menu_id}"
+  end
+
+  def updateMenuItem
+    id = params[:id]
+    menu_item = MenuItem.find(id)
+    menu_item.name = params[:name]
+    menu_item.description = params[:description]
+    menu_item.price = params[:price]
+    menu_item.menu_id = params[:menu_id]
+    menu_item.category_id = params[:category_id]
+    if menu_item.valid?
+      menu_item.save
+      flash[:notice] = "update successfull"
+      redirect_to "/menus/#{menu_item.menu_id}"
+    else
+      flash[:error] = menu_item.errors.full_messages.join(", ")
+      redirect_to edit_menu_item_path #"menu_items/#{id}/edit"
+    end
   end
 
   def destroy

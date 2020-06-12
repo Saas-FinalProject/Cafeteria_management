@@ -1,0 +1,17 @@
+<%= form_with(url: "/menu_items/#{menu_item.id}/updateMenuItem", method: "put", class: "update-menu-item-form") do %>
+  <div class="update-menu-item-upper-block">
+    <%= text_field_tag(:name, nil, class: "form-input", value: menu_item.name, placeholder: "Enter the new item-name", autofocus: "autofocus") %>
+    <%= select_tag nil, options_for_select(menus, [menu_item.menu_name, menu_item.menu_id]), class: "category-dropdown", name: "menu_id" %>
+  </div>
+  <div class="update-menu-item-middle-block">
+    <%= text_area_tag(:description, menu_item.description, size: "25x6", class: "add-menu-item-text-area", placeholder: "Item description") %>
+    <div class="update-category-description-block">
+      <%= select_tag nil, options_for_select(categories, [menu_item.category, menu_item.category_id]), class: "category-dropdown", name: "category_id" %>
+      <div class="price-block">
+        <i class="fa fa-inr update-menu-item-inr" aria-hidden="true"></i>
+        <%= number_field(nil, nil, class: "update-menu-item-form-input", value: menu_item.price, placeholder: "Enter Price", name: "price") %>
+      </div>
+    </div>
+  </div>
+  <%= submit_tag("Update Item!", class: "update-menu-item-form-submit") %>
+<% end %>
