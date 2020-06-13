@@ -25,12 +25,12 @@
 }
 
 .category-display{
-  min-width: 190px;
+  min-width: 200px;
   padding: 30px 0 10px;
   text-align: center;
   display: grid;
   grid-row-gap: 12px;
-  background-color: #f7f7f7;//#d1eaa3;
+  background-color: #f7f7f7;
   border-radius: 6px;
   transition: background-color 0.3s;
 }
@@ -43,7 +43,12 @@
   visibility: hidden;
 }
 
-.category-display:hover .category-delete{
+.categories-edit-icon{
+  visibility: hidden;
+  font-size: 22px;
+}
+
+.category-display:hover .category-delete, .category-display:hover .categories-edit-icon{
   visibility: visible;
 }
 

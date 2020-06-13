@@ -16,6 +16,26 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  def edit
+    id = params[:id]
+    category = Category.find(id)
+    render "category_edit", locals: { category: category }
+  end
+
+  def update
+    id = params[:id]
+    category = Category.find(id)
+    category.name = params[:name]
+    if category.valid?
+      category.save
+      flash[:notice] = "Update Successful"
+      redirect_to categories_path
+    else
+      flash[:error] = category.errors.full_messages.join(", ")
+      redirect_to edit_category_path
+    end
+  end
+
   def destroy
     id = params[:id]
     category = Category.find(id)
