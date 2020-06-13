@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :address, presence: true
+  validates :phone, presence: true
 
   def self.clerks
     order(:id).where(role: "clerk")
