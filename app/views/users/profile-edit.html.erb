@@ -1,0 +1,14 @@
+<%= form_with(url: user_path, method: "put", class: "profile-content") do %>
+  <div class="profile-flex">
+    <%= text_field_tag(:name, nil, class: "form-input", value: user.name, placeholder: "name") %>
+    <p class="profile-role"> <%= user.role %> </p>
+  </div>
+  <%= email_field(nil, nil, name: "email", class: "form-input", value: user.email, placeholder: "E-mail") %>
+  <%= text_area_tag(:address, user.address, size: "35x6", placeholder: "address", class: "profile-address profile-edit-address") %>
+  <%= telephone_field(nil, nil, name: "phone", class: "form-input", value: user.phone, placeholder: "contact number") %>
+  <div class="update-password-block">
+    <p class="update-password-guide-text">For new password (else ignore)</p>
+    <%= password_field(nil, nil, name: "new_password", class: "form-input", placeholder: "new password")%>
+  </div>
+  <%= submit_tag("Update!", class: "update-profile-submit form-submit") %>
+<% end %>

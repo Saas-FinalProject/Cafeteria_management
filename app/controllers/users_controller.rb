@@ -35,13 +35,28 @@ class UsersController < ApplicationController
     render "show", locals: { user: user }
   end
 
+  def edit
+    id = params[:id]
+    user = User.find(id)
+    render "profile-edit", locals: { user: user }
+  end
+
   def update
     id = params[:id]
     user = User.find(id)
-    user.password = params[:new_password]
-    user.save
-    flash[:notice] = "Password updated successfully"
-    redirect_to user_path
+    user.name = params[:name]
+    user.email = params[:email]
+    user.phone = params[:phone]
+    user.address = params[:address]
+    user.password = params[:new_password] if params[:new_password]
+    if user.valid?
+      user.save
+      flash[:notice] = "Profile Updated successfully"
+      redirect_to user_path
+    else
+      flash[:error] = user.errors.full_messages.join(", ")
+      redirect_to edit_user_path
+    end
   end
 
   def removeAsClerk

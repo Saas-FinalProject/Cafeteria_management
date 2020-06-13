@@ -6,8 +6,5 @@
   <p> <%= user.email %> </p>
   <p class="profile-address"> <%= user.address %> </p>
   <p> <%= user.phone %> </p>
-  <%= form_with(url: "/users/#{user.id}", method: "put", class: "profile-form") do %>
-    <%= password_field(nil, nil, name: "new_password", class: "form-input", placeholder: "Enter the new password", autofocus: "autofocus")%>
-    <%= submit_tag("Update!", class: "margin-left-20 form-submit") %>
-  <% end %>
+  <p class="update-profile-edit-icon"> <%= link_to ('<i class="fa fa-pencil"></i>').html_safe, "/users/#{user.id}/edit" %> </p>
 </div>
