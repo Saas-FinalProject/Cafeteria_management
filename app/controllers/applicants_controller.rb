@@ -18,10 +18,10 @@ class ApplicantsController < ApplicationController
 
     if applicant.valid?
       applicant.save
-      flash[:notice] = "Application successfully submitted"
+      flash[:notice] = "Application submitted successfully"
       redirect_to "/"
     else
-      flash[:error] = user.errors.full_messages.join(", ")
+      flash[:error] = applicant.errors.full_messages.join(", ")
       redirect_to new_applicant_path
     end
   end
