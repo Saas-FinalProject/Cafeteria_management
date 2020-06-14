@@ -1,27 +1,14 @@
-<p class="NewUsers-title"> Welcome new applicant! </p>
+<p class="new-applicant-title"> Welcome new applicant! </p>
 
-<%= form_with(url: applicants_path, method: "post") do %>
-    <div class="Form-section">
-      <p class="FormInput-label">Name: </p>
-      <%= text_field_tag(:name, nil, class: "Form-input", placeholder: "Enter your name", autofocus: "autofocus") %>
+<%= form_with(url: applicants_path, method: "post", class: "applicant-form") do %>
+  <%= text_field_tag(:name, nil, class: "form-input", placeholder: "Enter your name", autofocus: "autofocus") %>
+  <div class="applicant-form-middle-block">
+    <%= text_area_tag(:address, nil, size: "30x10",placeholder: "Enter Your address", class: "applicant-form-address") %>
+    <div class="applicant-form-middle-block-right">
+      <%= select_tag nil, options_for_select( [ ["Franchise","franchise"], ["Clerk","clerk"], ["Delivery-Boy","deliveryBoy"], ["Cleaner","cleaner"] ] ), class: "category-dropdown", name: "option" %>
+      <%= email_field(nil, nil, name: "email", class: "form-input", placeholder: "Enter your E-mail") %>
+      <%= telephone_field(nil, nil, name: "phone", class: "form-input", placeholder: "Contact number") %>
     </div>
-    <div class = "Form-section">
-      <p class = "FormInput-label">email: </p>
-      <%= email_field(nil, nil, name: "email", class: "Form-input", placeholder: "Enter your E-mail") %>
-    </div>
-    <div class = "Form-section">
-      <p class = "FormInput-label">Post: </p>
-      <%= select_tag nil, options_for_select( [ ["Franchise","franchise"], ["Clerk","clerk"], ["Delivery-Boy","deliveryBoy"], ["Cleaner","cleaner"] ] ), class: "option", name: "option" %>
-    </div>
-    <div class = "Form-section">
-      <p class = "FormInput-label">Contact No: </p>
-      <%= telephone_field(nil, nil, name: "phone", class: "Form-input") %>
-    </div>
-    <div class = "Form-section">
-      <p class = "FormInput-label">Address: </p>
-      <%= text_area_tag(:address, nil, size: "35x6",placeholder: "Enter Your address") %>
-    </div>
-    <div class = "Form-section">
-      <%= submit_tag("Submit!", class: "Form-submit") %>
-    </div>
+  </div>
+  <%= submit_tag("Submit!", class: "form-submit") %>
 <% end %>
