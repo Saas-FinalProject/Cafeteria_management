@@ -194,13 +194,15 @@ padding: 20px 0 2px;
 }
 
 .mailus{
+  text-align: center;
+  width: 75px;
   border: 2px solid #885a52;
   border-radius: 6px;
   font-size: 18px;
   font-weight: 500;
   color: #63b7af;
   display: inline-block;
-  padding: 12px 28px;
+  padding: 12px 20px;
   position: relative;
   left: 35%;
   top: 16px;
