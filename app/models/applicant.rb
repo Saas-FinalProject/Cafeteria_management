@@ -1,4 +1,10 @@
 class Applicant < ActiveRecord::Base
+  validates :name, presence: true
+  validates :option, presence: true
+  validates :email, presence: true
+  validates :address, presence: true
+  validates :phone, presence: true
+
   def self.franchise
     order(:id).where(option: "franchise")
   end
