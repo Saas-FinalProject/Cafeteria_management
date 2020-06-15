@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users
   resources :applicants
   resources :categories
+  resources :questions
+  resources :answers
 
   get "/" => "home#index"
 
