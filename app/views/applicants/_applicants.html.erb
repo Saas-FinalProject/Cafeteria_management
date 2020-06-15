@@ -1,15 +1,20 @@
-<ul>
-    <% Applicant.category(option).each do |applicant| %>
-      <li class="User">
-        <div class="User-Container">
-          <p class="User-name" > <%= applicant.name %> </p>
-          <p class="User-phone" > <%= applicant.email %> </p>
-          <p class="User-phone" > <%= applicant.phone %> </p>
-          <p class="User-phone" > <%= applicant.address %> </p>
-          <%= form_with(url: "/applicants/#{applicant.id}", method: "delete") do %>
-            <%= image_submit_tag("TrashIcon.png", class: "applicant-delete") %>
-          <% end %>
-        </div>
-      </li>
-    <% end %>
-</ul>
+<h1 class = "user-title"> <%= option %> </h1>
+<div class="users">
+  <div class="applicant-headings">
+    <p class="user-name heading" >Name</p>
+    <p class="user-phone heading" >Phone</p>
+    <p class="user-phone heading" >E-mail</p>
+    <p class="user-address heading" >Address</p>
+  </div>
+  <% Applicant.category(option).each do |applicant| %>
+    <div class="applicant">
+      <p class="user-name"> <%= applicant.name %> </p>
+      <p class="user-phone"> <%= applicant.phone %> </p>
+      <p class="user-phone"> <%= applicant.email %> </p>
+      <p class="user-address"> <%= applicant.address %> </p>
+      <%= form_with(url: "/applicants/#{applicant.id}", method: "delete") do %>
+        <%= image_submit_tag("TrashIcon.png") %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

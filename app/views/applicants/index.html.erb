@@ -1,11 +1,15 @@
-<h1> Franchise </h1>
-<%= render partial: "applicants", locals: { option: "franchise" } %>
+<% if Applicant.category("franchise").count > 0 %>
+  <%= render partial: "applicants", locals: { option: "franchise" } %>
+<% end %>
 
-<h1> Clerks </h1>
-<%= render partial: "applicants", locals: { option: "clerk" } %>
+<% if Applicant.category("clerk").count > 0 %>
+  <%= render partial: "applicants", locals: { option: "clerk" } %>
+<% end %>
 
-<h1> Delivery Boys </h1>
-<%= render partial: "applicants", locals: { option: "deliveryBoy" } %>
+<% if Applicant.category("deliveryBoy").count > 0 %>
+  <%= render partial: "applicants", locals: { option: "deliveryBoy" } %>
+<% end %>
 
-<h1> Cleaners </h1>
-<%= render partial: "applicants", locals: { option: "cleaner" } %>
+<% if Applicant.category("cleaner").count > 0 %>
+  <%= render partial: "applicants", locals: { option: "cleaner" } %>
+<% end %>

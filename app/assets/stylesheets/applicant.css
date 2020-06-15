@@ -32,3 +32,27 @@
 .applicant-form-address{
   padding: 8px 0 0 8px;
 }
+
+.applicant-headings, .applicant{
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.8fr 2fr 0.8fr;
+  padding: 30px 10px;
+}
+
+.applicant{
+  background-color: #aad492;
+}
+
+.applicant:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.applicant:nth-child(2) {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.applicant:last-child{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
