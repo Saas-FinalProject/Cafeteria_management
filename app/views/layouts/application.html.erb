@@ -92,11 +92,11 @@
         <div class="footer-right">
           <div class="footer-right-grid">
             <div class="info">
-              <% if @current_user && @current_user.role == "owner" %>
-                <%= link_to "Careers & Franchise", applicants_path,class: "info-tag" %>
+              <% if @current_user == nil || @current_user.role == "customer" %>
+                <%= link_to "Careers & Franchise", new_applicant_path,class: "info-tag" %>
                 <%= link_to "FAQ", "/",class: "info-tag" %>
               <% else %>
-                <%= link_to "Careers & Franchise", new_applicant_path,class: "info-tag" %>
+                <%= link_to "Careers & Franchise", applicants_path,class: "info-tag" %>
                 <%= link_to "FAQ", "/",class: "info-tag" %>
               <% end %>
               <%= link_to "Terms & Conditions", "/",class: "info-tag" %>
