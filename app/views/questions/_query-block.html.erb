@@ -1,0 +1,11 @@
+<div class="query-block">
+  <p class="query-text"> <%= question.query %> </p>
+  <div class="question-flex">
+    <p> Asked by <span class="asked-by"> <%= question.name %> </span> </p>
+    <% if role && role != "customer" %>
+      <p> <%= link_to ('<i class="fa fa-reply add-an-answer"> Add an answer </i>').html_safe, "/questions/#{question.id}" %> </p>
+    <% elsif question.answers.count == 0 %>
+      <p class="no-answer-text"> Yet to be answered </p>
+    <% end %>
+  </div>
+</div>

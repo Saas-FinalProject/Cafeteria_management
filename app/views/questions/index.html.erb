@@ -1,0 +1,5 @@
+<% if role == "customer" %>
+  <%= render partial: "add-query" %>
+<% end %>
+<h1 class="FAQ-title"> FAQ </h1>
+<%= render partial: "queries-solutions", locals: { role: role } %>

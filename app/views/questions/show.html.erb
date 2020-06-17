@@ -1,0 +1,13 @@
+<div class="questions">
+  <div class="question">
+    <%= render partial: "query-block", locals: { question: question, role: nil } %>
+    <div class="answers">
+      <%= form_with(url: answers_path, method: "post", class: "add-new-solution") do %>
+        <%= hidden_field_tag(:question_id, question.id) %>
+        <%= text_area_tag(:solution, nil, placeholder: "Answer here", class: "add-new-solution-queryText") %>
+        <%= submit_tag("Post !", class: "add-new-query-form-submit") %>
+      <% end %>
+      <%= render partial: "answers-block", locals: { question: question } %>
+    </div>
+  </div>
+</div>

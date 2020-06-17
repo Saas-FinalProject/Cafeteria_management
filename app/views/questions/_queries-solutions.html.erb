@@ -1,0 +1,11 @@
+<div class="questions">
+  <% Question.order(id: :desc).each do |question| %>
+    <div class="question">
+      <%= render partial: "query-block", locals: { question: question, role: role } %>
+      <div class="answers">
+        <%= render partial: "answers-block", locals: { question: question } %>
+      </div>
+    </div>
+    <hr class="questions-hr">
+  <% end %>
+</div>
