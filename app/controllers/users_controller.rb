@@ -14,9 +14,7 @@ class UsersController < ApplicationController
     password = params[:password]
     phone = params[:phone]
     address = params[:address]
-    role = params[:role]
-
-    role = "customer" unless role
+    role = "customer"
 
     user = User.new(name: name, email: email, password: password, phone: phone, address: address, role: role)
 
