@@ -39,8 +39,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    id = params[:id]
-    user = User.find(id)
+    user = current_user
     user.name = params[:name]
     user.email = params[:email]
     user.phone = params[:phone]
