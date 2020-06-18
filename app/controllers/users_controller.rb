@@ -34,8 +34,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    id = params[:id]
-    user = User.find(id)
+    user = current_user
     render "profile-edit", locals: { user: user }
   end
 
