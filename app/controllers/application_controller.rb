@@ -17,4 +17,18 @@ class ApplicationController < ActionController::Base
   def resetUser
     @current_user = session[:current_user_id] = nil
   end
+
+  def ensure_user_logged_in
+    unless current_user
+      flash[:error] = "User should Sign in"
+      redirect_to new_session_path
+    end
+  end
+
+  def ensure_owner_logged_in
+    unless current_user && current_user.role == "owner"
+      flash[:error] = "Owner previlages cannot be accessed"
+      redirect_to new_session_path
+    end
+  end
 end
