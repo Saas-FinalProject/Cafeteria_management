@@ -1,8 +1,4 @@
 class MenuItemsController < ApplicationController
-  def index
-    render plain: "MenuItems controller"
-  end
-
   def create
     name = params[:name]
     description = params[:description]
