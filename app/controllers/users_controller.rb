@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :ensure_user_logged_in, only: [:show, :edit, :update]
+  before_action :ensure_owner_logged_in, only: [:index, :removeAsClerk, :makeAsClerk]
+
   def index
     render "index"
   end
