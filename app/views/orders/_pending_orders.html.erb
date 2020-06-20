@@ -3,6 +3,13 @@
   <% pending_orders.each do |order| %>
     <div class="pending-order">
       <p class="pending-order-id"> <span> OrderID: </span> <%= order.id %> </p>
+      <p class="pending-order-id">
+        <% if order.user.role == "customer"%>
+          <span><%= order.user.name %></span>
+        <% else %>
+         <span> Walk-In-customer </span>
+        <% end %>
+      </p>
       <div class="pending-order-items">
         <% order.order_items.each do |order_item| %>
           <div class="pending-order-item">
