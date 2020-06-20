@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_085432) do
+ActiveRecord::Schema.define(version: 2020_06_20_080725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_085432) do
     t.string "description"
     t.decimal "price"
     t.bigint "menu_id"
-    t.integer "quantity"
     t.bigint "category_id"
     t.boolean "active"
   end
