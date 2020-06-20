@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   # post "/menus/UpdateActiveMenu" => "menus#updateActiveMenu"
   post "/orderdeliver/:id" => "orders#deliverOrder"
-  # get "/reports" => "reports#index", as: :reports
+  get "/reports" => "reports#index", as: :reports
   get "/reports/:id" => "reports#invoice", as: :invoice ########
   post "/orders" => "orders#create", as: :new_orders #################################################################
   get "/orders" => "orders#index", as: :orders  ###########################################
