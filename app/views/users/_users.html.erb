@@ -14,11 +14,11 @@
       <p class="user-address"> <%= user.address %> </p>
       <p class="user-orders-count"> <%= user.orders.count %> </p>
       <% if role == "clerk" %>
-        <%= form_with(url: "/users/#{user.id}/removeAsClerk", method: "post", class: "user-change-rol") do %>
+        <%= form_with(url: "/users/#{user.id}/removeAsClerk", method: "post") do %>
           <%= submit_tag("Remove As Clerk", class: "user-change-role") %>
         <% end %>
       <% else %>
-        <%= form_with(url: "/users/#{user.id}/makeAsClerk", method: "post", class: "user-change-rol") do %>
+        <%= form_with(url: "/users/#{user.id}/makeAsClerk", method: "post") do %>
           <%= submit_tag("Appoint As Clerk", class: "user-change-role") %>
         <% end %>
       <% end %>
