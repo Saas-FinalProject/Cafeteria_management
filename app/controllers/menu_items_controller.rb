@@ -1,4 +1,6 @@
 class MenuItemsController < ApplicationController
+  before_action :ensure_owner_logged_in
+
   def create
     name = params[:name]
     description = params[:description]

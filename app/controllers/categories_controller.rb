@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :ensure_owner_logged_in
+
   def index
     categories = Category.all
     render "index", locals: { categories: categories }

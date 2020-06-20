@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :ensure_owner_or_clerk_logged_in, only: [:show]
+
   def index
     role = "customer"
     role = current_user.role if current_user
