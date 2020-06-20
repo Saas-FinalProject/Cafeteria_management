@@ -10,13 +10,27 @@
   </div>
   <div class = "invoice-user__data">
     <p class = "invoice-user__name">
-      <%= User.find(order.user_id).name%>
+      <% if order.user.role == "customer"%>
+        <span><%= User.find(order.user_id).name%></span>
+      <% else %>
+        <span> Walk-In-customer </span>
+      <% end %>
     </p>
     <p class = "invoice-user__address">
-      <%= User.find(order.user_id).address%>
+       <% if order.user.role == "customer"%>
+        <span><%= User.find(order.user_id).address%></span>
+      <% else %>
+        <span> ------- </span>
+      <% end %>
     </p>
   </div>
-  <p class = "invoice-user__phone">Phone: <%= User.find(order.user_id).phone%></p>
+  <p class = "invoice-user__phone">Phone:
+    <% if order.user.role == "customer"%>
+        <span><%= User.find(order.user_id).phone%></span>
+      <% else %>
+        <span> ------- </span>
+      <% end %>
+  </p>
   <table class = "invoice-table">
     <p>
       <tr class = "invoice-table__tr">
