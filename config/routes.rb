@@ -38,6 +38,6 @@ Rails.application.routes.draw do
   get "/SocialMediaHandlesShow" => "others#socialMediaHandlesShow"
   post "/SocialMediaHandlesUpdate" => "others#socialMediaHandlesUpdate"
 
-  get "CafeAddressShow" => "others#cafeAddressShow"
-  post "CafeAddressUpdate" => "others#cafeAddressUpdate"
+  get "/CafeAddressShow" => "others#cafeAddressShow"
+  post "/CafeAddressUpdate" => "others#cafeAddressUpdate"
 end
