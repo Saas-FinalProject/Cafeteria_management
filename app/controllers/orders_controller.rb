@@ -10,12 +10,6 @@ class OrdersController < ApplicationController
     render "index", locals: { pending_orders: pending_orders, delivered_orders: delivered_orders }
   end
 
-  def new
-  end
-
-  def create
-  end
-
   def deliverOrder
     id = params[:id]
     order = Order.find(id)
