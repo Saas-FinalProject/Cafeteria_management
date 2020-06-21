@@ -1,0 +1,5 @@
+<h1 class="TermsAndConditions-title"> Terms And Conditions </h1>
+<%= form_with(url: "/TermsAndConditionsUpdate", method: "post") do %>
+  <%= text_area_tag(:terms_and_conditions, @terms_and_conditions, placeholder: "Write the Terms And Conditions here !!", class: "TermsAndConditions-text") %>
+  <%= submit_tag("Submit !", class: "form-submit") %>
+<% end %>
