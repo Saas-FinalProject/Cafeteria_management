@@ -1,6 +1,8 @@
-<% if @terms_and_conditions %>
+<div class="TermsAndConditions-container">
   <h1 class="TermsAndConditions-title"> Terms And Conditions </h1>
-  <p> <%= @terms_and_conditions %> </p>
-<% else %>
-  <p class=""> Yet to be Updated </p>
-<% end %>
+  <% if @terms_and_conditions %>
+    <p class="TermsAndConditionsDisplay-text"> <%= @terms_and_conditions %> </p>
+  <% else %>
+    <p class=""> Yet to be Updated </p>
+  <% end %>
+</div>
