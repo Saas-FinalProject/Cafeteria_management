@@ -1,8 +1,4 @@
 class OrderItemsController < ApplicationController
-  def index
-    render plain: "OrderItems controller"
-  end
-
   def change
     order_item = Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: params[:id])
     if params[:quantity].to_i > 0
