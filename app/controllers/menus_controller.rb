@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   before_action :ensure_user_logged_in, only: [:index]
-  before_action :ensure_owner_logged_in, only: [:create, :show, :edit, :update, :updateMenuName, :destroy, :changeMenu]
+  before_action :ensure_owner_logged_in, only: [:show, :changeMenu]
 
   def index
     order = Order.where(user_id: current_user.id)
