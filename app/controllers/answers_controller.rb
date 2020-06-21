@@ -1,6 +1,4 @@
 class AnswersController < ApplicationController
-  before_action :ensure_owner_or_clerk_logged_in, only: [:create]
-
   def create
     question_id = params[:question_id]
     solution = params[:solution]
