@@ -32,29 +32,47 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = current_user
-    render "show", locals: { user: user }
+    id = params[:id]
+    if id.to_i == current_user.id
+      user = User.find(id)
+      render "show", locals: { user: user }
+    else
+      flash[:error] = "Hey! You are not allowed to view this page."
+      redirect_to "/"
+    end
   end
 
   def edit
-    user = current_user
-    render "profile-edit", locals: { user: user }
+    id = params[:id]
+    if id.to_i == current_user.id
+      user = User.find(id)
+      render "profile-edit", locals: { user: user }
+    else
+      flash[:error] = "Hey! You are not allowed to view this page."
+      redirect_to "/"
+    end
   end
 
   def update
-    user = current_user
-    user.name = params[:name]
-    user.email = params[:email]
-    user.phone = params[:phone]
-    user.address = params[:address]
-    user.password = params[:new_password] if params[:new_password]
-    if user.valid?
-      user.save
-      flash[:notice] = "Profile Updated successfully"
-      redirect_to user_path
+    id = params[:id]
+    if id.to_i == current_user.id
+      user = User.find(id)
+      user.name = params[:name]
+      user.email = params[:email]
+      user.phone = params[:phone]
+      user.address = params[:address]
+      user.password = params[:new_password] if params[:new_password]
+      if user.valid?
+        user.save
+        flash[:notice] = "Profile Updated successfully"
+        redirect_to user_path
+      else
+        flash[:error] = user.errors.full_messages.join(", ")
+        redirect_to edit_user_path
+      end
     else
-      flash[:error] = user.errors.full_messages.join(", ")
-      redirect_to edit_user_path
+      flash[:error] = "Invalid Update"
+      redirect_to "/"
     end
   end
 
