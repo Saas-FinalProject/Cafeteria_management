@@ -102,7 +102,11 @@
                 <%= link_to "Careers & Franchise", applicants_path,class: "info-tag" %>
               <% end %>
               <%= link_to "FAQ", questions_path, class: "info-tag" %>
-              <%= link_to "Terms & Conditions", "/",class: "info-tag" %>
+              <% if @current_user == nil || @current_user.role == "customer" %>
+                <%= link_to "Terms & Conditions", "/TermsAndConditionsDisplay",class: "info-tag" %>
+              <% else %>
+                <%= link_to "Terms & Conditions", "/TermsAndConditionsShow",class: "info-tag" %>
+              <% end %>
             </div>
             <div class="address">
               <p> <%= @address_line1 %> </p>
