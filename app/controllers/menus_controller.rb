@@ -1,17 +1,17 @@
 class MenusController < ApplicationController
   def index
-    order = Order.where(user_id: session[:current_user_id])
+    order = Order.where(user_id: current_user.id)
     if order
       previous_order = order.find { |order| order[:status] == "notprocessed" }
       if previous_order
         session[:current_order_id] = previous_order.id
       else
-        user_id = session[:current_user_id]
+        user_id = current_user.id
         Order.create!(user_id: user_id, date: DateTime.now, delivered_at: nil, status: "notprocessed", price: 0)
         session[:current_order_id] = Order.last.id
       end
     else
-      user_id = session[:current_user_id]
+      user_id = current_user.id
       Order.create!(user_id: user_id, date: DateTime.now, delivered_at: nil, status: "notprocessed", price: 0)
       session[:current_order_id] = Order.last.id
     end
