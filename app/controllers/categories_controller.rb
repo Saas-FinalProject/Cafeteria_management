@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :ensure_owner_logged_in
+  before_action :ensure_owner_logged_in, only: [:index, :edit]
 
   def index
     categories = Category.all
