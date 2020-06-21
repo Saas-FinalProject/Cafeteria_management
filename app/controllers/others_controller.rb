@@ -1,4 +1,6 @@
 class OthersController < ApplicationController
+  before_action :ensure_owner_or_clerk_logged_in, only: [:termsAndConditionsShow, :termsAndConditionsUpdate, :socialMediaHandlesShow, :socialMediaHandlesUpdate, :cafeAddressShow, :cafeAddressUpdate]
+
   def getTermsAndConditions
     if Rails.cache.fetch("TermsAndConditions")
       @terms_and_conditions = Rails.cache.read("TermsAndConditions")
