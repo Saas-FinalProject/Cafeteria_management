@@ -11,17 +11,15 @@ Rails.application.routes.draw do
   resources :categories
   resources :questions
   resources :answers
-
+  get "/reports/:id" => "reports#invoice", as: :invoice
+  resources :reports
   get "/" => "home#index"
 
   get "/signin/new" => "sessions#new", as: :new_session
   post "/signin" => "sessions#create", as: :sessions
   delete "/signout" => "sessions#destroy"
 
-  # post "/menus/UpdateActiveMenu" => "menus#updateActiveMenu"
   post "/orderdeliver/:id" => "orders#deliverOrder"
-  # get "/reports" => "reports#index", as: :reports
-  get "/reports/:id" => "reports#invoice", as: :invoice ########
   post "/orders" => "orders#create", as: :new_orders #################################################################
   get "/orders" => "orders#index", as: :orders  ###########################################
   post "/orders/confirm" => "orders#confirm"

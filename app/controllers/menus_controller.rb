@@ -19,23 +19,6 @@ class MenusController < ApplicationController
     render "index", locals: { displayableCategoryItems: displayableCategoryItems }
   end
 
-  # def updateActiveMenu
-  #   activeMenuId = params[:ActiveMenu]
-  #   menu = Menu.find(activeMenuId)
-  #   menu.makeActive
-  #   orders = Order.where(status: "notprocessed")
-  #   if orders
-  #     orders.each do |order|
-  #       if order.order_items
-  #         order.order_items.destroy_all
-  #       end
-  #       order.destroy
-  #     end
-  #   end
-  #   session[:current_order_id] = nil
-  #   redirect_to menus_path
-  # end
-
   def create
     name = params[:name]
     menu = Menu.new(name: name, active: false)
@@ -71,6 +54,20 @@ class MenusController < ApplicationController
     menu = Menu.find(id)
     menu.active = active
     menu.save
+    if !active
+      orders = Order.where(status: "notprocessed")
+      if orders
+        orders.each do |order|
+          if order.order_items
+            order.order_items.each do |order_item|
+              if order_item.menu_item.menu.id == menu.id
+                order_item.destroy
+              end
+            end
+          end
+        end
+      end
+    end
     redirect_to change_menus_path
   end
 
