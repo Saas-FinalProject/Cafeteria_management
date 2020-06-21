@@ -25,15 +25,12 @@ class OrdersController < ApplicationController
       redirect_to menus_path
     else
       order = Order.find(session[:current_order_id])
-      order.price = 0
-      order.order_items.each do |order_item|
-        order.price = order.price + order_item.menu_item_price * order_item.quantity
-      end
+      order.price = order.totalPrice
       order.save
       if order.price > 0
         render "cart", locals: { order: order }
       else
-        flash[:error] = "Your cart Is empty,select an item,May be the Items You added had removed by owner"
+        flash[:error] = "Your cart is empty.May be items added by you were removed."
         redirect_to menus_path
       end
     end
