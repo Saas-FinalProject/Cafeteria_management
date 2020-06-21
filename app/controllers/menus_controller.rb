@@ -55,18 +55,7 @@ class MenusController < ApplicationController
     menu.active = active
     menu.save
     if !active
-      orders = Order.where(status: "notprocessed")
-      if orders
-        orders.each do |order|
-          if order.order_items
-            order.order_items.each do |order_item|
-              if order_item.menu_item.menu.id == menu.id
-                order_item.destroy
-              end
-            end
-          end
-        end
-      end
+      Order.deleteCurrentMenuCartItems(menu)
     end
     redirect_to change_menus_path
   end

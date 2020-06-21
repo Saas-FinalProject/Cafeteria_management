@@ -26,4 +26,19 @@ class Order < ApplicationRecord
     end
     total_price
   end
+
+  def self.deleteCurrentMenuCartItems(menu)
+    orders = where(status: "notprocessed")
+    if orders
+      orders.each do |order|
+        if order.order_items
+          order.order_items.each do |order_item|
+            if order_item.menu_item.menu.id == menu.id
+              order_item.destroy
+            end
+          end
+        end
+      end
+    end
+  end
 end
