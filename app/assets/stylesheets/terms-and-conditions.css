@@ -1,0 +1,39 @@
+.TermsAndConditions-container{
+  width: 75%;
+  margin: 30px auto;
+  display: grid;
+  grid-row-gap: 20px;
+  justify-items: center;
+}
+
+.TermsAndConditions-title{
+  font-size: 28px;
+  color: #10375c;
+  font-weight: 500;
+}
+
+.TermsAndConditions-form{
+  text-align: center;
+}
+
+.TermsAndConditions-text{
+  resize: none;
+  height: 480px;
+  width: 850px;
+  font-size: 16px;
+  padding: 8px;
+  line-height: 2;
+  box-sizing: border-box;
+}
+
+.TermsAndConditionsDisplay-text{
+  width: 850px;
+  font-size: 16px;
+  padding: 8px;
+  line-height: 2;
+  box-sizing: border-box;
+}
+
+.TermsAndConditions-submit{
+  margin: 20px auto;
+}

@@ -8,9 +8,9 @@ class Menu < ApplicationRecord
 
   def itemsByCategory
     itemsByCategory = {}
-    categories = Category.all
+    categories = Category.order(:id).all
     categories.map do |category|
-      current_category_menu_items = menu_items.where(category_id: category.id)
+      current_category_menu_items = menu_items.order(:id).where(category_id: category.id)
       if current_category_menu_items.count > 0
         itemsByCategory[category.id] = current_category_menu_items
       end

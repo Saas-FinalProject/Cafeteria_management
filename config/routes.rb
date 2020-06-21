@@ -28,4 +28,14 @@ Rails.application.routes.draw do
   post "/order_items/update/:id" => "order_items#update" ###################
   post "/users/:id/removeAsClerk" => "users#removeAsClerk"
   post "/users/:id/makeAsClerk" => "users#makeAsClerk"
+
+  get "/TermsAndConditionsDisplay" => "others#termsAndConditionsDisplay"
+  get "/TermsAndConditionsShow" => "others#termsAndConditionsShow"
+  post "/TermsAndConditionsUpdate" => "others#termsAndConditionsUpdate"
+
+  get "/SocialMediaHandlesShow" => "others#socialMediaHandlesShow"
+  post "/SocialMediaHandlesUpdate" => "others#socialMediaHandlesUpdate"
+
+  get "/CafeAddressShow" => "others#cafeAddressShow"
+  post "/CafeAddressUpdate" => "others#cafeAddressUpdate"
 end
