@@ -1,5 +1,5 @@
 class ApplicantsController < ApplicationController
-  before_action :ensure_owner_or_clerk_logged_in, only: [:index, :destroy]
+  before_action :ensure_owner_or_clerk_logged_in, only: [:index]
 
   def index
     render "index"
