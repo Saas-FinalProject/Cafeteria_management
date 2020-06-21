@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
     if @current_user.role == "customer"
       orders = @current_user.orders
     else
-      orders = Order.all
+      orders = Order.order(id: :desc).all
     end
     pending_orders = orders.pendingOrders
     delivered_orders = orders.deliveredOrders
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     order.status = "delivered"
     order.delivered_at = DateTime.now
     order.save
-    redirect_to "/orders#index"
+    redirect_to orders_path
   end
 
   def cart
