@@ -85,7 +85,6 @@ class MenusController < ApplicationController
   end
 
   def changeMenu
-    #displayableCategoryItems = Category.displayableCategoryItems
-    render "activeMenus" #, locals: { displayableCategoryItems: displayableCategoryItems }
+    render "activeMenus"
   end
 end
