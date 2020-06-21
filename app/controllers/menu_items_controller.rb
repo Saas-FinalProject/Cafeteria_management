@@ -1,5 +1,5 @@
 class MenuItemsController < ApplicationController
-  before_action :ensure_owner_logged_in
+  before_action :ensure_owner_logged_in, only: [:edit]
 
   def create
     name = params[:name]
