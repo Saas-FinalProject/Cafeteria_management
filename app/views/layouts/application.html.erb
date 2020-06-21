@@ -28,34 +28,64 @@
           <div class="right-part">
             <p class="quote">Experience the flavour</p>
 	  		    <div class="tags">
-	  		      <p class="tag"> <i class="fa fa-home tag-fa" aria-hidden="true"></i> <%= link_to "Home", "/" %> </p>
+              <%= link_to "/" do %>
+                <p class="tag"> <i class="fa fa-home"></i> Home </p>
+              <% end %>
               <% if @current_user %>
-                <p class="tag"> <i class="fa fa-shopping-cart tag-fa" aria-hidden="true"></i> <%= link_to "Cart", carts_path %> </p>
-                <p class="tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> <%= link_to "Orders", orders_path %> </p>
+                <%= link_to carts_path do %>
+                  <p class="tag"> <i class="fa fa-shopping-cart tag-fa" aria-hidden="true"></i> Cart </p>
+                <% end %>
+                <%= link_to orders_path do %>
+                  <p class="tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> Orders </p>
+                <% end %>
                 <div class="drop-down-tags-menu">
                   <i class="fa fa-chevron-down drop-down-arrow tag" aria-hidden="true"></i>
                   <div class="drop-down-tags">
-                    <p class="drop-down-tag"> <i class="fa fa-id-card tag-fa" aria-hidden="true"></i> <%= link_to "Profile", "/users/#{@current_user.id}" %> </p>
+                    <%= link_to "/users/#{@current_user.id}" do %>
+                      <p class="drop-down-tag"> <i class="fa fa-id-card tag-fa" aria-hidden="true"></i> Profile </p>
+                    <% end %>
                     <% if @current_user.role == "owner" %>
-                      <p class="drop-down-tag"> <i class="fa fa-users tag-fa" aria-hidden="true"></i> <%= link_to "Users", users_path %> </p>
-                      <p class="drop-down-tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> <%= link_to "Change Menu", change_menus_path %> </p>
-                      <p class="drop-down-tag"> <i class="fa fa-list tag-fa" aria-hidden="true"></i> <%= link_to "Categories", categories_path %> </p>
-                      <p class="drop-down-tag"> <i class="fa fa-clone tag-fa" aria-hidden="true"></i> <%= link_to "Reports", reports_path %> </p>
+                      <%= link_to users_path do %>
+                        <p class="drop-down-tag"> <i class="fa fa-users tag-fa" aria-hidden="true"></i> Users </p>
+                      <% end %>
+                      <%= link_to change_menus_path do %>
+                        <p class="drop-down-tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> Change Menu </p>
+                      <% end %>
+                      <%= link_to categories_path do %>
+                        <p class="drop-down-tag"> <i class="fa fa-list tag-fa" aria-hidden="true"></i> Categories </p>
+                      <% end %>
+                      <%= link_to reports_path do %>
+                        <p class="drop-down-tag"> <i class="fa fa-clone tag-fa" aria-hidden="true"></i> Reports </p>
+                      <% end %>
                     <% end %>
                     <% if @current_user.role != "customer" %>
-                      <p class="drop-down-tag"> <i class="fa fa-map-marker tag-fa" aria-hidden="true"></i> <%= link_to "Cafe Address", "/CafeAddressShow" %> </p>
-                      <p class="drop-down-tag"> <i class="fa fa-thumb-tack tag-fa" aria-hidden="true"></i> <%= link_to "Social Media", "/SocialMediaHandlesShow" %> </p>
+                      <%= link_to "/CafeAddressShow" do %>
+                        <p class="drop-down-tag"> <i class="fa fa-map-marker tag-fa" aria-hidden="true"></i> Cafe Address </p>
+                      <% end %>
+                      <%= link_to "/SocialMediaHandlesShow" do %>
+                        <p class="drop-down-tag"> <i class="fa fa-thumb-tack tag-fa" aria-hidden="true"></i> Social Media </p>
+                      <% end %>
                     <% end %>
-                    <p class="drop-down-tag"> <i class="fa fa-sign-out tag-fa" aria-hidden="true"></i> <%= link_to "SignOut", "/signout",method: "delete" %> </p>
+                    <%= link_to "/signout",method: "delete" do %>
+                      <p class="drop-down-tag"> <i class="fa fa-sign-out tag-fa" aria-hidden="true"></i> SignOut </p>
+                    <% end %>
                   </div>
                 </div>
               <% else %>
-                <p class="tag"> <i class="fa fa-info tag-fa" aria-hidden="true"></i> <%= link_to "About", "#welcome-block" %> </p>
-                <p class="tag"> <i class="fa fa-phone tag-fa" aria-hidden="true"></i> <%= link_to "Contact", "#footer" %> </p>
+                <%= link_to "#welcome-block" do %>
+                  <p class="tag"> <i class="fa fa-info tag-fa" aria-hidden="true"></i> About </p>
+                <% end %>
+                <%= link_to "#footer" do %>
+                  <p class="tag"> <i class="fa fa-phone tag-fa" aria-hidden="true"></i> Contact </p>
+                <% end %>
                 <% if @signUpFlag %>
-                  <p class="tag"> <i class="fa fa-sign-in tag-fa" aria-hidden="true"></i> <%= link_to "SignIn", new_session_path %> </p>
+                  <%= link_to new_session_path do %>
+                    <p class="tag"> <i class="fa fa-sign-in tag-fa" aria-hidden="true"></i> SignIn </p>
+                  <% end %>
                 <% else %>
-                  <p class="tag"> <i class="fa fa-user-plus tag-fa" aria-hidden="true"></i> <%= link_to "SignUp", new_user_path %> </p>
+                  <%= link_to new_user_path do %>
+                    <p class="tag"> <i class="fa fa-user-plus tag-fa" aria-hidden="true"></i> SignUp </p>
+                  <% end %>
                 <% end %>
               <% end %>
 	  		    </div>
