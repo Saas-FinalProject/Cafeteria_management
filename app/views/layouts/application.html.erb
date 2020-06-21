@@ -42,6 +42,10 @@
                       <p class="drop-down-tag"> <i class="fa fa-list tag-fa" aria-hidden="true"></i> <%= link_to "Categories", categories_path %> </p>
                       <p class="drop-down-tag"> <i class="fa fa-clone tag-fa" aria-hidden="true"></i> <%= link_to "Reports", reports_path %> </p>
                     <% end %>
+                    <% if @current_user.role != "customer" %>
+                      <p class="drop-down-tag"> <i class="fa fa-map-marker tag-fa" aria-hidden="true"></i> <%= link_to "Cafe Address", "/CafeAddressShow" %> </p>
+                      <p class="drop-down-tag"> <i class="fa fa-thumb-tack tag-fa" aria-hidden="true"></i> <%= link_to "Social Media", "/SocialMediaHandlesShow" %> </p>
+                    <% end %>
                     <p class="drop-down-tag"> <i class="fa fa-sign-out tag-fa" aria-hidden="true"></i> <%= link_to "SignOut", "/signout",method: "delete" %> </p>
                   </div>
                 </div>
