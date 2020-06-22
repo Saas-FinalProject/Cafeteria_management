@@ -6,7 +6,7 @@
     <%= text_field_tag(:name, nil, class: "form-input", placeholder: "Enter the new item name", autofocus: "autofocus") %>
     <%= text_area_tag(:description, nil, size: "25x4", class: "add-menu-item-text-area", placeholder: "Item description") %>
     <%= select_tag nil, options_for_select(categories), class: "category-dropdown", name: "category_id" %>
-    <%= number_field(nil, nil, class: "form-input", placeholder: "Enter Price", name: "price") %>
+    <%= number_field(nil, nil, class: "form-input", placeholder: "Enter Price", name: "price", min: 1) %>
     <%= submit_tag("Add Item!", class: "form-submit") %>
   <% end %>
   <section class="add-menu-item-right">
