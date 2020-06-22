@@ -3,7 +3,7 @@
   <% delivered_orders.each do |order| %>
     <div class="pending-order">
       <p class="pending-order-id"> <span> OrderID: </span> <%= order.id %> </p>
-       <p class="pending-order-id">
+      <p class="pending-order-id">
         <% if order.user.role == "customer"%>
           <span><%= order.user.name %></span>
         <% else %>
@@ -24,11 +24,10 @@
       <div class="pending-order-date">
         <p class="pending-order-ordered-date"> <span> Ordered Date: </span> <%= order.date.strftime("%d/%m/%Y") %> </p>
         <p class="pending-order-delivered-date"> <span> Delivered Date: </span> <%= order.delivered_at.strftime("%d/%m/%Y at %I:%M %p") %> </p>
-        <%= form_with(url: "/reports/#{order.id}", method: "get", local: "true") do %>
-          <%= submit_tag("Invoice")%>
-        <% end %>
+
       </div>
       <p class="pending-order-total"> <span> Total Price </span> <i class="fa fa-inr" aria-hidden="true"></i> <%= order.totalPrice %> </p>
+      <p class="text-align-center"> <%= link_to ('<i class="fa fa-file-o order-invoice-button"> Invoice </i>').html_safe, "/reports/#{order.id}" %> </p>
     </div>
   <% end %>
 </div>

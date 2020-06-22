@@ -55,6 +55,17 @@
   margin: 15px 0 10px;
 }
 
+.order-invoice-button{
+  font-size: 18px;
+  font-weight: 600;
+  color: #361e1e;
+  margin: 5px 0 10px;
+}
+
+.order-invoice-button:hover{
+  color: #aa0534;
+}
+
 .pending-order-submit{
   background-color: black;
   margin: 0 44% ;
