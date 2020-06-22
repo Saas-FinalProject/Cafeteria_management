@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :ensure_user_logged_in, only: [:index, :cart]
+
   def index
     if @current_user.role == "customer"
       orders = @current_user.orders
@@ -55,10 +57,5 @@ class OrdersController < ApplicationController
       session[:current_order_id] = nil
       redirect_to menus_path
     end
-  end
-
-  def getInvoice
-    order = Order.find(params[:id])
-    render "invoice", locals: { order: order }
   end
 end
