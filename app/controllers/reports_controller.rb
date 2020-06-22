@@ -1,4 +1,7 @@
 class ReportsController < ApplicationController
+  before_action :ensure_owner_logged_in, only: [:index]
+  before_action :ensure_user_logged_in, only: [:invoice]
+
   def index
     if params[:start_date] == "" || params[:end_date] == ""
       flash[:error] = "Give The valid Date Range"
