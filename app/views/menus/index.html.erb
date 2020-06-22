@@ -11,7 +11,7 @@
             <p class="menu-item-name"> <%=menu_item.name%> </p>
             <p class="menu-item-description"> <%=menu_item.description%> </p>
             <p class="menu-item-price"> <i class="fa fa-inr" aria-hidden="true"></i> <%=menu_item.price%> </p>
-            <%= form_with(url: "/order_items/change/#{menu_item.id}") do %>
+            <%= form_with(url: "/order_items/#{menu_item.id}/change", method: "put") do %>
               <% quantity = Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id)?
                 Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id).quantity :
                 0
