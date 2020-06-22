@@ -3,10 +3,10 @@ class OrdersController < ApplicationController
     if @current_user.role == "customer"
       orders = @current_user.orders
     else
-      orders = Order.order(id: :desc).all
+      orders = Order.all
     end
-    pending_orders = orders.pendingOrders
-    delivered_orders = orders.deliveredOrders
+    pending_orders = orders.order(:date).pendingOrders
+    delivered_orders = orders.order(delivered_at: :desc).deliveredOrders
     render "index", locals: { pending_orders: pending_orders, delivered_orders: delivered_orders }
   end
 
