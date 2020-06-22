@@ -16,6 +16,15 @@ class ReportsController < ApplicationController
 
   def invoice
     order = Order.find(params[:id])
-    render "invoice", locals: { order: order }
+    if current_user.role == "customer"
+      if current_user.orderBelongsToCurrentUser?(order) == true
+        render "invoice", locals: { order: order }
+      else
+        flash[:error] = "Hey! You are not allowed to view other's Invoice."
+        redirect_to orders_path
+      end
+    else
+      render "invoice", locals: { order: order }
+    end
   end
 end

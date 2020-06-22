@@ -21,4 +21,8 @@ class User < ApplicationRecord
       customers
     end
   end
+
+  def orderBelongsToCurrentUser?(order)
+    orders.include?(order)
+  end
 end
