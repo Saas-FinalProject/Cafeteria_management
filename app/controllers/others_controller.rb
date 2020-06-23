@@ -21,13 +21,8 @@ class OthersController < ApplicationController
 
   def termsAndConditionsUpdate
     @terms_and_conditions = params[:terms_and_conditions]
-    if @terms_and_conditions != ""
-      Rails.cache.write("TermsAndConditions", @terms_and_conditions)
-      redirect_to "/TermsAndConditionsDisplay"
-    else
-      flash[:error] = "Terms And Conditions can't be blank"
-      redirect_to "/TermsAndConditionsShow"
-    end
+    Rails.cache.write("TermsAndConditions", @terms_and_conditions)
+    redirect_to "/TermsAndConditionsDisplay"
   end
 
   def socialMediaHandlesShow
