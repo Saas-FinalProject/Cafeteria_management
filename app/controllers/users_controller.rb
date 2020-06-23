@@ -11,15 +11,27 @@ class UsersController < ApplicationController
     render "home/index"
   end
 
-  def create
-    name = params[:name]
-    email = params[:email]
-    password = params[:password]
-    phone = params[:phone]
-    address = params[:address]
-    role = "customer"
+  def showPasswordLengthFlash?(password, user)
+    if password && password.length >= 8
+      user.password = password
+      return false
+    else
+      return true
+    end
+  end
 
-    user = User.new(name: name, email: email, password: password, phone: phone, address: address, role: role)
+  def create
+    user = User.new
+    user.name = params[:name]
+    user.email = params[:email]
+    user.phone = params[:phone]
+    user.address = params[:address]
+    user.role = "customer"
+
+    if showPasswordLengthFlash?(params[:password], user)
+      flash[:error] = "Password length should be greater than 7 characters"
+      redirect_to new_user_path and return
+    end
 
     if user.valid?
       user.save
@@ -61,7 +73,12 @@ class UsersController < ApplicationController
       user.email = params[:email]
       user.phone = params[:phone]
       user.address = params[:address]
-      user.password = params[:new_password] if params[:new_password]
+      if params[:new_password] != ""
+        if showPasswordLengthFlash?(params[:new_password], user)
+          flash[:error] = "Password length should be greater than 7 characters"
+          redirect_to edit_user_path and return
+        end
+      end
       if user.valid?
         user.save
         flash[:notice] = "Profile Updated successfully"
