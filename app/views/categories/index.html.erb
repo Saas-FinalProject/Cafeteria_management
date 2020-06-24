@@ -7,6 +7,7 @@
   <% categories.order(:id).all.each do |category| %>
     <div class="category-display">
       <p class="category-name-display" > <%= category.name %> </p>
+      <p class="category-menu-items-count"> <%= category.menu_items.count %> menu items </p>
       <div class="edit-delete-block">
           <%= form_with(url: "/categories/#{category.id}", method: "delete") do %>
             <%= image_submit_tag("TrashIcon.png", class: "category-delete") %>
