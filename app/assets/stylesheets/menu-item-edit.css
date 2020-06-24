@@ -38,6 +38,7 @@
 }
 
 .update-menu-item-form-submit{
+  cursor: pointer;
   width: 125px;
   height: 34px;
   padding: 2px 8px;

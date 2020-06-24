@@ -29,6 +29,7 @@
 }
 
 .add-new-query-form-submit{
+  cursor: pointer;
   position: absolute;
   right: 40px;
   bottom: 30px;

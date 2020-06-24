@@ -19,6 +19,7 @@
 }
 
 .form-submit{
+  cursor: pointer;
   width: 100px;
   height: 30px;
   padding: 2px 8px;
