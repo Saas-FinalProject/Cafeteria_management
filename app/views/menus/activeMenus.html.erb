@@ -1,7 +1,7 @@
 <section class="container">
   <%= form_with(url: menus_path, method: "post", class: "new") do %>
     <%= text_field_tag(:name, nil, class: "form-input", placeholder: "Enter the new menu name", autofocus: "autofocus") %>
-    <%= submit_tag("Create!", class: "margin-left-20 form-submit") %>
+    <%= submit_tag("Create!", class: "margin-left-20 form-submit", data: {disable_with: "Creating.."}) %>
   <% end %>
   <div class="active-count">
     <h1 class="active-menus-count"> <%= Menu.activeMenusCount %> / <%= Menu.all.count %> Active menus </h1>

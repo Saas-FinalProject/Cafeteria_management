@@ -17,5 +17,5 @@
 </div>
 <p class="pending-order-total"> <span> Total Price </span> <i class="fa fa-inr" aria-hidden="true"></i> <%= order.price %> </p>
 <%= form_with(url: "/orders/confirm", method: "post") do %>
-  <p class="confirm-button"> <i class="fa fa-check" aria-hidden="true"></i> <%= button_tag("Confirm Order", type: "submit", class: "custom-style") %> </p>
+  <p class="confirm-button"> <i class="fa fa-check" aria-hidden="true"></i> <%= button_tag("Confirm Order", type: "submit", class: "custom-style", data: {disable_with: "Confirming.."} ) %> </p>
 <% end %>

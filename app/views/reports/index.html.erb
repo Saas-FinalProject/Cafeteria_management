@@ -4,7 +4,7 @@
     Start Date: <%= date_field_tag("start_date")%>
     End Date: <%= date_field_tag("end_date")%>
     Customer Id: <%= number_field_tag("customer_id", nil , {min: 0, max: 1000,class: "reports-customer_id"})%></p>
-    <%= submit_tag("Search")%>
+    <%= submit_tag("Search", data: {disable_with: "Searching.."})%>
   <% end %>
 </div>
 <% if orders %>

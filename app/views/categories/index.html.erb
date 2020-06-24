@@ -1,6 +1,6 @@
 <%= form_with(url: categories_path, method: "post", class: "new") do %>
   <%= text_field_tag(:name, nil, class: "form-input", placeholder: "new category name", autofocus: "autofocus") %>
-  <%= submit_tag("Add Category!", class: "add-category-button") %>
+  <%= submit_tag("Add Category!", class: "add-category-button", data: {disable_with: "Adding.."}) %>
 <% end %>
 
 <div class="categories-display">

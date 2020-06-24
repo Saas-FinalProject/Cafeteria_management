@@ -2,6 +2,6 @@
   <p class="add-new-query-text"> Want to ask us something !!! </p>
   <%= form_with(url: questions_path, method: "post", class: "add-new-query-form") do %>
     <%= text_area_tag(:query, nil, placeholder: "Drop your question here", class: "add-new-solution-queryText") %>
-    <%= submit_tag("Post !", class: "add-new-query-form-submit") %>
+    <%= submit_tag("Post !", class: "add-new-query-form-submit", data: {disable_with: "Posting.."}) %>
   <% end %>
 </div>

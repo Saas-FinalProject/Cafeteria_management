@@ -7,7 +7,7 @@
     <%= text_area_tag(:description, nil, size: "25x4", class: "add-menu-item-text-area", placeholder: "Item description") %>
     <%= select_tag nil, options_for_select(categories), class: "category-dropdown", name: "category_id" %>
     <%= number_field(nil, nil, class: "form-input", placeholder: "Enter Price", name: "price", min: 1) %>
-    <%= submit_tag("Add Item!", class: "form-submit") %>
+    <%= submit_tag("Add Item!", class: "form-submit", data: {disable_with: "Adding.."}) %>
   <% end %>
   <section class="add-menu-item-right">
     <h1 class = "menu-content-menu-name"> <%= menu.name %> </h1>

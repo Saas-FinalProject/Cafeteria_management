@@ -28,7 +28,7 @@
       <p class="pending-order-total"> <span> Total Price </span> <i class="fa fa-inr" aria-hidden="true"></i> <%= order.totalPrice %> </p>
       <% if @current_user.role != "customer" %>
         <%= form_with(url: "/orderdeliver/#{order.id}", method: "POST") do %>
-          <p class="pending-order-submit"> <%= submit_tag("Deliver", class: "change-style") %> </p>
+          <p class="pending-order-submit"> <%= submit_tag("Deliver", class: "change-style", data: {disable_with: "Delivering.."} ) %> </p>
         <% end %>
       <% end %>
     </div>

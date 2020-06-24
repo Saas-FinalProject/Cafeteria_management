@@ -5,5 +5,5 @@
   <%= text_field_tag(:address_line2, nil,value: @address_line2, class: "form-input", placeholder: "Ex: Adam Avenue") %>
   <%= text_field_tag(:address_line3, nil,value: @address_line3, class: "form-input", placeholder: "Ex: Banjara Hills") %>
   <%= text_field_tag(:address_line4, nil,value: @address_line4, class: "form-input", placeholder: "Ex: Hyderabad") %>
-  <%= submit_tag("Update!", class: "form-submit") %>
+  <%= submit_tag("Update!", class: "form-submit", data: {disable_with: "Updating.."}) %>
 <% end %>

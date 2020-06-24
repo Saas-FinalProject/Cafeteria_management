@@ -5,7 +5,7 @@
       <%= form_with(url: answers_path, method: "post", class: "add-new-solution") do %>
         <%= hidden_field_tag(:question_id, question.id) %>
         <%= text_area_tag(:solution, nil, placeholder: "Answer here", class: "add-new-solution-queryText") %>
-        <%= submit_tag("Post !", class: "add-new-query-form-submit") %>
+        <%= submit_tag("Post !", class: "add-new-query-form-submit", data: {disable_with: "Posting.."}) %>
       <% end %>
       <%= render partial: "answers-block", locals: { question: question } %>
     </div>

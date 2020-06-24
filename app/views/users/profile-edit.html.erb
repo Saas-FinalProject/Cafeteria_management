@@ -10,5 +10,5 @@
     <p class="update-password-guide-text">For new password (else ignore)</p>
     <%= password_field(nil, nil, name: "new_password", class: "form-input", placeholder: "new password") %>
   </div>
-  <%= submit_tag("Update!", class: "update-profile-submit form-submit") %>
+  <%= submit_tag("Update!", class: "update-profile-submit form-submit", data: {disable_with: "Updating.."}) %>
 <% end %>

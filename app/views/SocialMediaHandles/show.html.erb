@@ -4,5 +4,5 @@
   <%= text_field_tag(:twitter_handle, nil,value: @twitter_handle, class: "form-input", placeholder: "Twitter Handle") %>
   <%= text_field_tag(:instagram_handle, nil,value: @instagram_handle, class: "form-input", placeholder: "Instagram Handle") %>
   <%= text_field_tag(:facebook_handle, nil,value: @facebook_handle, class: "form-input", placeholder: "Facebook Handle") %>
-  <%= submit_tag("Update!", class: "form-submit") %>
+  <%= submit_tag("Update!", class: "form-submit", data: {disable_with: "Updating.."}) %>
 <% end %>
