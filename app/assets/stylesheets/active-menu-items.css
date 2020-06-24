@@ -1,27 +1,6 @@
-.go-to-cart-submit{
-  background-color: black;
-  border: none;
-  color: white;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.go-to-cart-submit:hover{
-  font-weight: 600;
-}
-
-.cart-icon{
-  display: inline-block;
-}
-
-.go-to-cart-form{
-  position: sticky;
-  top: 94px;
-  padding-top: 20px;
-}
-
 .go-to-cart{
+  position: sticky;
+  top: 120px;
   text-align: center;
   margin: 0 43%;
   padding: 14px;
@@ -29,6 +8,13 @@
   border-style: none;
   background-color: black;
   color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.go-to-cart:hover{
+  font-weight: 600;
 }
 
 .category-name{

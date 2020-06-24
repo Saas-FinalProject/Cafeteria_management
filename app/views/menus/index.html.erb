@@ -1,6 +1,7 @@
-<%= form_with(url: "/orders/cart", method: "get", local: true, class: "go-to-cart-form") do %>
-  <p class="go-to-cart"> <i class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i> <%= submit_tag("Go to Cart", class: "go-to-cart-submit")%> </p>
+<%= link_to "/orders/cart" do %>
+  <p class="go-to-cart"> <i class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i> Go to Cart </p>
 <% end %>
+
 <div class="container">
   <% displayableCategoryItems.each do |category_name,menu_items| %>
     <div class="categories">
