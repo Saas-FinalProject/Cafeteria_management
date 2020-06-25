@@ -35,19 +35,8 @@ class MenuItemsController < ApplicationController
     menu_item = MenuItem.find(id)
     menu_item.active = active
     menu_item.save
-    if active == false
-      orders = Order.where(status: "notprocessed")
-      if orders
-        orders.each do |order|
-          if order.order_items
-            order.order_items.each do |order_item|
-              if order_item.menu_item_id == menu_item.id
-                order_item.destroy
-              end
-            end
-          end
-        end
-      end
+    if !active
+      Order.deleteCurrentMenuItemCartItems(menu_item)
     end
     redirect_to "/menus/#{menu_item.menu_id}"
   end
