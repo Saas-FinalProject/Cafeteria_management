@@ -13,7 +13,7 @@
       <% if order.user.role == "customer"%>
         <span><%= User.find(order.user_id).name%></span>
       <% else %>
-        <span> Walk-In-customer </span>
+        <span>Walk-In-customer(by <%= User.find(order.user_id).name%>)</span>
       <% end %>
     </p>
     <p class = "invoice-user__address">

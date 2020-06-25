@@ -6,6 +6,7 @@
   text-align: center;
   margin-bottom: 10px;
   font-size: 28px;
+  color: green;
 }
 .reports-search{
   margin-top: 10px;
@@ -17,7 +18,11 @@
   width: 60px;
 }
 .reports-info{
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: brown;
+  font-size: 18px;
   display: flex;
   justify-content: space-between;
 }
@@ -29,4 +34,8 @@
 }
 .reports-table__tr{
   border: 1px solid black;
+}
+.reports-search-button{
+ margin-top: 20px;
+ align-self: center;
 }
