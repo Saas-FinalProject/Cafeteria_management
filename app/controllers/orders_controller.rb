@@ -40,11 +40,11 @@ class OrdersController < ApplicationController
 
   def confirm
     order = Order.find(session[:current_order_id])
-    order.order_items.each do |order_item|
-      if order_item.quantity <= 0
-        OrderItem.destroy(order_item.id)
-      end
-    end
+    # order.order_items.each do |order_item|
+    #   if order_item.quantity <= 0
+    #     OrderItem.destroy(order_item.id)
+    #   end
+    # end
     if @current_user.role == "customer"
       order.status = "notdelivered"
       order.save
