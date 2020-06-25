@@ -16,15 +16,15 @@
             <div class="menu-item-quantity">
               <% if order_item %>
                 <%= form_with(url: "/order_items/#{menu_item.id}/decrement", method: "put") do%>
-                  <%= submit_tag("-",{onclick: "this.form.submit()", class: "decrement-button"})%>
+                  <%= submit_tag("-",{class: "decrement-button"})%>
                 <% end %>
                 <p class="menu_item-quantity"><%= order_item.quantity%></p>
                 <%= form_with(url: "/order_items/#{menu_item.id}/increment", method: "put") do%>
-                  <%= submit_tag("+",{onclick: "this.form.submit()", class: "increment-button"})%>
+                  <%= submit_tag("+",{class: "increment-button"})%>
                 <% end %>
               <% else %>
                 <%= form_with(url: "/order_items/#{menu_item.id}/addToCart", method: "post") do%>
-                  <%= submit_tag("Add",{onclick: "this.form.submit()", class: "add-button"})%>
+                  <%= submit_tag("Add",{class: "add-button"})%>
                 <% end %>
               <% end %>
             <div>

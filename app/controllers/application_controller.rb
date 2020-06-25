@@ -28,14 +28,14 @@ class ApplicationController < ActionController::Base
   def ensure_owner_logged_in
     unless current_user && current_user.role == "owner"
       flash[:error] = "Admin previlages cannot be accessed"
-      redirect_to new_session_path
+      redirect_to "/"
     end
   end
 
   def ensure_owner_or_clerk_logged_in
     unless current_user && current_user.role != "customer"
       flash[:error] = "Staff previlages cannot be accessed"
-      redirect_to new_session_path
+      redirect_to "/"
     end
   end
 

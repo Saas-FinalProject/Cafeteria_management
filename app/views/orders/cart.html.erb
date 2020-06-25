@@ -8,11 +8,11 @@
       <p class="order-item-price"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.menu_item_price %> </p>
       <div class="menu-item-quantity">
         <%= form_with(url: "/order_items/#{order_item.id}/decrementInCart", method: "put") do%>
-          <%= submit_tag("-",{onclick: "this.form.submit()", class: "decrement-button"})%>
+          <%= submit_tag("-",{class: "decrement-button"})%>
         <% end %>
         <p class="menu_item-quantity"><%= order_item.quantity%></p>
         <%= form_with(url: "/order_items/#{order_item.id}/incrementInCart", method: "put") do%>
-          <%= submit_tag("+",{onclick: "this.form.submit()", class: "increment-button"})%>
+          <%= submit_tag("+",{class: "increment-button"})%>
         <% end %>
       </div>
       <p class="order-item-total"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.total %> </p>
