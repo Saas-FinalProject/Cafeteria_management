@@ -3,17 +3,19 @@ class MenusController < ApplicationController
   before_action :ensure_owner_logged_in, only: [:show, :changeMenu]
 
   def index
-    orders = Order.where(user_id: current_user.id)
-    if orders
-      previous_order = orders.find_by(status: "notprocessed")
-      if previous_order
-        session[:current_order_id] = previous_order.id
-      end
-    end
     if session[:current_order_id] == nil
-      user_id = current_user.id
-      order = Order.create!(user_id: user_id, date: DateTime.now, delivered_at: nil, status: "notprocessed", price: 0)
-      session[:current_order_id] = order.id
+      orders = Order.where(user_id: current_user.id)
+      if orders
+        previous_order = orders.find_by(status: "notprocessed")
+        if previous_order
+          session[:current_order_id] = previous_order.id
+        end
+      end
+      if session[:current_order_id] == nil
+        user_id = current_user.id
+        order = Order.create!(user_id: user_id, date: DateTime.now, delivered_at: nil, status: "notprocessed", price: 0)
+        session[:current_order_id] = order.id
+      end
     end
     displayableCategoryItems = Category.displayableCategoryItems
     render "index", locals: { displayableCategoryItems: displayableCategoryItems }
