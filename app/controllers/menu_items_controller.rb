@@ -62,15 +62,7 @@ class MenuItemsController < ApplicationController
   def destroy
     id = params[:id]
     menu_item = MenuItem.find(id)
-    orders = Order.where(status: "notprocessed")
-    orders.each do |order|
-      if order.order_items
-        order_item = order.order_items.find_by(menu_item_id: menu_item.id)
-        if order_item
-          order_item.destroy
-        end
-      end
-    end
+    Order.deleteCurrentMenuItemCartItems(menu_item)
     menu_item.destroy
     redirect_to "/menus/#{session[:current_selected_menu_id]}"
   end
