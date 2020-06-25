@@ -63,4 +63,20 @@ class Order < ApplicationRecord
       end
     end
   end
+
+  def self.deleteCurrentCategoryCartItems(category)
+    orders = where(status: "notprocessed")
+    if orders
+      orders.each do |order|
+        if order.order_items
+          order.order_items.each do |order_item|
+            menu_item = MenuItem.find(order_item.menu_item_id)
+            if category.menu_items.include?(menu_item)
+              order_item.destroy
+            end
+          end
+        end
+      end
+    end
+  end
 end
