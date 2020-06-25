@@ -1,60 +1,59 @@
 <p class= "invoice-title"> INVOICE </p>
-  <p> Order ID: <%= order.id%> </p>
-  <div class = "invoice-order__date">
-    <p> Ordered date: <%= order.date.strftime("%d/%m/%Y") %>  </p>
-    <p> Delivered date: <%= order.delivered_at.strftime("%d/%m/%Y at %I:%M %p") %>  </p>
-  </div>
-  <div class = "invoice-user__heading">
-    <p>Bill To: </p>
-    <p>Ship To: </p>
-  </div>
-  <div class = "invoice-user__data">
-    <p class = "invoice-user__name">
-      <% if order.user.role == "customer"%>
-        <span><%= User.find(order.user_id).name%></span>
-      <% else %>
-        <span>Walk-In-customer(by <%= User.find(order.user_id).name%>)</span>
-      <% end %>
-    </p>
-    <p class = "invoice-user__address">
-       <% if order.user.role == "customer"%>
-        <span><%= User.find(order.user_id).address%></span>
-      <% else %>
-        <span> ------- </span>
-      <% end %>
-    </p>
-  </div>
-  <p class = "invoice-user__phone">Phone:
+<p> Order ID: <%= order.id%> </p>
+<div class = "invoice-order__date">
+  <p> Ordered date: <%= order.date.strftime("%d/%m/%Y") %>  </p>
+  <p> Delivered date: <%= order.delivered_at.strftime("%d/%m/%Y at %I:%M %p") %>  </p>
+</div>
+<div class = "invoice-user__heading">
+  <p>Bill To: </p>
+  <p>Ship To: </p>
+</div>
+<div class = "invoice-user__data">
+  <p class = "invoice-user__name">
     <% if order.user.role == "customer"%>
-        <span><%= User.find(order.user_id).phone%></span>
-      <% else %>
-        <span> ------- </span>
-      <% end %>
+      <span><%= User.find(order.user_id).name%></span>
+    <% else %>
+      <span>Walk-In-customer(by <%= User.find(order.user_id).name%>)</span>
+    <% end %>
   </p>
-  <table class = "invoice-table">
-    <p>
+  <p class = "invoice-user__address">
+     <% if order.user.role == "customer"%>
+      <span><%= User.find(order.user_id).address%></span>
+    <% else %>
+      <span> ------- </span>
+    <% end %>
+  </p>
+</div>
+<p class = "invoice-user__phone">Phone:
+  <% if order.user.role == "customer"%>
+      <span><%= User.find(order.user_id).phone%></span>
+    <% else %>
+      <span> ------- </span>
+    <% end %>
+</p>
+<table class = "invoice-table">
+  <p>
+    <tr class = "invoice-table__tr">
+      <th> Menu Item Id </th>
+      <th> Menu Item    </th>
+      <th> Description    </th>
+      <th> Quantity     </th>
+      <th> Price        </th>
+      <th> Price x quantity </th>
+    </tr>
+  </p>
+  <p>
+    <% order.order_items.each do |order_item|%>
       <tr class = "invoice-table__tr">
-        <th> Menu Item Id </th>
-        <th> Menu Item    </th>
-        <th> Description    </th>
-        <th> Quantity     </th>
-        <th> Price        </th>
-        <th> Price x quantity </th>
+        <td>  <%= order_item.menu_item_id %> </td>
+        <td> <%= order_item.menu_item_name %> </td>
+        <td> <%= MenuItem.find(order_item.menu_item_id).description %> </td>
+        <td> <%= order_item.quantity %> </td>
+        <td> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.menu_item_price %> </td>
+        <td> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.menu_item_price*order_item.quantity %> </td>
       </tr>
-    </p>
-    <p>
-      <% order.order_items.each do |order_item|%>
-        <tr class = "invoice-table__tr">
-          <td>  <%= order_item.menu_item_id %> </td>
-          <td> <%= order_item.menu_item_name %> </td>
-          <td> <%= MenuItem.find(order_item.menu_item_id).description %> </td>
-          <td> <%= order_item.quantity %> </td>
-          <td> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.menu_item_price %> </td>
-          <td> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.menu_item_price*order_item.quantity %> </td>
-        </tr>
-      <% end %>
-    </p>
-  <table>
-  <p class = "invoice-order__total"> Total Amount = <i class="fa fa-inr" aria-hidden="true"></i> <%= order.price%> </p>
-  <%# <p class = "invoice-order__print"> Print </p> %>
+    <% end %>
+  </p>
+<table>
+<p class = "invoice-order__total"> Total Amount = <i class="fa fa-inr" aria-hidden="true"></i> <%= order.price%> </p>
 <hr>
