@@ -41,6 +41,7 @@ class CategoriesController < ApplicationController
   def destroy
     id = params[:id]
     category = Category.find(id)
+    Order.deleteCurrentCategoryCartItems(category)
     category.destroy
     redirect_to categories_path
   end
