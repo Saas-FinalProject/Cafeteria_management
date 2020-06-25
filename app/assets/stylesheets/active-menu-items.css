@@ -79,13 +79,9 @@
   border: none;
 }
 .menu-item-quantity{
-  /* font-size: 17px; */
-  /* margin-left: 10px; */
   margin: 4px auto;
   display: flex;
   justify-content: center;
-  /* margin: 5px 0 10px; */
-  /* border: none;  */
 }
 
 .menu_item-quantity{
