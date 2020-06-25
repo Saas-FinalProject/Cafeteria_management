@@ -10,6 +10,9 @@
         <%= number_field_tag("quantity", order_item.quantity, {min: 0, onchange: "this.form.submit()", class: "order-quantity-field"}) %>
       <% end %>
       <p class="order-item-total"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.total %> </p>
+      <%= form_with(url: "/order_items/#{order_item.id}", method: "delete") do %>
+        <%= image_submit_tag("TrashIcon.png", class: "order-item-delete") %>
+      <% end %>
     </div>
   <% end %>
 </div>
