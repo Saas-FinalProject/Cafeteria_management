@@ -40,22 +40,9 @@ class OrdersController < ApplicationController
 
   def confirm
     order = Order.find(session[:current_order_id])
-    # order.order_items.each do |order_item|
-    #   if order_item.quantity <= 0
-    #     OrderItem.destroy(order_item.id)
-    #   end
-    # end
-    if @current_user.role == "customer"
-      order.status = "notdelivered"
-      order.save
-      session[:current_order_id] = nil
-      redirect_to "/orders#index"
-    else
-      order.status = "delivered"
-      order.delivered_at = DateTime.now
-      order.save
-      session[:current_order_id] = nil
-      redirect_to menus_path
-    end
+    order.status = "notdelivered"
+    order.save
+    session[:current_order_id] = nil
+    redirect_to orders_path
   end
 end
