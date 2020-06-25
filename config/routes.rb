@@ -19,7 +19,13 @@ Rails.application.routes.draw do
   post "/orders/confirm" => "orders#confirm"
   get "/orders/cart" => "orders#cart", as: :carts
 
-  put "/order_items/:id/change" => "order_items#change"
+  put "/order_items/:id/decrement" => "order_items#decrement"
+  put "/order_items/:id/decrementInCart" => "order_items#decrementInCart"
+
+  post "/order_items/:id/addToCart" => "order_items#addToCart"
+
+  put "/order_items/:id/increment" => "order_items#increment"
+  put "/order_items/:id/incrementInCart" => "order_items#incrementInCart"
 
   get "/TermsAndConditionsDisplay" => "others#termsAndConditionsDisplay"
   get "/TermsAndConditionsShow" => "others#termsAndConditionsShow"

@@ -78,3 +78,14 @@
   margin: 5px 0 10px;
   border: none;
 }
+.menu-item-quantity{
+  margin: 4px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.menu_item-quantity{
+  margin: 0 6px;
+  position: relative;
+  top: 6px;
+}
