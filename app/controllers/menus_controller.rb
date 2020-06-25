@@ -79,6 +79,7 @@ class MenusController < ApplicationController
   def destroy
     id = params[:id]
     menu = Menu.find(id)
+    Order.deleteCurrentMenuCartItems(menu)
     menu.destroy
     redirect_to change_menus_path
   end
