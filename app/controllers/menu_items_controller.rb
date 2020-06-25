@@ -44,6 +44,7 @@ class MenuItemsController < ApplicationController
   def updateMenuItem
     id = params[:id]
     menu_item = MenuItem.find(id)
+    old_menu = Menu.find(menu_item.menu_id)
     menu_item.name = params[:name]
     menu_item.description = params[:description]
     menu_item.price = params[:price]
@@ -51,6 +52,9 @@ class MenuItemsController < ApplicationController
     menu_item.category_id = params[:category_id]
     if menu_item.valid?
       menu_item.save
+      if menu_item.active && old_menu.isActive? && Menu.find(menu_item.menu_id).isActive? == false
+        Order.deleteCurrentMenuItemCartItems(menu_item)
+      end
       flash[:notice] = "update successfull"
       redirect_to "/menus/#{menu_item.menu_id}"
     else
