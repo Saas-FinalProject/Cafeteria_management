@@ -6,9 +6,15 @@
     <div class="order-item">
       <p class="order-item-menu-item-name"> <%= order_item.menu_item_name %> </p>
       <p class="order-item-price"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.menu_item_price %> </p>
-      <%= form_with(url: "/order_items/#{order_item.id}", method: "put", class: "order-quantity-form") do %>
-        <%= number_field_tag("quantity", order_item.quantity, {min: 0, onchange: "this.form.submit()", class: "order-quantity-field"}) %>
-      <% end %>
+      <div class="menu-item-quantity">
+        <%= form_with(url: "/order_items/#{order_item.id}/decrementInCart", method: "put") do%>
+          <%= submit_tag("-",{onclick: "this.form.submit()", class: "decrement-button"})%>
+        <% end %>
+        <p class="menu_item-quantity"><%= order_item.quantity%></p>
+        <%= form_with(url: "/order_items/#{order_item.id}/incrementInCart", method: "put") do%>
+          <%= submit_tag("+",{onclick: "this.form.submit()", class: "increment-button"})%>
+        <% end %>
+      </div>
       <p class="order-item-total"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.total %> </p>
     </div>
   <% end %>

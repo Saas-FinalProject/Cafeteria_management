@@ -12,11 +12,22 @@
             <p class="menu-item-name"> <%=menu_item.name%> </p>
             <p class="menu-item-description"> <%=menu_item.description%> </p>
             <p class="menu-item-price"> <i class="fa fa-inr" aria-hidden="true"></i> <%=menu_item.price%> </p>
-            <%= form_with(url: "/order_items/#{menu_item.id}/change", method: "put") do %>
-              <% order_item = Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id) %>
-              <% quantity = (order_item)? order_item.quantity : 0 %>
-              <%= number_field_tag("quantity", quantity, {min: 0, onchange: "this.form.submit()",class: "quantity-field"}) %>
-            <% end %>
+            <% order_item = Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id) %>
+            <div class="menu-item-quantity">
+              <% if order_item %>
+                <%= form_with(url: "/order_items/#{menu_item.id}/decrement", method: "put") do%>
+                  <%= submit_tag("-",{onclick: "this.form.submit()", class: "decrement-button"})%>
+                <% end %>
+                <p class="menu_item-quantity"><%= order_item.quantity%></p>
+                <%= form_with(url: "/order_items/#{menu_item.id}/increment", method: "put") do%>
+                  <%= submit_tag("+",{onclick: "this.form.submit()", class: "increment-button"})%>
+                <% end %>
+              <% else %>
+                <%= form_with(url: "/order_items/#{menu_item.id}/addToCart", method: "post") do%>
+                  <%= submit_tag("Add",{onclick: "this.form.submit()", class: "add-button"})%>
+                <% end %>
+              <% end %>
+            <div>
           </li>
         <% end %>
       </ul>
