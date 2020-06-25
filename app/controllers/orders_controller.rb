@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
     end
     pending_orders = orders.order(:date).pendingOrders
     delivered_orders = orders.order(delivered_at: :desc).deliveredOrders
-    render "index", locals: { pending_orders: pending_orders, delivered_orders: delivered_orders }
+    render "index", locals: { pending_orders: pending_orders, delivered_orders: delivered_orders, current_user: current_user }
   end
 
   def deliverOrder
@@ -43,6 +43,14 @@ class OrdersController < ApplicationController
     order.status = "notdelivered"
     order.save
     session[:current_order_id] = nil
+    redirect_to orders_path
+  end
+
+  def destroy
+    id = params[:id]
+    order = Order.find(id)
+    order.destroy
+    flash[:notice] = "Order cancelled successfully"
     redirect_to orders_path
   end
 end

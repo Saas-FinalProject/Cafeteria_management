@@ -28,6 +28,30 @@
   background-color: #dddddd;
 }
 
+.user-name-order-cancel-flex{
+  margin: 5px 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-order-submit{
+  cursor: pointer;
+  width: 130px;
+  height: 35px;
+  padding: 2px 8px;
+  color: red;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  border-style: none;
+  transition: background-color 0.4s;
+}
+
+.cancel-order-submit:hover{
+  background-color: red;
+  color: white;
+}
+
 .pending-order-items{
   display: grid;
   grid-row-gap: 10px;

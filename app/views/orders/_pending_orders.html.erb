@@ -3,13 +3,18 @@
   <% pending_orders.each do |order| %>
     <div class="pending-order">
       <p class="pending-order-id"> <span> OrderID: </span> <%= order.id %> </p>
-      <p class="pending-order-id">
+      <div class="user-name-order-cancel-flex">
         <% if order.user.role == "customer"%>
           <span><%= order.user.name %></span>
         <% else %>
          <span> Walk-In-customer(by <%= User.find(order.user_id).name%>) </span>
         <% end %>
-      </p>
+        <% if order.user_id == current_user.id %>
+          <%= form_with(url: "/orders/#{order.id}", method: "delete") do %>
+            <%= submit_tag("Cancel order !", class: "cancel-order-submit", data: {disable_with: "Cancelling.."}) %>
+          <% end %>
+        <% end %>
+      </div>
       <div class="pending-order-items">
         <% order.order_items.each do |order_item| %>
           <div class="pending-order-item">
