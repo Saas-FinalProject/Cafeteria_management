@@ -18,12 +18,7 @@
   display: flex;
   justify-content: space-between;
 }
-.invoice-user__name{
 
-}
-.invoice-user__address{
-
-}
 .invoice-user__phone{
   margin-top: 10px;
 }
