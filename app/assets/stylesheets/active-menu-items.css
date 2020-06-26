@@ -43,13 +43,13 @@
   text-align: center;
   display: grid;
   grid-row-gap: 15px;
-  background-color: #f7f7f7;//#f6b037;
+  background-color: #f7f7f7;
   border-radius: 6px;
   transition: background-color 0.3s;
 }
 
 .category-item:hover{
-  background-color: #82d8cf;//#f69e06;
+  background-color: #82d8cf;
 }
 
 .menu-item-name{
@@ -60,7 +60,6 @@
 .menu-item-description{
   line-height: 1.5;
   min-height: 120px;
-  /* display: none; */
 }
 
 .menu-item-price{

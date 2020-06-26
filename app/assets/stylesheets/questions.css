@@ -2,7 +2,6 @@
   width: 60%;
   margin: 40px auto 0;
   padding: 20px 20px 100px;
-  /* background-color: blue; */
   border: 2px dotted #188f45;
   position: relative;
 }
@@ -70,9 +69,6 @@
 .questions{
   width: 75%;
   margin: 40px auto 0;
-  /* border: 2px dotted blue;
-  border-top: none;
-  border-bottom: none; */
 }
 
 .question{
@@ -95,7 +91,6 @@
 .question-flex{
   display: flex;
   justify-content: space-between;
-  /* margin-right: 12px; */
 }
 
 .asked-by{
@@ -117,7 +112,6 @@
 }
 
 .answers{
-  /* border: 2px solid blue; */
   margin-top: 25px;
   display: grid;
   grid-row-gap: 10px;
@@ -134,10 +128,7 @@
 
 .add-new-solution{
   width: 65%;
-  /* margin: 40px auto 0; */
   padding: 10px 10px 100px;
-  /* background-color: blue; */
-  /* border: 2px dotted blue; */
   position: relative;
 }
 

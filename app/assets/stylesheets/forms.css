@@ -1,9 +1,6 @@
 .new{
   padding: 20px 0;
   text-align: center;
-  /* position: sticky;
-  top: 0; */
-  /* border: 1px solid red; */
 }
 
 .form-input{
@@ -15,7 +12,6 @@
   border-radius: 4px;
   border-style: solid;
   border-width: 0.5px;
-  /* margin-left: 20px; */
 }
 
 .form-submit{
@@ -28,7 +24,6 @@
   border-radius: 6px;
   border-style: none;
   transition: background-color 0.4s;
-  /* margin-left: 20px; */
 }
 
 .form-submit:hover{

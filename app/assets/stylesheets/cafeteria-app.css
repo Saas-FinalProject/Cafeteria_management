@@ -37,7 +37,6 @@ padding: 20px 0 2px;
 .tags{
   display: grid;
   grid-auto-flow: column;
-  /* grid-template-rows: repeat(4, 1fr); */
   justify-items: center;
   align-self: end;
   padding-bottom: 5px;
@@ -76,13 +75,8 @@ padding: 20px 0 2px;
   color: #ffe0ac;
 }
 
-.tags:hover{
-  /* align-items: center; */
-}
-
 .tag:hover{
   color: #f8f3eb;
-  /* font-size: 16.1px; */
 }
 
 .drop-down-tags{
@@ -133,11 +127,6 @@ padding: 20px 0 2px;
   background-color: black;
   color: white;
   padding: 40px 0;
-  /* position: sticky;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: -1; */
 }
 
 .footer-grid{

@@ -1,19 +1,12 @@
 .signin-signup-block{
-  /* width: 45%;
-  margin: auto; */
-  /* border: 1px solid blue; */
-  /* margin-top: 97.42px; */
   padding: 120px 0;
   background-image: url(/bg-image.jpg);
-  /* height: 1280px; */
-  /* background-size: 300px 100px; */
   background-position: top;
 }
 
 .form-content{
   width: 45%;
   margin: 0 auto;
-  /* border: 1px solid red; */
 }
 
 .tab-titles{
@@ -23,8 +16,6 @@
   padding: 30px 0;
   font-size: 24px;
   color: #f0d293;
-  /* #f1e3cb; */
-  /* #fff3cd */
   font-weight: 600;
   align-items: center;
 }
@@ -40,7 +31,7 @@
 .active{
   font-size: 28px;
   color: #d8b15c;
-  text-shadow: -1.4px 0px 1px whitesmoke;// #7d5a5a;
+  text-shadow: -1.4px 0px 1px whitesmoke;
 }
 
 .underlineHover{
@@ -52,7 +43,6 @@
   width: 0;
   height: 2.5px;
   background-color: #442727;
-  /* #8ec6c5  */
   position: absolute;
   top: 100%;
   left: 0;
@@ -106,7 +96,6 @@
   grid-template-columns: repeat(3,1fr);
   justify-items: center;
   padding: 100px 0 100px;
-  /* border: 1px solid red; */
 }
 
 .left-image, .right-image{
@@ -121,7 +110,7 @@
 .text-center-title{
   font-family: 'Caveat', cursive;
   font-size: 32px;
-  color: #382020;// #442727;
+  color: #382020;
   padding-top: 16px;
 }
 
@@ -129,24 +118,3 @@
   text-align: center;
   line-height: 1.4;
 }
-/*
-.Home-title{
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.Home-authenticate{
-  font-size: 16px;
-  margin-bottom: 16px;
-} */
-
-/* .ButtonIncrementer{
-  width: 5px;
-  margin: auto;
-  display: inline-flex;
-} */
-
-/* .ButtonIncrementer-content{
-  display: inline-block;
-  padding: 5px;
-} */
